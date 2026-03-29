@@ -34,32 +34,22 @@
   header {
     width: 100%;
     max-width: 600px;
-    padding: 10px 16px 12px;
+    padding: 14px 16px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-bottom: 3px solid #E8C84A; background: #C4AEDC;
+    border-bottom: 1px solid var(--border);
     position: relative;
     background: #fff;
-  }
-  .header-top {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
   }
   .logo {
     font-family: "Rouge Script", cursive;
     font-size: 52px;
     font-weight: 400;
     letter-spacing: 1px;
-    color: #1A1A1B;
+    color: #2a1a3a;
     line-height: 1;
   }
-  .logo .tay { color: #1A1A1B; }
-  .logo .nections { color: #1A1A1B; }
   .game-num {
     position: absolute;
     right: 16px;
@@ -68,17 +58,17 @@
     font-weight: 500;
   }
   .game-nav {
-    background: #C4AEDC;
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 8px 16px;
     justify-content: center;
     font-size: 14px;
-    color: #555;
+    color: #2a1a3a;
     max-width: 600px;
     width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    background: #C4AEDC;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
     margin-bottom: 4px;
   }
   .nav-btn {
@@ -98,11 +88,11 @@
   .subtitle {
     text-align: center;
     padding: 10px 16px 4px;
-    background: #C4AEDC;
     font-size: 14px;
     color: #2a1a3a;
     max-width: 600px;
     width: 100%;
+    background: #C4AEDC;
   }
   .instructions {
     text-align: center;
@@ -110,9 +100,9 @@
     color: #2a1a3a;
     padding: 8px 16px 12px;
     font-weight: 500;
-    background: #C4AEDC;
     max-width: 600px;
     width: 100%;
+    background: #C4AEDC;
   }
   .main {
     width: 100%;
@@ -155,16 +145,16 @@
     justify-content: center;
     text-align: center;
     font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.2px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 6px 4px;
-    min-height: 76px;
+    padding: 8px 4px;
+    min-height: 72px;
     transition: background 0.1s, transform 0.1s;
     user-select: none;
     -webkit-user-select: none;
-    line-height: 1.25;
+    line-height: 1.2;
     word-break: break-word;
     hyphens: auto;
   }
@@ -251,7 +241,7 @@
     text-align: center;
     animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .modal h2 { font-family: "Playfair Display", serif; font-size: 28px; margin-bottom: 8px; }
+  .modal h2 { font-family: "Rouge Script", cursive; font-size: 36px; margin-bottom: 8px; }
   .modal .emoji { font-size: 48px; margin-bottom: 12px; }
   .modal p { color: #555; font-size: 15px; margin-bottom: 20px; line-height: 1.5; }
   .modal .result-cats { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; text-align: left; }
@@ -285,15 +275,13 @@
 <body>
 
 <header>
-  <div class="header-top">
-    <div class="logo">Taynections</div>
-    <div class="game-num" id="gameNumLabel">Game 1/100</div>
-  </div>
+  <div class="logo">Taynections</div>
+  <div class="game-num" id="gameNumLabel">Game 1/100</div>
 </header>
 
 <div class="game-nav">
   <button class="nav-btn" id="prevBtn">&#8592;</button>
-  <span id="navLabel" style="font-weight:600;color:#3a2a4a;">Game 1</span>
+  <span id="navLabel" style="font-weight:600;">Game 1</span>
   <button class="nav-btn" id="nextBtn">&#8594;</button>
 </div>
 
@@ -339,40 +327,40 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
-     "OUR SONG",
-     "PICTURE TO BURN",
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "SHOULD'VE SAID NO"
+     "A PLACE IN THIS WORLD",
+     "INVISIBLE",
+     "TEARDROPS ON MY GUITAR",
+     "THE OUTSIDE"
     ]
    },
    {
     "name": "Songs from Fearless",
     "color": 2,
     "words": [
-     "FIFTEEN",
-     "FOREVER AND ALWAYS",
-     "WHITE HORSE",
-     "JUMP THEN FALL"
+     "COME IN WITH THE RAIN",
+     "UNTOUCHABLE",
+     "THE WAY I LOVED YOU",
+     "FIFTEEN"
     ]
    },
    {
     "name": "Songs from Speak Now",
     "color": 3,
     "words": [
-     "NEVER GROW UP",
-     "MINE",
+     "LONG LIVE",
+     "DEAR JOHN",
      "HAUNTED",
-     "ENCHANTED"
+     "NEVER GROW UP"
     ]
    },
    {
     "name": "Songs from Red",
     "color": 4,
     "words": [
-     "COME BACK BE HERE",
-     "BEGIN AGAIN",
-     "THE MOMENT I KNEW",
-     "STARLIGHT"
+     "THE LUCKY ONE",
+     "THE LAST TIME",
+     "I KNEW YOU WERE TROUBLE",
+     "GIRL AT HOME"
     ]
    }
   ]
@@ -383,40 +371,40 @@ var GAMES=[
     "name": "Songs from 1989",
     "color": 1,
     "words": [
-     "ALL YOU HAD TO DO WAS STAY",
-     "OUT OF THE WOODS",
+     "WELCOME TO NEW YORK",
      "THIS LOVE",
-     "CLEAN"
+     "BLANK SPACE",
+     "ALL YOU HAD TO DO WAS STAY"
     ]
    },
    {
     "name": "Songs from Reputation",
     "color": 2,
     "words": [
-     "KING OF MY HEART",
-     "DELICATE",
-     "SO IT GOES",
-     "GETAWAY CAR"
+     "I DID SOMETHING BAD",
+     "GETAWAY CAR",
+     "END GAME",
+     "READY FOR IT"
     ]
    },
    {
     "name": "Songs from Lover",
     "color": 3,
     "words": [
-     "DAYLIGHT",
-     "MISS AMERICANA AND THE HEARTBREAK PRINCE",
-     "AFTERGLOW",
-     "SOON YOULL GET BETTER"
+     "LONDON BOY",
+     "PAPER RINGS",
+     "I THINK HE KNOWS",
+     "YOU NEED TO CALM DOWN"
     ]
    },
    {
     "name": "Songs from Folklore",
     "color": 4,
     "words": [
-     "MY TEARS RICOCHET",
-     "MAD WOMAN",
-     "THE LAST GREAT AMERICAN DYNASTY",
-     "BETTY"
+     "AUGUST",
+     "SEVEN",
+     "THE 1",
+     "EXILE"
     ]
    }
   ]
@@ -427,84 +415,40 @@ var GAMES=[
     "name": "Songs from Evermore",
     "color": 1,
     "words": [
+     "TIS THE DAMN SEASON",
+     "DOROTHEA",
      "TOLERATE IT",
-     "MARJORIE",
-     "RIGHT WHERE YOU LEFT ME",
-     "EVERMORE"
+     "CLOSURE"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 2,
     "words": [
-     "MASTERMIND",
-     "BIGGER THAN THE WHOLE SKY",
-     "VIGILANTE SHIT",
-     "THE GREAT WAR"
+     "LAVENDER HAZE",
+     "KARMA",
+     "YOURE LOSING ME",
+     "PARIS"
     ]
    },
    {
     "name": "Songs from TTPD",
     "color": 3,
     "words": [
-     "SO LONG LONDON",
-     "BUT DADDY I LOVE HIM",
-     "ALL OF THE GIRLS YOU LOVED BEFORE",
-     "I CAN DO IT WITH A BROKEN HEART"
+     "ROBIN",
+     "IMGONNAGETYOUBACK",
+     "LOML",
+     "THE PROPHECY"
     ]
    },
    {
-    "name": "Taylor's Grammy Album of the Year Wins",
+    "name": "Songs from Folklore",
     "color": 4,
     "words": [
-     "MIDNIGHTS",
-     "1989",
-     "FEARLESS",
-     "FOLKLORE"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless (TV) Vault",
-    "color": 1,
-    "words": [
-     "MR. PERFECTLY FINE",
-     "WE WERE HAPPY",
-     "THAT'S WHEN",
-     "DON'T YOU"
-    ]
-   },
-   {
-    "name": "Songs from Red (TV) Vault",
-    "color": 2,
-    "words": [
-     "BABE",
-     "THE VERY FIRST NIGHT",
-     "RUN",
-     "FOREVER WINTER"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now (TV) Vault",
-    "color": 3,
-    "words": [
-     "CASTLES CRUMBLING",
-     "WHEN EMMA FALLS IN LOVE",
-     "FOOLISH ONE",
-     "TIMELESS"
-    ]
-   },
-   {
-    "name": "Songs from 1989 (TV) Vault",
-    "color": 4,
-    "words": [
-     "SAY DON'T GO",
-     "IS IT OVER NOW",
-     "SUBURBAN LEGENDS",
-     "NOW THAT WE DON'T TALK"
+     "CARDIGAN",
+     "EXILE",
+     "THE 1",
+     "SEVEN"
     ]
    }
   ]
@@ -515,40 +459,40 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
+     "I'M ONLY ME WHEN I'M WITH YOU",
      "A PERFECTLY GOOD HEART",
      "SHOULD'VE SAID NO",
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "MARY'S SONG"
+     "OUR SONG"
     ]
    },
    {
     "name": "Songs from Fearless",
     "color": 2,
     "words": [
-     "THE OTHER SIDE OF THE DOOR",
+     "TELL ME WHY",
      "COME IN WITH THE RAIN",
-     "UNTOUCHABLE",
-     "THE WAY I LOVED YOU"
+     "FOREVER AND ALWAYS",
+     "YOU'RE NOT SORRY"
     ]
    },
    {
     "name": "Songs from Speak Now",
     "color": 3,
     "words": [
-     "MEAN",
+     "INNOCENT",
      "OURS",
-     "LONG LIVE",
-     "ENCHANTED"
+     "HAUNTED",
+     "LONG LIVE"
     ]
    },
    {
     "name": "Songs from Red",
     "color": 4,
     "words": [
-     "22",
-     "WE ARE NEVER EVER GETTING BACK TOGETHER",
-     "I ALMOST DO",
-     "THE LUCKY ONE"
+     "STAY STAY STAY",
+     "COME BACK BE HERE",
+     "BEGIN AGAIN",
+     "HOLY GROUND"
     ]
    }
   ]
@@ -560,39 +504,39 @@ var GAMES=[
     "color": 1,
     "words": [
      "YOU ARE IN LOVE",
-     "I WISH YOU WOULD",
-     "ALL YOU HAD TO DO WAS STAY",
-     "HOW YOU GET THE GIRL"
+     "THIS LOVE",
+     "CLEAN",
+     "NEW ROMANTICS"
     ]
    },
    {
     "name": "Songs from Reputation",
     "color": 2,
     "words": [
-     "CALL IT WHAT YOU WANT",
-     "DRESS",
-     "SO IT GOES",
-     "READY FOR IT"
+     "DANCING WITH OUR HANDS TIED",
+     "THIS IS WHY WE CANT HAVE NICE THINGS",
+     "DELICATE",
+     "CALL IT WHAT YOU WANT"
     ]
    },
    {
     "name": "Songs from Lover",
     "color": 3,
     "words": [
-     "SOON YOULL GET BETTER",
+     "FALSE GOD",
      "MISS AMERICANA AND THE HEARTBREAK PRINCE",
-     "YOU NEED TO CALM DOWN",
-     "LONDON BOY"
+     "CORNELIA STREET",
+     "ME"
     ]
    },
    {
     "name": "Songs from Folklore",
     "color": 4,
     "words": [
-     "MIRRORBALL",
-     "HOAX",
-     "EPIPHANY",
-     "BETTY"
+     "INVISIBLE STRING",
+     "SEVEN",
+     "THIS IS ME TRYING",
+     "MY TEARS RICOCHET"
     ]
    }
   ]
@@ -603,40 +547,40 @@ var GAMES=[
     "name": "Songs from Evermore",
     "color": 1,
     "words": [
-     "TOLERATE IT",
-     "LONG STORY SHORT",
-     "NO BODY NO CRIME",
-     "DOROTHEA"
+     "ITS TIME TO GO",
+     "HAPPINESS",
+     "DOROTHEA",
+     "CLOSURE"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 2,
     "words": [
-     "SWEET NOTHING",
-     "THE GREAT WAR",
-     "VIGILANTE SHIT",
-     "MIDNIGHT RAIN"
+     "KARMA",
+     "YOURE LOSING ME",
+     "DEAR READER",
+     "SWEET NOTHING"
     ]
    },
    {
     "name": "Songs from TTPD",
     "color": 3,
     "words": [
-     "BUT DADDY I LOVE HIM",
-     "ROBIN",
-     "SO LONG LONDON",
-     "IMGONNAGETYOUBACK"
+     "FLORIDA",
+     "THE BOLTER",
+     "THE ALCHEMY",
+     "PETER"
     ]
    },
    {
     "name": "Songs from Red",
     "color": 4,
     "words": [
-     "THE LAST TIME",
-     "THE LUCKY ONE",
-     "HOLY GROUND",
-     "SAD BEAUTIFUL TRAGIC"
+     "COME BACK BE HERE",
+     "STARLIGHT",
+     "SAD BEAUTIFUL TRAGIC",
+     "THE MOMENT I KNEW"
     ]
    }
   ]
@@ -647,20 +591,20 @@ var GAMES=[
     "name": "More Songs from Fearless",
     "color": 1,
     "words": [
-     "THE WAY I LOVED YOU",
-     "UNTOUCHABLE",
      "COME IN WITH THE RAIN",
-     "YOU'RE NOT SORRY"
+     "JUMP THEN FALL",
+     "SUPERSTAR",
+     "FOREVER AND ALWAYS"
     ]
    },
    {
     "name": "More Songs from Speak Now",
     "color": 2,
     "words": [
-     "OURS",
-     "ENCHANTED",
-     "INNOCENT",
-     "LONG LIVE"
+     "LONG LIVE",
+     "SUPERMAN",
+     "HAUNTED",
+     "OURS"
     ]
    },
    {
@@ -668,9 +612,9 @@ var GAMES=[
     "color": 3,
     "words": [
      "THE LUCKY ONE",
-     "GIRL AT HOME",
-     "THE MOMENT I KNEW",
-     "EVERYTHING HAS CHANGED"
+     "EVERYTHING HAS CHANGED",
+     "COME BACK BE HERE",
+     "BEGIN AGAIN"
     ]
    },
    {
@@ -678,9 +622,185 @@ var GAMES=[
     "color": 4,
     "words": [
      "NEW ROMANTICS",
-     "BAD BLOOD",
-     "CLEAN",
+     "THIS LOVE",
+     "WILDEST DREAMS",
      "YOU ARE IN LOVE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Folklore (Tracks 1\u20135)",
+    "color": 1,
+    "words": [
+     "THE 1",
+     "EXILE",
+     "MY TEARS RICOCHET",
+     "THE LAST GREAT AMERICAN DYNASTY"
+    ]
+   },
+   {
+    "name": "Songs from Folklore (Tracks 6\u201311)",
+    "color": 2,
+    "words": [
+     "THIS IS ME TRYING",
+     "INVISIBLE STRING",
+     "ILLICIT AFFAIRS",
+     "AUGUST"
+    ]
+   },
+   {
+    "name": "Songs from Folklore (Tracks 12\u201317)",
+    "color": 3,
+    "words": [
+     "BETTY",
+     "MAD WOMAN",
+     "PEACE",
+     "THE LAKES"
+    ]
+   },
+   {
+    "name": "Taylor's Grammy Album of the Year Wins",
+    "color": 4,
+    "words": [
+     "FOLKLORE",
+     "FEARLESS",
+     "MIDNIGHTS",
+     "1989"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Evermore (Tracks 1\u20135)",
+    "color": 1,
+    "words": [
+     "TIS THE DAMN SEASON",
+     "GOLD RUSH",
+     "WILLOW",
+     "TOLERATE IT"
+    ]
+   },
+   {
+    "name": "Songs from Evermore (Tracks 6\u201310)",
+    "color": 2,
+    "words": [
+     "NO BODY NO CRIME",
+     "COWBOY LIKE ME",
+     "LONG STORY SHORT",
+     "DOROTHEA"
+    ]
+   },
+   {
+    "name": "Songs from Evermore (Tracks 11\u201315)",
+    "color": 3,
+    "words": [
+     "MARJORIE",
+     "RIGHT WHERE YOU LEFT ME",
+     "EVERMORE",
+     "ITS TIME TO GO"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "LABYRINTH",
+     "SWEET NOTHING",
+     "MIDNIGHT RAIN",
+     "WOULD'VE COULD'VE SHOULD'VE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from TTPD (Tracks 1\u20137)",
+    "color": 1,
+    "words": [
+     "BUT DADDY I LOVE HIM",
+     "FRESH OUT THE SLAMMER",
+     "SO LONG LONDON",
+     "MY BOY ONLY BREAKS HIS FAVORITE TOYS"
+    ]
+   },
+   {
+    "name": "Songs from TTPD (Tracks 8\u201314)",
+    "color": 2,
+    "words": [
+     "WHO'S AFRAID OF LITTLE OLD ME",
+     "ALL OF THE GIRLS YOU LOVED BEFORE",
+     "GUILTY AS SIN",
+     "THE SMALLEST MAN WHO EVER LIVED"
+    ]
+   },
+   {
+    "name": "Songs from TTPD (Tracks 15\u201321)",
+    "color": 3,
+    "words": [
+     "THE MANUSCRIPT",
+     "PETER",
+     "THE PROPHECY",
+     "THE BOLTER"
+    ]
+   },
+   {
+    "name": "Songs from TTPD (Tracks 22\u201328)",
+    "color": 4,
+    "words": [
+     "IMGONNAGETYOUBACK",
+     "HOW DID IT END",
+     "ANDROMEDA",
+     "LOML"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Midnights (Tracks 1\u20135)",
+    "color": 1,
+    "words": [
+     "MIDNIGHT RAIN",
+     "SNOW ON THE BEACH",
+     "MAROON",
+     "ANTI-HERO"
+    ]
+   },
+   {
+    "name": "Songs from Midnights (Tracks 6\u201310)",
+    "color": 2,
+    "words": [
+     "SWEET NOTHING",
+     "VIGILANTE SHIT",
+     "KARMA",
+     "LABYRINTH"
+    ]
+   },
+   {
+    "name": "Songs from Midnights (Tracks 11\u201315)",
+    "color": 3,
+    "words": [
+     "PARIS",
+     "THE GREAT WAR",
+     "BIGGER THAN THE WHOLE SKY",
+     "HIGH INFIDELITY"
+    ]
+   },
+   {
+    "name": "Songs from Midnights (Tracks 16\u201320)",
+    "color": 4,
+    "words": [
+     "GLITCH",
+     "YOURE LOSING ME",
+     "DEAR READER",
+     "HITS DIFFERENT"
     ]
    }
   ]
@@ -691,40 +811,40 @@ var GAMES=[
     "name": "Songs Starting with A",
     "color": 1,
     "words": [
-     "ANDROMEDA",
-     "ANTI-HERO",
      "A PERFECTLY GOOD HEART",
-     "A PLACE IN THIS WORLD"
+     "A PLACE IN THIS WORLD",
+     "AUGUST",
+     "ALL TOO WELL"
     ]
    },
    {
     "name": "Songs Starting with B",
     "color": 2,
     "words": [
-     "BEGIN AGAIN",
-     "BLANK SPACE",
-     "BYE BYE BABY",
-     "BUT DADDY I LOVE HIM"
+     "BETTY",
+     "BUT DADDY I LOVE HIM",
+     "BREATHE",
+     "BETTER THAN REVENGE"
     ]
    },
    {
     "name": "Songs Starting with C",
     "color": 3,
     "words": [
-     "CHAMPAGNE PROBLEMS",
-     "CON HEARTBREAK PRINCE",
-     "CASSANDRA",
-     "CHLOE OR SAM OR SOPHIA OR MARCUS"
+     "CLARA BOW",
+     "CLOSURE",
+     "CHLOE OR SAM OR SOPHIA OR MARCUS",
+     "CRUEL SUMMER"
     ]
    },
    {
     "name": "Songs Starting with D",
     "color": 4,
     "words": [
+     "DOROTHEA",
+     "DANCING WITH OUR HANDS TIED",
      "DONT BLAME ME",
-     "DRESS",
-     "DELICATE",
-     "DON'T YOU"
+     "DRESS"
     ]
    }
   ]
@@ -736,8 +856,8 @@ var GAMES=[
     "color": 1,
     "words": [
      "EVERYTHING HAS CHANGED",
-     "END GAME",
      "EPIPHANY",
+     "EVERMORE",
      "EXILE"
     ]
    },
@@ -745,10 +865,10 @@ var GAMES=[
     "name": "Songs Starting with F",
     "color": 2,
     "words": [
+     "FOREVER AND ALWAYS",
      "FIFTEEN",
-     "FEARLESS",
-     "FOOLISH ONE",
-     "FOREVER WINTER"
+     "FALSE GOD",
+     "FORTNIGHT"
     ]
    },
    {
@@ -756,8 +876,8 @@ var GAMES=[
     "color": 3,
     "words": [
      "GORGEOUS",
-     "GOLD RUSH",
      "GLITCH",
+     "GIRL AT HOME",
      "GETAWAY CAR"
     ]
    },
@@ -765,10 +885,10 @@ var GAMES=[
     "name": "Songs Starting with H",
     "color": 4,
     "words": [
-     "HIGH INFIDELITY",
      "HOW YOU GET THE GIRL",
-     "HOAX",
-     "HAPPINESS"
+     "HOW DID IT END",
+     "HEY STEPHEN",
+     "HOAX"
     ]
    }
   ]
@@ -779,40 +899,40 @@ var GAMES=[
     "name": "Songs Starting with I",
     "color": 1,
     "words": [
-     "I CAN DO IT WITH A BROKEN HEART",
-     "IS IT OVER NOW",
+     "IMGONNAGETYOUBACK",
      "I FORGOT THAT YOU EXISTED",
-     "I DID SOMETHING BAD"
+     "INNOCENT",
+     "ILLICIT AFFAIRS"
     ]
    },
    {
     "name": "Songs Starting with L",
     "color": 2,
     "words": [
-     "LAVENDER HAZE",
-     "LONG STORY SHORT",
+     "LONG LIVE",
      "LOOK WHAT YOU MADE ME DO",
-     "LOVE STORY"
+     "LONG STORY SHORT",
+     "LONDON BOY"
     ]
    },
    {
     "name": "Songs Starting with M",
     "color": 3,
     "words": [
-     "MINE",
-     "MIDDLE OF THE NIGHT",
-     "MIRRORBALL",
-     "MASTERMIND"
+     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
+     "MARJORIE",
+     "MASTERMIND",
+     "MINE"
     ]
    },
    {
     "name": "Songs Starting with N",
     "color": 4,
     "words": [
+     "NEVER GROW UP",
      "NO BODY NO CRIME",
-     "NOTHING NEW",
-     "NEW YEAR'S DAY",
-     "NEW ROMANTICS"
+     "NEW ROMANTICS",
+     "NEW YEAR'S DAY"
     ]
    }
   ]
@@ -824,9 +944,9 @@ var GAMES=[
     "color": 1,
     "words": [
      "PICTURE TO BURN",
-     "PARIS",
-     "PEACE",
-     "PAPER RINGS"
+     "PAPER RINGS",
+     "PETER",
+     "PARIS"
     ]
    },
    {
@@ -835,28 +955,28 @@ var GAMES=[
     "words": [
      "RED",
      "ROBIN",
-     "RIGHT WHERE YOU LEFT ME",
-     "RISE UP"
+     "READY FOR IT",
+     "RIGHT WHERE YOU LEFT ME"
     ]
    },
    {
     "name": "Songs Starting with S",
     "color": 3,
     "words": [
-     "SHOULD'VE SAID NO",
-     "SPEAK NOW",
-     "SUPERSTAR",
-     "SUPERMAN"
+     "STATE OF GRACE",
+     "SHAKE IT OFF",
+     "SNOW ON THE BEACH",
+     "SHOULD'VE SAID NO"
     ]
    },
    {
     "name": "Songs Starting with T (not 'The')",
     "color": 4,
     "words": [
-     "TIE YOUR MIND IN KNOTS",
-     "TIMELESS",
-     "TELL ME WHY",
-     "TOLERATE IT"
+     "TREACHEROUS",
+     "THIS IS ME TRYING",
+     "TOLERATE IT",
+     "THIS LOVE"
     ]
    }
   ]
@@ -867,172 +987,40 @@ var GAMES=[
     "name": "Songs Starting with W",
     "color": 1,
     "words": [
-     "WE WERE HAPPY",
-     "WONDERSTRUCK",
+     "WE ARE NEVER EVER GETTING BACK TOGETHER",
+     "WELCOME TO NEW YORK",
      "WILDEST DREAMS",
-     "WELCOME TO NEW YORK"
+     "WHO'S AFRAID OF LITTLE OLD ME"
     ]
    },
    {
     "name": "Songs Starting with Y",
     "color": 2,
     "words": [
-     "YOU'RE NOT SORRY",
-     "YOU NEED TO CALM DOWN",
+     "YOU ARE IN LOVE",
      "YOU BELONG WITH ME",
-     "YOU ARE IN LOVE"
+     "YOU NEED TO CALM DOWN",
+     "YOURE LOSING ME"
     ]
    },
    {
     "name": "Songs Starting with 'The'",
     "color": 3,
     "words": [
-     "THE TORTURED POETS DEPARTMENT",
-     "THE VERY FIRST NIGHT",
-     "THE LUCKY ONE",
-     "THE WAY I LOVED YOU"
+     "THE LAST GREAT AMERICAN DYNASTY",
+     "THE STORY OF US",
+     "THE BOLTER",
+     "THE OUTSIDE"
     ]
    },
    {
     "name": "Songs Named After a Person",
     "color": 4,
     "words": [
-     "RONAN",
-     "MARJORIE",
      "DOROTHEA",
-     "BABE"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs Starting with A",
-    "color": 1,
-    "words": [
-     "AUGUST",
-     "ANTI-HERO",
-     "ANDROMEDA",
-     "ALL TOO WELL (10 MINUTE VERSION)"
-    ]
-   },
-   {
-    "name": "Songs Starting with B",
-    "color": 2,
-    "words": [
-     "BETTY",
-     "BUT DADDY I LOVE HIM",
-     "BABE",
-     "BEJEWELED"
-    ]
-   },
-   {
-    "name": "Songs Starting with C",
-    "color": 3,
-    "words": [
-     "CHLOE OR SAM OR SOPHIA OR MARCUS",
-     "CARDIGAN",
-     "CORNELIA STREET",
-     "CLOSURE"
-    ]
-   },
-   {
-    "name": "Songs Starting with D",
-    "color": 4,
-    "words": [
-     "DEATH BY A THOUSAND CUTS",
-     "DOWN BAD",
-     "DRESS",
-     "DONT BLAME ME"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs Starting with E",
-    "color": 1,
-    "words": [
-     "EXILE",
-     "EVERMORE",
-     "END GAME",
-     "EPIPHANY"
-    ]
-   },
-   {
-    "name": "Songs Starting with F",
-    "color": 2,
-    "words": [
-     "FOREVER WINTER",
-     "FRESH OUT THE SLAMMER",
-     "FOOLISH ONE",
-     "FLORIDA"
-    ]
-   },
-   {
-    "name": "Songs Starting with H",
-    "color": 3,
-    "words": [
-     "HAPPINESS",
-     "HOW YOU GET THE GIRL",
-     "HIGH INFIDELITY",
-     "HOLY GROUND"
-    ]
-   },
-   {
-    "name": "Songs Starting with I",
-    "color": 4,
-    "words": [
-     "IS IT OVER NOW",
-     "I DID SOMETHING BAD",
-     "IT'S NICE TO HAVE A FRIEND",
-     "INVISIBLE STRING"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs Starting with L",
-    "color": 1,
-    "words": [
-     "LOOK WHAT YOU MADE ME DO",
-     "LOML",
-     "LABYRINTH",
-     "LONDON BOY"
-    ]
-   },
-   {
-    "name": "Songs Starting with M",
-    "color": 2,
-    "words": [
-     "MESSAGE IN A BOTTLE",
-     "MIDDLE OF THE NIGHT",
-     "MEAN",
-     "MASTERMIND"
-    ]
-   },
-   {
-    "name": "Songs Starting with R",
-    "color": 3,
-    "words": [
-     "ROBIN",
-     "RISE UP",
-     "RONAN",
-     "RIGHT WHERE YOU LEFT ME"
-    ]
-   },
-   {
-    "name": "Songs Starting with S",
-    "color": 4,
-    "words": [
-     "SNOW ON THE BEACH",
-     "STATE OF GRACE",
-     "SUPERMAN",
-     "STYLE"
+     "CASSANDRA",
+     "TIM MCGRAW",
+     "MARJORIE"
     ]
    }
   ]
@@ -1043,8 +1031,8 @@ var GAMES=[
     "name": "Songs About Moving On",
     "color": 1,
     "words": [
-     "OUT OF THE WOODS",
-     "22",
+     "LONG LIVE",
+     "DAYLIGHT",
      "WELCOME TO NEW YORK",
      "LONG STORY SHORT"
     ]
@@ -1053,10 +1041,10 @@ var GAMES=[
     "name": "Songs About Heartbreak",
     "color": 2,
     "words": [
-     "COLD AS YOU",
-     "DEAR JOHN",
-     "SAD BEAUTIFUL TRAGIC",
-     "ALL TOO WELL"
+     "THE MOMENT I KNEW",
+     "WHITE HORSE",
+     "THE LAST TIME",
+     "COME BACK BE HERE"
     ]
    },
    {
@@ -1064,19 +1052,19 @@ var GAMES=[
     "color": 3,
     "words": [
      "SHOULD'VE SAID NO",
+     "INNOCENT",
      "CHANGE",
-     "WHO'S AFRAID OF LITTLE OLD ME",
-     "YOU NEED TO CALM DOWN"
+     "MEAN"
     ]
    },
    {
     "name": "Songs About Nostalgia",
     "color": 4,
     "words": [
-     "THE BEST DAY",
-     "JUMP THEN FALL",
      "MARY'S SONG",
-     "RIGHT WHERE YOU LEFT ME"
+     "THE BEST DAY",
+     "RIGHT WHERE YOU LEFT ME",
+     "JUMP THEN FALL"
     ]
    }
   ]
@@ -1087,40 +1075,40 @@ var GAMES=[
     "name": "Taylor's Country Era Songs",
     "color": 1,
     "words": [
-     "FEARLESS",
-     "WHITE HORSE",
-     "FIFTEEN",
-     "OUR SONG"
+     "STAY STAY STAY",
+     "PICTURE TO BURN",
+     "YOU BELONG WITH ME",
+     "FIFTEEN"
     ]
    },
    {
     "name": "Taylor's Pop Era Songs",
     "color": 2,
     "words": [
-     "THE MAN",
-     "CRUEL SUMMER",
-     "LOOK WHAT YOU MADE ME DO",
-     "GORGEOUS"
+     "WILDEST DREAMS",
+     "OUT OF THE WOODS",
+     "SHAKE IT OFF",
+     "LONDON BOY"
     ]
    },
    {
     "name": "Taylor's Indie Folk Era Songs",
     "color": 3,
     "words": [
-     "GOLD RUSH",
-     "WILLOW",
+     "HAPPINESS",
+     "CHAMPAGNE PROBLEMS",
      "TOLERATE IT",
-     "AUGUST"
+     "CARDIGAN"
     ]
    },
    {
     "name": "Taylor's Reputation Era Songs",
     "color": 4,
     "words": [
-     "CALL IT WHAT YOU WANT",
-     "I DID SOMETHING BAD",
+     "GORGEOUS",
      "KING OF MY HEART",
-     "DONT BLAME ME"
+     "DANCING WITH OUR HANDS TIED",
+     "END GAME"
     ]
    }
   ]
@@ -1131,40 +1119,40 @@ var GAMES=[
     "name": "Songs About Summer",
     "color": 1,
     "words": [
-     "THE VERY FIRST NIGHT",
-     "MARY'S SONG",
+     "GIRL AT HOME",
+     "AUGUST",
      "CRUEL SUMMER",
-     "GIRL AT HOME"
+     "MARY'S SONG"
     ]
    },
    {
-    "name": "Songs About Winter or Cold",
+    "name": "Songs About Winter & Cold",
     "color": 2,
     "words": [
-     "BACK TO DECEMBER",
-     "THE LAST TIME",
      "SNOW ON THE BEACH",
-     "TIS THE DAMN SEASON"
+     "WHITE HORSE",
+     "THE LAST TIME",
+     "CLEAN"
     ]
    },
    {
     "name": "Songs About the Night",
     "color": 3,
     "words": [
-     "CORNELIA STREET",
-     "DRESS",
      "MIRRORBALL",
-     "ILLICIT AFFAIRS"
+     "MIDNIGHT RAIN",
+     "LONG STORY SHORT",
+     "CORNELIA STREET"
     ]
    },
    {
     "name": "Songs About Storms",
     "color": 4,
     "words": [
-     "EPIPHANY",
-     "HAUNTED",
-     "OUT OF THE WOODS",
-     "STATE OF GRACE"
+     "SEVEN",
+     "THE GREAT WAR",
+     "READY FOR IT",
+     "HAUNTED"
     ]
    }
   ]
@@ -1175,40 +1163,40 @@ var GAMES=[
     "name": "Songs About Revenge",
     "color": 1,
     "words": [
+     "PICTURE TO BURN",
      "LOOK WHAT YOU MADE ME DO",
-     "SHOULD'VE SAID NO",
-     "BAD BLOOD",
-     "I DID SOMETHING BAD"
+     "BETTER THAN REVENGE",
+     "VIGILANTE SHIT"
     ]
    },
    {
     "name": "Taylor's Saddest Songs",
     "color": 2,
     "words": [
+     "HOAX",
      "MY TEARS RICOCHET",
-     "SOON YOULL GET BETTER",
-     "SAD BEAUTIFUL TRAGIC",
-     "TOLERATE IT"
+     "TOLERATE IT",
+     "RIGHT WHERE YOU LEFT ME"
     ]
    },
    {
     "name": "Songs About Peace & Quiet",
     "color": 3,
     "words": [
-     "FALSE GOD",
-     "HAPPINESS",
-     "ITS TIME TO GO",
-     "CLOSURE"
+     "PEACE",
+     "EPIPHANY",
+     "LONG STORY SHORT",
+     "FALSE GOD"
     ]
    },
    {
     "name": "Songs About Keeping Secrets",
     "color": 4,
     "words": [
-     "INVISIBLE STRING",
-     "HOAX",
      "INVISIBLE",
-     "THE OUTSIDE"
+     "ENCHANTED",
+     "ILLICIT AFFAIRS",
+     "THE ARCHER"
     ]
    }
   ]
@@ -1219,20 +1207,20 @@ var GAMES=[
     "name": "Songs for a Wedding Playlist",
     "color": 1,
     "words": [
-     "LOVE STORY",
-     "ENCHANTED",
      "STAY STAY STAY",
-     "MINE"
+     "SPEAK NOW",
+     "MINE",
+     "FEARLESS"
     ]
    },
    {
-    "name": "Songs About Grief and Loss",
+    "name": "Songs About Grief & Loss",
     "color": 2,
     "words": [
-     "THE BEST DAY",
-     "HAPPINESS",
      "SOON YOULL GET BETTER",
-     "MY TEARS RICOCHET"
+     "MARJORIE",
+     "ITS TIME TO GO",
+     "RIGHT WHERE YOU LEFT ME"
     ]
    },
    {
@@ -1240,8 +1228,8 @@ var GAMES=[
     "color": 3,
     "words": [
      "THE ARCHER",
-     "THE OUTSIDE",
-     "HOAX",
+     "LABYRINTH",
+     "TIED TOGETHER WITH A SMILE",
      "THIS IS ME TRYING"
     ]
    },
@@ -1249,10 +1237,10 @@ var GAMES=[
     "name": "Songs About New Beginnings",
     "color": 4,
     "words": [
-     "LONG LIVE",
-     "DAYLIGHT",
+     "WELCOME TO NEW YORK",
+     "NEW ROMANTICS",
      "22",
-     "SHAKE IT OFF"
+     "CLEAN"
     ]
    }
   ]
@@ -1260,41 +1248,41 @@ var GAMES=[
  {
   "cats": [
    {
-    "name": "Songs About Fame and Identity",
+    "name": "Songs About Fame & the Industry",
     "color": 1,
     "words": [
-     "LONG LIVE",
-     "THE MAN",
-     "LOOK WHAT YOU MADE ME DO",
-     "MEAN"
+     "I DID SOMETHING BAD",
+     "WHO'S AFRAID OF LITTLE OLD ME",
+     "INNOCENT",
+     "LONG LIVE"
     ]
    },
    {
     "name": "Songs About Freedom",
     "color": 2,
     "words": [
-     "SHAKE IT OFF",
-     "NEW ROMANTICS",
      "BEGIN AGAIN",
-     "CLEAN"
+     "CLEAN",
+     "OUT OF THE WOODS",
+     "SHAKE IT OFF"
     ]
    },
    {
     "name": "Songs About City Life",
     "color": 3,
     "words": [
-     "FLORIDA",
-     "NEW YEAR'S DAY",
-     "WELCOME TO NEW YORK",
+     "NEW ROMANTICS",
+     "GETAWAY CAR",
+     "CORNELIA STREET",
      "LONDON BOY"
     ]
    },
    {
-    "name": "Songs About Fire and Sparks",
+    "name": "Songs About Fire & Sparks",
     "color": 4,
     "words": [
-     "I DID SOMETHING BAD",
-     "LOVE STORY",
+     "RED",
+     "STATE OF GRACE",
      "SPARKS FLY",
      "CRUEL SUMMER"
     ]
@@ -1307,40 +1295,40 @@ var GAMES=[
     "name": "Songs That Make You Dance",
     "color": 1,
     "words": [
-     "22",
-     "MIRRORBALL",
-     "LONG LIVE",
-     "BEGIN AGAIN"
+     "DELICATE",
+     "NEW ROMANTICS",
+     "SHAKE IT OFF",
+     "22"
     ]
    },
    {
-    "name": "Songs About Writing and Letters",
+    "name": "Songs About Writing & Letters",
     "color": 2,
     "words": [
-     "ALL TOO WELL",
+     "TELL ME WHY",
      "DEAR READER",
-     "LONG STORY SHORT",
-     "THE STORY OF US"
+     "ALL TOO WELL",
+     "THE MOMENT I KNEW"
     ]
    },
    {
-    "name": "Songs About New York City",
+    "name": "Songs About New York",
     "color": 3,
     "words": [
-     "CORNELIA STREET",
-     "THE 1",
      "GETAWAY CAR",
-     "YOU ARE IN LOVE"
+     "MIRRORBALL",
+     "BLANK SPACE",
+     "CORNELIA STREET"
     ]
    },
    {
     "name": "Taylor's Happiest Songs",
     "color": 4,
     "words": [
-     "MINE",
-     "LOVE STORY",
      "STARLIGHT",
-     "MARY'S SONG"
+     "DAYLIGHT",
+     "SPARKS FLY",
+     "LOVE STORY"
     ]
    }
   ]
@@ -1352,39 +1340,39 @@ var GAMES=[
     "color": 1,
     "words": [
      "AUGUST",
-     "CARDIGAN",
      "THE 1",
-     "BETTY"
+     "BETTY",
+     "CARDIGAN"
     ]
    },
    {
     "name": "More Songs from Folklore",
     "color": 2,
     "words": [
-     "ILLICIT AFFAIRS",
-     "MAD WOMAN",
      "EPIPHANY",
-     "MY TEARS RICOCHET"
+     "THIS IS ME TRYING",
+     "MIRRORBALL",
+     "HOAX"
     ]
    },
    {
     "name": "Songs from Evermore",
     "color": 3,
     "words": [
-     "CLOSURE",
-     "RIGHT WHERE YOU LEFT ME",
-     "ITS TIME TO GO",
-     "COWBOY LIKE ME"
+     "CHAMPAGNE PROBLEMS",
+     "TIS THE DAMN SEASON",
+     "COWBOY LIKE ME",
+     "ITS TIME TO GO"
     ]
    },
    {
-    "name": "Songs from Midnights",
+    "name": "Songs from Lover",
     "color": 4,
     "words": [
-     "LAVENDER HAZE",
-     "LABYRINTH",
-     "KARMA",
-     "GLITCH"
+     "CRUEL SUMMER",
+     "I FORGOT THAT YOU EXISTED",
+     "LONDON BOY",
+     "SOON YOULL GET BETTER"
     ]
    }
   ]
@@ -1395,392 +1383,40 @@ var GAMES=[
     "name": "Songs Starting with 'You'",
     "color": 1,
     "words": [
+     "YOU BELONG WITH ME",
+     "YOU NEED TO CALM DOWN",
      "YOU ARE IN LOVE",
-     "YOU ALL OVER ME",
-     "YOURE LOSING ME",
-     "YOU NEED TO CALM DOWN"
+     "YOU'RE NOT SORRY"
     ]
    },
    {
     "name": "Songs Starting with 'The'",
     "color": 2,
     "words": [
-     "THE TORTURED POETS DEPARTMENT (DUET)",
-     "THE ALCHEMY",
-     "THE ARCHER",
-     "THE LAKES"
+     "THE PROPHECY",
+     "THE GREAT WAR",
+     "THE LAKES",
+     "THE ARCHER"
     ]
    },
    {
     "name": "Songs Named After a Person",
     "color": 3,
     "words": [
-     "BABE",
-     "CLARA BOW",
-     "BETTY",
-     "MARJORIE"
+     "MARJORIE",
+     "CASSANDRA",
+     "TIM MCGRAW",
+     "BETTY"
     ]
    },
    {
-    "name": "Songs with a Number in the Title",
+    "name": "Songs from Red",
     "color": 4,
-    "words": [
-     "THE VERY FIRST NIGHT",
-     "FIFTEEN",
-     "22",
-     "THE 1"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from TTPD (Tracks 1–7)",
-    "color": 1,
-    "words": [
-     "BUT DADDY I LOVE HIM",
-     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
-     "THE TORTURED POETS DEPARTMENT",
-     "DOWN BAD"
-    ]
-   },
-   {
-    "name": "Songs from TTPD (Tracks 8–14)",
-    "color": 2,
-    "words": [
-     "ALL OF THE GIRLS YOU LOVED BEFORE",
-     "THE ALCHEMY",
-     "FLORIDA",
-     "GUILTY AS SIN"
-    ]
-   },
-   {
-    "name": "Songs from TTPD (Tracks 15–21)",
-    "color": 3,
-    "words": [
-     "THE BLACK DOG",
-     "THE BOLTER",
-     "CLARA BOW",
-     "THE PROPHECY"
-    ]
-   },
-   {
-    "name": "Songs from TTPD (Tracks 22–28)",
-    "color": 4,
-    "words": [
-     "I HATE IT HERE",
-     "ROBIN",
-     "HOW DID IT END",
-     "CHLOE OR SAM OR SOPHIA OR MARCUS"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Midnights (Tracks 1–5)",
-    "color": 1,
-    "words": [
-     "MAROON",
-     "MIDNIGHT RAIN",
-     "SNOW ON THE BEACH",
-     "LAVENDER HAZE"
-    ]
-   },
-   {
-    "name": "Songs from Midnights (Tracks 6–10)",
-    "color": 2,
-    "words": [
-     "KARMA",
-     "BEJEWELED",
-     "LABYRINTH",
-     "VIGILANTE SHIT"
-    ]
-   },
-   {
-    "name": "Songs from Midnights (Tracks 11–15)",
-    "color": 3,
-    "words": [
-     "BIGGER THAN THE WHOLE SKY",
-     "MASTERMIND",
-     "PARIS",
-     "HIGH INFIDELITY"
-    ]
-   },
-   {
-    "name": "Songs from Midnights (Tracks 16–20)",
-    "color": 4,
-    "words": [
-     "GLITCH",
-     "YOURE LOSING ME",
-     "DEAR READER",
-     "HITS DIFFERENT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless (Tracks 1–8)",
-    "color": 1,
-    "words": [
-     "YOU BELONG WITH ME",
-     "BREATHE",
-     "FIFTEEN",
-     "FEARLESS"
-    ]
-   },
-   {
-    "name": "Songs from Fearless (Tracks 9–16)",
-    "color": 2,
-    "words": [
-     "THE WAY I LOVED YOU",
-     "FOREVER AND ALWAYS",
-     "SUPERSTAR",
-     "THE OTHER SIDE OF THE DOOR"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now (Tracks 1–8)",
-    "color": 3,
-    "words": [
-     "MEAN",
-     "NEVER GROW UP",
-     "BACK TO DECEMBER",
-     "MINE"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now (Tracks 9–16)",
-    "color": 4,
-    "words": [
-     "INNOCENT",
-     "OURS",
-     "LONG LIVE",
-     "ENCHANTED"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Red (Tracks 1–8)",
-    "color": 1,
-    "words": [
-     "STATE OF GRACE",
-     "I ALMOST DO",
-     "RED",
-     "WE ARE NEVER EVER GETTING BACK TOGETHER"
-    ]
-   },
-   {
-    "name": "Songs from Red (Tracks 9–15)",
-    "color": 2,
-    "words": [
-     "SAD BEAUTIFUL TRAGIC",
-     "STAY STAY STAY",
-     "EVERYTHING HAS CHANGED",
-     "STARLIGHT"
-    ]
-   },
-   {
-    "name": "Songs from Red (Tracks 16–19)",
-    "color": 3,
     "words": [
      "COME BACK BE HERE",
-     "GIRL AT HOME",
-     "THE MOMENT I KNEW",
-     "BEGIN AGAIN"
-    ]
-   },
-   {
-    "name": "Red (TV) Vault Songs",
-    "color": 4,
-    "words": [
-     "MESSAGE IN A BOTTLE",
-     "FOREVER WINTER",
-     "RONAN",
-     "THE VERY FIRST NIGHT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from 1989 (Tracks 1–7)",
-    "color": 1,
-    "words": [
-     "ALL YOU HAD TO DO WAS STAY",
-     "STYLE",
-     "SHAKE IT OFF",
-     "BLANK SPACE"
-    ]
-   },
-   {
-    "name": "Songs from 1989 (Tracks 8–14)",
-    "color": 2,
-    "words": [
-     "NEW ROMANTICS",
-     "HOW YOU GET THE GIRL",
-     "YOU ARE IN LOVE",
-     "BAD BLOOD"
-    ]
-   },
-   {
-    "name": "1989 (TV) Vault Songs",
-    "color": 3,
-    "words": [
-     "IS IT OVER NOW",
-     "NOW THAT WE DON'T TALK",
-     "SLUT!",
-     "SAY DON'T GO"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 4,
-    "words": [
-     "THIS IS WHY WE CANT HAVE NICE THINGS",
-     "KING OF MY HEART",
-     "SO IT GOES",
-     "DONT BLAME ME"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Lover (Tracks 1–6)",
-    "color": 1,
-    "words": [
-     "I FORGOT THAT YOU EXISTED",
-     "THE MAN",
-     "I THINK HE KNOWS",
-     "LOVER"
-    ]
-   },
-   {
-    "name": "Songs from Lover (Tracks 7–12)",
-    "color": 2,
-    "words": [
-     "CORNELIA STREET",
-     "DEATH BY A THOUSAND CUTS",
-     "MISS AMERICANA AND THE HEARTBREAK PRINCE",
-     "SOON YOULL GET BETTER"
-    ]
-   },
-   {
-    "name": "Songs from Lover (Tracks 13–18)",
-    "color": 3,
-    "words": [
-     "YOU NEED TO CALM DOWN",
-     "DAYLIGHT",
-     "AFTERGLOW",
-     "FALSE GOD"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 4,
-    "words": [
-     "TIS THE DAMN SEASON",
-     "WILLOW",
-     "EVERMORE",
-     "NO BODY NO CRIME"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Evermore (Tracks 1–5)",
-    "color": 1,
-    "words": [
-     "TOLERATE IT",
-     "CHAMPAGNE PROBLEMS",
-     "WILLOW",
-     "GOLD RUSH"
-    ]
-   },
-   {
-    "name": "Songs from Evermore (Tracks 6–10)",
-    "color": 2,
-    "words": [
-     "COWBOY LIKE ME",
-     "HAPPINESS",
-     "LONG STORY SHORT",
-     "NO BODY NO CRIME"
-    ]
-   },
-   {
-    "name": "Songs from Evermore (Tracks 11–15)",
-    "color": 3,
-    "words": [
-     "EVERMORE",
-     "MARJORIE",
-     "CLOSURE",
-     "ITS TIME TO GO"
-    ]
-   },
-   {
-    "name": "Speak Now (TV) Vault Songs",
-    "color": 4,
-    "words": [
-     "FOOLISH ONE",
-     "CASTLES CRUMBLING",
-     "TIMELESS",
-     "I CAN SEE YOU"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift Debut (Tracks 1–6)",
-    "color": 1,
-    "words": [
-     "THE OUTSIDE",
-     "TIM MCGRAW",
-     "A PLACE IN THIS WORLD",
-     "COLD AS YOU"
-    ]
-   },
-   {
-    "name": "Songs from Taylor Swift Debut (Tracks 7–12)",
-    "color": 2,
-    "words": [
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "MARY'S SONG",
-     "A PERFECTLY GOOD HEART",
-     "OUR SONG"
-    ]
-   },
-   {
-    "name": "Fearless (TV) Vault Songs",
-    "color": 3,
-    "words": [
-     "YOU ALL OVER ME",
-     "THAT'S WHEN",
-     "MR. PERFECTLY FINE",
-     "WE WERE HAPPY"
-    ]
-   },
-   {
-    "name": "Taylor's Grammy Album of the Year Wins",
-    "color": 4,
-    "words": [
-     "FOLKLORE",
-     "FEARLESS",
-     "1989",
-     "MIDNIGHTS"
+     "I ALMOST DO",
+     "STARLIGHT",
+     "ALL TOO WELL"
     ]
    }
   ]
@@ -1791,40 +1427,40 @@ var GAMES=[
     "name": "Songs About Moving On",
     "color": 1,
     "words": [
-     "OUT OF THE WOODS",
-     "LONG LIVE",
      "DAYLIGHT",
-     "ITS TIME TO GO"
+     "CHANGE",
+     "LONG LIVE",
+     "NEW ROMANTICS"
     ]
    },
    {
-    "name": "Taylor's Saddest Songs",
+    "name": "Songs About Heartbreak",
     "color": 2,
     "words": [
-     "TOLERATE IT",
-     "SAD BEAUTIFUL TRAGIC",
-     "HOAX",
-     "COLD AS YOU"
+     "THE LAST TIME",
+     "YOU'RE NOT SORRY",
+     "THE MOMENT I KNEW",
+     "TREACHEROUS"
     ]
    },
    {
-    "name": "Taylor's Happiest Songs",
+    "name": "Songs About Revenge",
     "color": 3,
     "words": [
-     "ENCHANTED",
-     "STARLIGHT",
-     "ME",
-     "LOVE STORY"
+     "BETTER THAN REVENGE",
+     "VIGILANTE SHIT",
+     "MEAN",
+     "I DID SOMETHING BAD"
     ]
    },
    {
-    "name": "Songs About Peace",
+    "name": "Songs About Fame & Identity",
     "color": 4,
     "words": [
-     "SEVEN",
-     "FALSE GOD",
-     "PEACE",
-     "SOON YOULL GET BETTER"
+     "YOU NEED TO CALM DOWN",
+     "WHO'S AFRAID OF LITTLE OLD ME",
+     "ANTI-HERO",
+     "INNOCENT"
     ]
    }
   ]
@@ -1835,40 +1471,128 @@ var GAMES=[
     "name": "Taylor's Country Era Songs",
     "color": 1,
     "words": [
-     "DEAR JOHN",
-     "SHOULD'VE SAID NO",
-     "TIM MCGRAW",
-     "WHITE HORSE"
+     "STAY STAY STAY",
+     "YOU BELONG WITH ME",
+     "LONG LIVE",
+     "MEAN"
     ]
    },
    {
     "name": "Taylor's Pop Era Songs",
     "color": 2,
     "words": [
-     "STYLE",
-     "SHAKE IT OFF",
-     "BAD BLOOD",
-     "GORGEOUS"
+     "THE MAN",
+     "CRUEL SUMMER",
+     "GETAWAY CAR",
+     "LONDON BOY"
     ]
    },
    {
     "name": "Taylor's Folk Era Songs",
     "color": 3,
     "words": [
-     "EXILE",
      "SEVEN",
-     "CHAMPAGNE PROBLEMS",
+     "BETTY",
+     "MARJORIE",
      "GOLD RUSH"
     ]
    },
    {
-    "name": "Taylor's TTPD Era Songs",
+    "name": "Songs About Nostalgia",
     "color": 4,
     "words": [
-     "DOWN BAD",
-     "FORTNIGHT",
-     "THE MANUSCRIPT",
-     "FLORIDA"
+     "RIGHT WHERE YOU LEFT ME",
+     "JUMP THEN FALL",
+     "NEVER GROW UP",
+     "MARY'S SONG"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs About Summer",
+    "color": 1,
+    "words": [
+     "MARY'S SONG",
+     "THE VERY FIRST NIGHT",
+     "THIS LOVE",
+     "STARLIGHT"
+    ]
+   },
+   {
+    "name": "Songs About Winter",
+    "color": 2,
+    "words": [
+     "COLD AS YOU",
+     "HAUNTED",
+     "THE LAST TIME",
+     "WHITE HORSE"
+    ]
+   },
+   {
+    "name": "Songs About Grief",
+    "color": 3,
+    "words": [
+     "CLOSURE",
+     "THE BEST DAY",
+     "RIGHT WHERE YOU LEFT ME",
+     "ITS TIME TO GO"
+    ]
+   },
+   {
+    "name": "Songs About Anxiety",
+    "color": 4,
+    "words": [
+     "HOAX",
+     "THE OUTSIDE",
+     "THIS IS ME TRYING",
+     "TIED TOGETHER WITH A SMILE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless (Tracks 1\u20138)",
+    "color": 1,
+    "words": [
+     "BREATHE",
+     "FIFTEEN",
+     "FEARLESS",
+     "WHITE HORSE"
+    ]
+   },
+   {
+    "name": "Songs from Fearless (Tracks 9\u201316)",
+    "color": 2,
+    "words": [
+     "SUPERSTAR",
+     "UNTOUCHABLE",
+     "YOU'RE NOT SORRY",
+     "THE WAY I LOVED YOU"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now (Tracks 1\u20138)",
+    "color": 3,
+    "words": [
+     "MINE",
+     "MEAN",
+     "SPEAK NOW",
+     "NEVER GROW UP"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now (Tracks 9\u201316)",
+    "color": 4,
+    "words": [
+     "INNOCENT",
+     "ENCHANTED",
+     "BETTER THAN REVENGE",
+     "LAST KISS"
     ]
    }
   ]
@@ -1879,40 +1603,40 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
+     "INVISIBLE",
      "PICTURE TO BURN",
-     "OUR SONG",
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "A PLACE IN THIS WORLD"
+     "A PERFECTLY GOOD HEART",
+     "COLD AS YOU"
     ]
    },
    {
     "name": "Songs from 1989",
     "color": 2,
     "words": [
-     "STYLE",
-     "CLEAN",
+     "SHAKE IT OFF",
+     "BLANK SPACE",
      "OUT OF THE WOODS",
-     "BAD BLOOD"
+     "THIS LOVE"
     ]
    },
    {
     "name": "Songs from Reputation",
     "color": 3,
     "words": [
-     "GORGEOUS",
+     "READY FOR IT",
      "NEW YEAR'S DAY",
-     "DRESS",
-     "CALL IT WHAT YOU WANT"
+     "END GAME",
+     "SO IT GOES"
     ]
    },
    {
     "name": "Songs from Folklore",
     "color": 4,
     "words": [
-     "INVISIBLE STRING",
-     "CARDIGAN",
-     "SEVEN",
-     "THE LAKES"
+     "MY TEARS RICOCHET",
+     "MAD WOMAN",
+     "ILLICIT AFFAIRS",
+     "HOAX"
     ]
    }
   ]
@@ -1923,40 +1647,40 @@ var GAMES=[
     "name": "Songs from Fearless",
     "color": 1,
     "words": [
-     "UNTOUCHABLE",
-     "YOU'RE NOT SORRY",
-     "FOREVER AND ALWAYS",
-     "JUMP THEN FALL"
+     "FIFTEEN",
+     "JUMP THEN FALL",
+     "THE OTHER SIDE OF THE DOOR",
+     "HEY STEPHEN"
     ]
    },
    {
     "name": "Songs from Red",
     "color": 2,
     "words": [
-     "I KNEW YOU WERE TROUBLE",
+     "GIRL AT HOME",
      "RED",
-     "SAD BEAUTIFUL TRAGIC",
-     "ALL TOO WELL"
+     "STAY STAY STAY",
+     "I KNEW YOU WERE TROUBLE"
     ]
    },
    {
     "name": "Songs from Lover",
     "color": 3,
     "words": [
-     "LOVER",
-     "I FORGOT THAT YOU EXISTED",
-     "AFTERGLOW",
-     "FALSE GOD"
+     "DEATH BY A THOUSAND CUTS",
+     "YOU NEED TO CALM DOWN",
+     "THE ARCHER",
+     "IT'S NICE TO HAVE A FRIEND"
     ]
    },
    {
     "name": "Songs from Evermore",
     "color": 4,
     "words": [
-     "DOROTHEA",
-     "TOLERATE IT",
-     "WILLOW",
-     "COWBOY LIKE ME"
+     "HAPPINESS",
+     "LONG STORY SHORT",
+     "CLOSURE",
+     "DOROTHEA"
     ]
    }
   ]
@@ -1967,40 +1691,40 @@ var GAMES=[
     "name": "Songs from Speak Now",
     "color": 1,
     "words": [
-     "MEAN",
-     "SUPERMAN",
+     "THE STORY OF US",
+     "HAUNTED",
      "INNOCENT",
-     "BACK TO DECEMBER"
+     "SUPERMAN"
     ]
    },
    {
     "name": "Songs from 1989",
     "color": 2,
     "words": [
+     "YOU ARE IN LOVE",
+     "CLEAN",
      "BAD BLOOD",
-     "WELCOME TO NEW YORK",
-     "ALL YOU HAD TO DO WAS STAY",
-     "WILDEST DREAMS"
+     "THIS LOVE"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 3,
     "words": [
-     "HITS DIFFERENT",
-     "HIGH INFIDELITY",
-     "VIGILANTE SHIT",
-     "SWEET NOTHING"
+     "SNOW ON THE BEACH",
+     "GLITCH",
+     "LAVENDER HAZE",
+     "ANTI-HERO"
     ]
    },
    {
     "name": "Songs from TTPD",
     "color": 4,
     "words": [
-     "THE PROPHECY",
+     "THE MANUSCRIPT",
      "CHLOE OR SAM OR SOPHIA OR MARCUS",
-     "CASSANDRA",
-     "FORTNIGHT"
+     "DOWN BAD",
+     "ROBIN"
     ]
    }
   ]
@@ -2011,9 +1735,9 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
-     "MARY'S SONG",
-     "TEARDROPS ON MY GUITAR",
      "A PERFECTLY GOOD HEART",
+     "PICTURE TO BURN",
+     "TEARDROPS ON MY GUITAR",
      "SHOULD'VE SAID NO"
     ]
    },
@@ -2021,30 +1745,30 @@ var GAMES=[
     "name": "Songs from Speak Now",
     "color": 2,
     "words": [
-     "SPEAK NOW",
-     "MEAN",
+     "ENCHANTED",
+     "OURS",
      "INNOCENT",
-     "SUPERMAN"
+     "SPARKS FLY"
     ]
    },
    {
     "name": "Songs from Evermore",
     "color": 3,
     "words": [
-     "COWBOY LIKE ME",
-     "CHAMPAGNE PROBLEMS",
-     "GOLD RUSH",
-     "LONG STORY SHORT"
+     "TOLERATE IT",
+     "TIS THE DAMN SEASON",
+     "DOROTHEA",
+     "NO BODY NO CRIME"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 4,
     "words": [
-     "DEAR READER",
-     "YOURE LOSING ME",
-     "KARMA",
-     "WOULD'VE COULD'VE SHOULD'VE"
+     "MIDNIGHT RAIN",
+     "WOULD'VE COULD'VE SHOULD'VE",
+     "ANTI-HERO",
+     "KARMA"
     ]
    }
   ]
@@ -2055,8 +1779,8 @@ var GAMES=[
     "name": "Songs from Fearless",
     "color": 1,
     "words": [
-     "FEARLESS",
-     "FOREVER AND ALWAYS",
+     "HEY STEPHEN",
+     "THE OTHER SIDE OF THE DOOR",
      "THE WAY I LOVED YOU",
      "COME IN WITH THE RAIN"
     ]
@@ -2065,30 +1789,30 @@ var GAMES=[
     "name": "Songs from Lover",
     "color": 2,
     "words": [
-     "YOU NEED TO CALM DOWN",
-     "FALSE GOD",
-     "SOON YOULL GET BETTER",
-     "AFTERGLOW"
+     "CORNELIA STREET",
+     "AFTERGLOW",
+     "DAYLIGHT",
+     "I THINK HE KNOWS"
     ]
    },
    {
     "name": "Songs from Folklore",
     "color": 3,
     "words": [
-     "EPIPHANY",
-     "BETTY",
-     "THIS IS ME TRYING",
-     "EXILE"
+     "MY TEARS RICOCHET",
+     "MAD WOMAN",
+     "INVISIBLE STRING",
+     "THE LAST GREAT AMERICAN DYNASTY"
     ]
    },
    {
     "name": "Songs from TTPD",
     "color": 4,
     "words": [
-     "HOW DID IT END",
-     "FRESH OUT THE SLAMMER",
-     "WHO'S AFRAID OF LITTLE OLD ME",
-     "GUILTY AS SIN"
+     "THE ALCHEMY",
+     "GUILTY AS SIN",
+     "THE TORTURED POETS DEPARTMENT",
+     "THE MANUSCRIPT"
     ]
    }
   ]
@@ -2099,29 +1823,29 @@ var GAMES=[
     "name": "Songs from Red",
     "color": 1,
     "words": [
+     "GIRL AT HOME",
+     "STAY STAY STAY",
      "RED",
-     "EVERYTHING HAS CHANGED",
-     "COME BACK BE HERE",
-     "ALL TOO WELL"
+     "HOLY GROUND"
     ]
    },
    {
     "name": "Songs from Reputation",
     "color": 2,
     "words": [
-     "KING OF MY HEART",
-     "DONT BLAME ME",
-     "GORGEOUS",
-     "THIS IS WHY WE CANT HAVE NICE THINGS"
+     "LOOK WHAT YOU MADE ME DO",
+     "NEW YEAR'S DAY",
+     "END GAME",
+     "I DID SOMETHING BAD"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 3,
     "words": [
-     "KARMA",
-     "PARIS",
-     "WOULD'VE COULD'VE SHOULD'VE",
+     "ANTI-HERO",
+     "LABYRINTH",
+     "SWEET NOTHING",
      "LAVENDER HAZE"
     ]
    },
@@ -2130,9 +1854,9 @@ var GAMES=[
     "color": 4,
     "words": [
      "AUGUST",
-     "INVISIBLE STRING",
      "SEVEN",
-     "MAD WOMAN"
+     "HOAX",
+     "MY TEARS RICOCHET"
     ]
    }
   ]
@@ -2143,8 +1867,8 @@ var GAMES=[
     "name": "Songs from 1989",
     "color": 1,
     "words": [
-     "WELCOME TO NEW YORK",
-     "CLEAN",
+     "NEW ROMANTICS",
+     "WILDEST DREAMS",
      "BLANK SPACE",
      "ALL YOU HAD TO DO WAS STAY"
     ]
@@ -2153,30 +1877,30 @@ var GAMES=[
     "name": "Songs from Evermore",
     "color": 2,
     "words": [
-     "CLOSURE",
+     "GOLD RUSH",
+     "LONG STORY SHORT",
      "TOLERATE IT",
-     "COWBOY LIKE ME",
-     "TIS THE DAMN SEASON"
+     "EVERMORE"
     ]
    },
    {
     "name": "Songs from TTPD",
     "color": 3,
     "words": [
-     "THE SMALLEST MAN WHO EVER LIVED",
-     "CASSANDRA",
+     "CLARA BOW",
      "PETER",
-     "FRESH OUT THE SLAMMER"
+     "BUT DADDY I LOVE HIM",
+     "THE BLACK DOG"
     ]
    },
    {
     "name": "Songs from Speak Now",
     "color": 4,
     "words": [
-     "THE STORY OF US",
+     "BACK TO DECEMBER",
+     "MINE",
      "LONG LIVE",
-     "OURS",
-     "ENCHANTED"
+     "HAUNTED"
     ]
    }
   ]
@@ -2188,371 +1912,19 @@ var GAMES=[
     "color": 1,
     "words": [
      "COLD AS YOU",
-     "MARY'S SONG",
-     "TIM MCGRAW",
-     "A PLACE IN THIS WORLD"
+     "TEARDROPS ON MY GUITAR",
+     "OUR SONG",
+     "INVISIBLE"
     ]
    },
    {
     "name": "Songs from Reputation",
     "color": 2,
     "words": [
-     "DANCING WITH OUR HANDS TIED",
-     "DELICATE",
-     "CALL IT WHAT YOU WANT",
-     "GORGEOUS"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "BETTY",
-     "CARDIGAN",
-     "MIRRORBALL",
-     "ILLICIT AFFAIRS"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "LABYRINTH",
-     "MIDNIGHT RAIN",
-     "ANTI-HERO",
-     "GLITCH"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "UNTOUCHABLE",
-     "SUPERSTAR",
-     "JUMP THEN FALL",
-     "THE WAY I LOVED YOU"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "NEW ROMANTICS",
-     "CLEAN",
-     "THIS LOVE",
-     "BAD BLOOD"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "WILLOW",
-     "ITS TIME TO GO",
-     "GOLD RUSH",
-     "COWBOY LIKE ME"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "THE TORTURED POETS DEPARTMENT",
-     "THE BLACK DOG",
-     "PETER",
-     "FLORIDA"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "MEAN",
-     "LONG LIVE",
-     "OURS",
-     "LAST KISS"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "STAY STAY STAY",
-     "GIRL AT HOME",
-     "THE MOMENT I KNEW",
-     "22"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "ME",
-     "THE ARCHER",
-     "FALSE GOD",
-     "CORNELIA STREET"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "THIS IS ME TRYING",
-     "CARDIGAN",
-     "THE 1",
-     "ILLICIT AFFAIRS"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "MARY'S SONG",
-     "INVISIBLE",
-     "TIM MCGRAW",
-     "TEARDROPS ON MY GUITAR"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 2,
-    "words": [
-     "CORNELIA STREET",
-     "MISS AMERICANA AND THE HEARTBREAK PRINCE",
-     "THE MAN",
-     "ME"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "DEAR READER",
-     "BEJEWELED",
-     "WOULD'VE COULD'VE SHOULD'VE",
-     "YOURE LOSING ME"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "THE BOLTER",
-     "THE BLACK DOG",
-     "THE ALCHEMY",
-     "THE MANUSCRIPT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "LOVE STORY",
-     "HEY STEPHEN",
-     "UNTOUCHABLE",
-     "WHITE HORSE"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "HOLY GROUND",
-     "RED",
-     "COME BACK BE HERE",
-     "I ALMOST DO"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "THIS IS ME TRYING",
-     "MY TEARS RICOCHET",
-     "INVISIBLE STRING",
-     "ILLICIT AFFAIRS"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 4,
-    "words": [
-     "RIGHT WHERE YOU LEFT ME",
-     "MARJORIE",
-     "GOLD RUSH",
-     "TOLERATE IT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "DEAR JOHN",
-     "OURS",
-     "HAUNTED",
-     "SPARKS FLY"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "I WISH YOU WOULD",
-     "SHAKE IT OFF",
-     "BAD BLOOD",
-     "STYLE"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 3,
-    "words": [
+     "DONT BLAME ME",
      "END GAME",
-     "DANCING WITH OUR HANDS TIED",
-     "GETAWAY CAR",
-     "DRESS"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
-     "IMGONNAGETYOUBACK",
-     "FLORIDA",
-     "ROBIN"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "TIM MCGRAW",
-     "INVISIBLE",
-     "OUR SONG"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "BLANK SPACE",
-     "CLEAN",
-     "SHAKE IT OFF",
-     "STYLE"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "LONDON BOY",
-     "I FORGOT THAT YOU EXISTED",
-     "FALSE GOD",
-     "AFTERGLOW"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 4,
-    "words": [
-     "CHAMPAGNE PROBLEMS",
-     "NO BODY NO CRIME",
-     "WILLOW",
-     "RIGHT WHERE YOU LEFT ME"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "YOU'RE NOT SORRY",
-     "HEY STEPHEN",
-     "FEARLESS",
-     "LOVE STORY"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now",
-    "color": 2,
-    "words": [
-     "SPARKS FLY",
-     "LONG LIVE",
-     "MINE",
-     "ENCHANTED"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "KARMA",
-     "YOURE LOSING ME",
-     "SWEET NOTHING",
-     "SNOW ON THE BEACH"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "THE SMALLEST MAN WHO EVER LIVED",
-     "FORTNIGHT",
-     "I HATE IT HERE",
-     "IMGONNAGETYOUBACK"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Red",
-    "color": 1,
-    "words": [
-     "COME BACK BE HERE",
-     "THE LUCKY ONE",
-     "STATE OF GRACE",
-     "RED"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 2,
-    "words": [
-     "AFTERGLOW",
-     "THE ARCHER",
-     "PAPER RINGS",
-     "THE MAN"
+     "NEW YEAR'S DAY",
+     "CALL IT WHAT YOU WANT"
     ]
    },
    {
@@ -2561,546 +1933,18 @@ var GAMES=[
     "words": [
      "AUGUST",
      "PEACE",
-     "THE 1",
-     "EPIPHANY"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "BEJEWELED",
-     "MASTERMIND",
-     "BIGGER THAN THE WHOLE SKY",
-     "THE GREAT WAR"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "INVISIBLE",
-     "A PLACE IN THIS WORLD",
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "OUR SONG"
-    ]
-   },
-   {
-    "name": "Songs from Fearless",
-    "color": 2,
-    "words": [
-     "COME IN WITH THE RAIN",
-     "SUPERSTAR",
-     "TELL ME WHY",
-     "THE OTHER SIDE OF THE DOOR"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "EPIPHANY",
-     "THIS IS ME TRYING",
-     "THE LAKES",
-     "THE LAST GREAT AMERICAN DYNASTY"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "WHO'S AFRAID OF LITTLE OLD ME",
-     "THE PROPHECY",
-     "FRESH OUT THE SLAMMER",
-     "ROBIN"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "SPARKS FLY",
-     "SPEAK NOW",
-     "INNOCENT",
-     "LONG LIVE"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "STATE OF GRACE",
-     "I KNEW YOU WERE TROUBLE",
-     "22",
-     "HOLY GROUND"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "DOROTHEA",
-     "NO BODY NO CRIME",
-     "EVERMORE",
-     "MARJORIE"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "BIGGER THAN THE WHOLE SKY",
-     "KARMA",
-     "SWEET NOTHING",
-     "HITS DIFFERENT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from 1989",
-    "color": 1,
-    "words": [
-     "SHAKE IT OFF",
-     "CLEAN",
-     "WELCOME TO NEW YORK",
-     "HOW YOU GET THE GIRL"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 2,
-    "words": [
-     "CALL IT WHAT YOU WANT",
-     "GETAWAY CAR",
-     "NEW YEAR'S DAY",
-     "READY FOR IT"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "DEATH BY A THOUSAND CUTS",
-     "CRUEL SUMMER",
-     "I FORGOT THAT YOU EXISTED",
-     "AFTERGLOW"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "THE PROPHECY",
-     "GUILTY AS SIN",
-     "HOW DID IT END",
-     "THE MANUSCRIPT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "TEARDROPS ON MY GUITAR",
-     "MARY'S SONG",
-     "A PLACE IN THIS WORLD",
-     "SHOULD'VE SAID NO"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now",
-    "color": 2,
-    "words": [
-     "MINE",
-     "SUPERMAN",
-     "ENCHANTED",
-     "BACK TO DECEMBER"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
      "MAD WOMAN",
-     "CARDIGAN",
-     "THE 1",
-     "AUGUST"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "GLITCH",
-     "BEJEWELED",
-     "LAVENDER HAZE",
-     "VIGILANTE SHIT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Red",
-    "color": 1,
-    "words": [
-     "SAD BEAUTIFUL TRAGIC",
-     "I ALMOST DO",
-     "COME BACK BE HERE",
-     "STAY STAY STAY"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "OUT OF THE WOODS",
-     "WILDEST DREAMS",
-     "WELCOME TO NEW YORK",
-     "HOW YOU GET THE GIRL"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "EVERMORE",
-     "CHAMPAGNE PROBLEMS",
-     "RIGHT WHERE YOU LEFT ME",
-     "HAPPINESS"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "LOML",
-     "THE SMALLEST MAN WHO EVER LIVED",
-     "FLORIDA",
-     "THE TORTURED POETS DEPARTMENT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "LOVE STORY",
-     "YOU'RE NOT SORRY",
-     "JUMP THEN FALL",
-     "COME IN WITH THE RAIN"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 2,
-    "words": [
-     "GORGEOUS",
-     "DONT BLAME ME",
-     "LOOK WHAT YOU MADE ME DO",
-     "NEW YEAR'S DAY"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "I FORGOT THAT YOU EXISTED",
-     "YOU NEED TO CALM DOWN",
-     "ME",
-     "THE ARCHER"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "THE 1",
-     "INVISIBLE STRING",
-     "ILLICIT AFFAIRS",
-     "THE LAST GREAT AMERICAN DYNASTY"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "TIM MCGRAW",
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "INVISIBLE",
-     "PICTURE TO BURN"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "WELCOME TO NEW YORK",
-     "THIS LOVE",
-     "BAD BLOOD",
-     "ALL YOU HAD TO DO WAS STAY"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "LONG STORY SHORT",
-     "NO BODY NO CRIME",
-     "CHAMPAGNE PROBLEMS",
-     "TOLERATE IT"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "PARIS",
-     "SNOW ON THE BEACH",
-     "THE GREAT WAR",
-     "MIDNIGHT RAIN"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "MINE",
-     "DEAR JOHN",
-     "LAST KISS",
-     "OURS"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "WE ARE NEVER EVER GETTING BACK TOGETHER",
-     "STAY STAY STAY",
-     "ALL TOO WELL",
-     "SAD BEAUTIFUL TRAGIC"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "SEVEN",
-     "THE LAST GREAT AMERICAN DYNASTY",
-     "INVISIBLE STRING",
-     "MAD WOMAN"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "I HATE IT HERE",
-     "WHO'S AFRAID OF LITTLE OLD ME",
-     "THE BLACK DOG",
-     "ANDROMEDA"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "TELL ME WHY",
-     "BREATHE",
-     "YOU BELONG WITH ME",
-     "UNTOUCHABLE"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "THIS LOVE",
-     "OUT OF THE WOODS",
-     "HOW YOU GET THE GIRL",
-     "CLEAN"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "CRUEL SUMMER",
-     "PAPER RINGS",
-     "SOON YOULL GET BETTER",
-     "LONDON BOY"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "GLITCH",
-     "YOURE LOSING ME",
-     "HIGH INFIDELITY",
-     "BEJEWELED"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "OUR SONG",
-     "SHOULD'VE SAID NO",
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "INVISIBLE"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "THE LUCKY ONE",
-     "TREACHEROUS",
-     "STATE OF GRACE",
-     "I ALMOST DO"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 3,
-    "words": [
-     "DELICATE",
-     "READY FOR IT",
-     "NEW YEAR'S DAY",
-     "LOOK WHAT YOU MADE ME DO"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "CARDIGAN",
-     "ILLICIT AFFAIRS",
-     "BETTY",
-     "PEACE"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "LONG LIVE",
-     "NEVER GROW UP",
-     "THE STORY OF US",
-     "HAUNTED"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 2,
-    "words": [
-     "LONDON BOY",
-     "CORNELIA STREET",
-     "AFTERGLOW",
-     "PAPER RINGS"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "HAPPINESS",
-     "WILLOW",
-     "EVERMORE",
-     "MARJORIE"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "ROBIN",
-     "I CAN DO IT WITH A BROKEN HEART",
-     "THE TORTURED POETS DEPARTMENT",
-     "BUT DADDY I LOVE HIM"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from 1989",
-    "color": 1,
-    "words": [
-     "WELCOME TO NEW YORK",
-     "WILDEST DREAMS",
-     "THIS LOVE",
-     "SHAKE IT OFF"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 2,
-    "words": [
-     "THE 1",
-     "ILLICIT AFFAIRS",
-     "THIS IS ME TRYING",
      "CARDIGAN"
     ]
    },
    {
     "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "VIGILANTE SHIT",
-     "LABYRINTH",
-     "MASTERMIND",
-     "BEJEWELED"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
     "color": 4,
     "words": [
-     "GUILTY AS SIN",
-     "THE ALCHEMY",
-     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
-     "THE BOLTER"
+     "HIGH INFIDELITY",
+     "KARMA",
+     "LAVENDER HAZE",
+     "BEJEWELED"
     ]
    }
   ]
@@ -3112,37 +1956,917 @@ var GAMES=[
     "color": 1,
     "words": [
      "WHITE HORSE",
-     "JUMP THEN FALL",
-     "BREATHE",
-     "UNTOUCHABLE"
+     "THE WAY I LOVED YOU",
+     "YOU BELONG WITH ME",
+     "FIFTEEN"
     ]
    },
    {
-    "name": "Songs from Speak Now",
+    "name": "Songs from 1989",
     "color": 2,
     "words": [
-     "LONG LIVE",
-     "MINE",
+     "YOU ARE IN LOVE",
+     "WILDEST DREAMS",
+     "HOW YOU GET THE GIRL",
+     "CLEAN"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "GOLD RUSH",
+     "HAPPINESS",
+     "RIGHT WHERE YOU LEFT ME",
+     "DOROTHEA"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "THE MANUSCRIPT",
+     "PETER",
+     "IMGONNAGETYOUBACK",
+     "ALL OF THE GIRLS YOU LOVED BEFORE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "MEAN",
      "DEAR JOHN",
-     "SUPERMAN"
+     "INNOCENT",
+     "LONG LIVE"
     ]
    },
    {
     "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "STATE OF GRACE",
+     "STARLIGHT",
+     "STAY STAY STAY",
+     "GIRL AT HOME"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
     "color": 3,
     "words": [
-     "BEGIN AGAIN",
-     "THE LUCKY ONE",
-     "WE ARE NEVER EVER GETTING BACK TOGETHER",
-     "STARLIGHT"
+     "YOU NEED TO CALM DOWN",
+     "THE ARCHER",
+     "IT'S NICE TO HAVE A FRIEND",
+     "PAPER RINGS"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "MY TEARS RICOCHET",
+     "ILLICIT AFFAIRS",
+     "MIRRORBALL",
+     "PEACE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "I'M ONLY ME WHEN I'M WITH YOU",
+     "THE OUTSIDE",
+     "TEARDROPS ON MY GUITAR",
+     "COLD AS YOU"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "ME",
+     "YOU NEED TO CALM DOWN",
+     "DAYLIGHT",
+     "DEATH BY A THOUSAND CUTS"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "VIGILANTE SHIT",
+     "ANTI-HERO",
+     "LAVENDER HAZE",
+     "HIGH INFIDELITY"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "THE BLACK DOG",
+     "FLORIDA",
+     "I CAN DO IT WITH A BROKEN HEART",
+     "FORTNIGHT"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "YOU BELONG WITH ME",
+     "FEARLESS",
+     "THE OTHER SIDE OF THE DOOR",
+     "JUMP THEN FALL"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "STARLIGHT",
+     "RED",
+     "22",
+     "THE LUCKY ONE"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "HOAX",
+     "EPIPHANY",
+     "PEACE",
+     "THE 1"
     ]
    },
    {
     "name": "Songs from Evermore",
     "color": 4,
     "words": [
+     "GOLD RUSH",
+     "WILLOW",
+     "MARJORIE",
+     "COWBOY LIKE ME"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "SPARKS FLY",
+     "MEAN",
+     "BETTER THAN REVENGE",
+     "SUPERMAN"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "STYLE",
+     "OUT OF THE WOODS",
+     "WELCOME TO NEW YORK",
+     "BLANK SPACE"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 3,
+    "words": [
+     "SO IT GOES",
+     "END GAME",
+     "GORGEOUS",
+     "GETAWAY CAR"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "DOWN BAD",
+     "THE BLACK DOG",
+     "GUILTY AS SIN",
+     "SO LONG LONDON"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "A PERFECTLY GOOD HEART",
+     "MARY'S SONG",
+     "TEARDROPS ON MY GUITAR",
+     "INVISIBLE"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "WILDEST DREAMS",
+     "THIS LOVE",
+     "CLEAN",
+     "STYLE"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "LONDON BOY",
+     "PAPER RINGS",
+     "YOU NEED TO CALM DOWN",
+     "ME"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "COWBOY LIKE ME",
+     "GOLD RUSH",
+     "ITS TIME TO GO",
+     "CLOSURE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "LOVE STORY",
+     "FIFTEEN",
+     "YOU BELONG WITH ME",
+     "THE OTHER SIDE OF THE DOOR"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "SPARKS FLY",
+     "SUPERMAN",
+     "BACK TO DECEMBER",
+     "SPEAK NOW"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "GLITCH",
+     "HITS DIFFERENT",
+     "BEJEWELED",
+     "VIGILANTE SHIT"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "ROBIN",
+     "THE BLACK DOG",
+     "ANDROMEDA",
+     "I HATE IT HERE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Red",
+    "color": 1,
+    "words": [
+     "TREACHEROUS",
+     "I KNEW YOU WERE TROUBLE",
+     "THE MOMENT I KNEW",
+     "RED"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "DAYLIGHT",
+     "AFTERGLOW",
+     "CORNELIA STREET",
+     "FALSE GOD"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "MIRRORBALL",
+     "CARDIGAN",
+     "EXILE",
+     "ILLICIT AFFAIRS"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "YOURE LOSING ME",
+     "SWEET NOTHING",
+     "KARMA",
+     "SNOW ON THE BEACH"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "SHOULD'VE SAID NO",
+     "A PERFECTLY GOOD HEART",
+     "TEARDROPS ON MY GUITAR",
+     "MARY'S SONG"
+    ]
+   },
+   {
+    "name": "Songs from Fearless",
+    "color": 2,
+    "words": [
+     "COME IN WITH THE RAIN",
+     "FEARLESS",
+     "HEY STEPHEN",
+     "JUMP THEN FALL"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "EXILE",
+     "THE LAKES",
+     "HOAX",
+     "CARDIGAN"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "CASSANDRA",
+     "CHLOE OR SAM OR SOPHIA OR MARCUS",
+     "THE PROPHECY",
+     "THE ALCHEMY"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "DEAR JOHN",
+     "MINE",
+     "HAUNTED",
+     "OURS"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "RED",
+     "HOLY GROUND",
+     "WE ARE NEVER EVER GETTING BACK TOGETHER",
+     "THE MOMENT I KNEW"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
      "DOROTHEA",
+     "NO BODY NO CRIME",
      "LONG STORY SHORT",
+     "EVERMORE"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "WOULD'VE COULD'VE SHOULD'VE",
+     "SWEET NOTHING",
+     "YOURE LOSING ME",
+     "PARIS"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from 1989",
+    "color": 1,
+    "words": [
+     "WELCOME TO NEW YORK",
+     "OUT OF THE WOODS",
+     "NEW ROMANTICS",
+     "SHAKE IT OFF"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 2,
+    "words": [
+     "GETAWAY CAR",
+     "I DID SOMETHING BAD",
+     "END GAME",
+     "LOOK WHAT YOU MADE ME DO"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "I FORGOT THAT YOU EXISTED",
+     "IT'S NICE TO HAVE A FRIEND",
+     "THE ARCHER",
+     "ME"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "I CAN DO IT WITH A BROKEN HEART",
+     "ANDROMEDA",
+     "GUILTY AS SIN",
+     "LOML"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "PICTURE TO BURN",
+     "THE OUTSIDE",
+     "A PERFECTLY GOOD HEART",
+     "TIM MCGRAW"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "MINE",
+     "NEVER GROW UP",
+     "LONG LIVE",
+     "BETTER THAN REVENGE"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "EXILE",
+     "EPIPHANY",
+     "THE LAKES",
+     "MAD WOMAN"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "MAROON",
+     "YOURE LOSING ME",
+     "SWEET NOTHING",
+     "HITS DIFFERENT"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Red",
+    "color": 1,
+    "words": [
+     "THE MOMENT I KNEW",
+     "22",
+     "COME BACK BE HERE",
+     "THE LUCKY ONE"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "BLANK SPACE",
+     "WILDEST DREAMS",
+     "CLEAN",
+     "WELCOME TO NEW YORK"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "LONG STORY SHORT",
+     "CLOSURE",
+     "TIS THE DAMN SEASON",
+     "CHAMPAGNE PROBLEMS"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "DOWN BAD",
+     "ALL OF THE GIRLS YOU LOVED BEFORE",
+     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
+     "HOW DID IT END"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "UNTOUCHABLE",
+     "SUPERSTAR",
+     "THE WAY I LOVED YOU",
+     "FOREVER AND ALWAYS"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 2,
+    "words": [
+     "DONT BLAME ME",
+     "GETAWAY CAR",
+     "LOOK WHAT YOU MADE ME DO",
+     "I DID SOMETHING BAD"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "DEATH BY A THOUSAND CUTS",
+     "CORNELIA STREET",
+     "I THINK HE KNOWS",
+     "LONDON BOY"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "ILLICIT AFFAIRS",
+     "PEACE",
+     "MIRRORBALL",
+     "THIS IS ME TRYING"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "TIM MCGRAW",
+     "MARY'S SONG",
+     "A PERFECTLY GOOD HEART",
+     "TEARDROPS ON MY GUITAR"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "THIS LOVE",
+     "YOU ARE IN LOVE",
+     "BLANK SPACE",
+     "HOW YOU GET THE GIRL"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "RIGHT WHERE YOU LEFT ME",
+     "MARJORIE",
+     "GOLD RUSH",
+     "LONG STORY SHORT"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "WOULD'VE COULD'VE SHOULD'VE",
+     "MASTERMIND",
+     "BIGGER THAN THE WHOLE SKY",
+     "MIDNIGHT RAIN"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "ENCHANTED",
+     "MEAN",
+     "OURS",
+     "SPARKS FLY"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "BEGIN AGAIN",
+     "I KNEW YOU WERE TROUBLE",
+     "THE LAST TIME",
+     "22"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "ILLICIT AFFAIRS",
+     "EXILE",
+     "THE LAKES",
+     "CARDIGAN"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "ANDROMEDA",
+     "LOML",
+     "FRESH OUT THE SLAMMER",
+     "FLORIDA"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "THE WAY I LOVED YOU",
+     "FOREVER AND ALWAYS",
+     "YOU BELONG WITH ME",
+     "WHITE HORSE"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "BAD BLOOD",
+     "WELCOME TO NEW YORK",
+     "HOW YOU GET THE GIRL",
+     "BLANK SPACE"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "IT'S NICE TO HAVE A FRIEND",
+     "CRUEL SUMMER",
+     "I THINK HE KNOWS",
+     "AFTERGLOW"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "MASTERMIND",
+     "BIGGER THAN THE WHOLE SKY",
+     "SNOW ON THE BEACH",
+     "ANTI-HERO"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "MARY'S SONG",
+     "COLD AS YOU",
+     "INVISIBLE",
+     "TEARDROPS ON MY GUITAR"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "HOLY GROUND",
+     "ALL TOO WELL",
+     "BEGIN AGAIN",
+     "THE MOMENT I KNEW"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 3,
+    "words": [
+     "GORGEOUS",
+     "DELICATE",
+     "KING OF MY HEART",
+     "THIS IS WHY WE CANT HAVE NICE THINGS"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "CARDIGAN",
+     "MIRRORBALL",
+     "THE LAST GREAT AMERICAN DYNASTY",
+     "SEVEN"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "THE STORY OF US",
+     "OURS",
+     "SUPERMAN",
+     "LONG LIVE"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "DAYLIGHT",
+     "I FORGOT THAT YOU EXISTED",
+     "MISS AMERICANA AND THE HEARTBREAK PRINCE",
+     "LONDON BOY"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "EVERMORE",
+     "COWBOY LIKE ME",
+     "CHAMPAGNE PROBLEMS",
+     "LONG STORY SHORT"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "BUT DADDY I LOVE HIM",
+     "THE SMALLEST MAN WHO EVER LIVED",
+     "DOWN BAD",
+     "CASSANDRA"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from 1989",
+    "color": 1,
+    "words": [
+     "STYLE",
+     "HOW YOU GET THE GIRL",
+     "BLANK SPACE",
+     "NEW ROMANTICS"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 2,
+    "words": [
+     "HOAX",
+     "EXILE",
+     "THE LAST GREAT AMERICAN DYNASTY",
+     "INVISIBLE STRING"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "SWEET NOTHING",
+     "PARIS",
+     "YOURE LOSING ME",
+     "LAVENDER HAZE"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "FORTNIGHT",
+     "WHO'S AFRAID OF LITTLE OLD ME",
+     "FLORIDA",
+     "CHLOE OR SAM OR SOPHIA OR MARCUS"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "FIFTEEN",
+     "HEY STEPHEN",
+     "COME IN WITH THE RAIN",
+     "FEARLESS"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "MEAN",
+     "LAST KISS",
+     "SPARKS FLY",
+     "NEVER GROW UP"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 3,
+    "words": [
+     "THE LUCKY ONE",
+     "STAY STAY STAY",
+     "22",
+     "SAD BEAUTIFUL TRAGIC"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "MARJORIE",
+     "COWBOY LIKE ME",
      "GOLD RUSH",
      "EVERMORE"
     ]
@@ -3155,84 +2879,40 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
-     "INVISIBLE",
-     "COLD AS YOU",
-     "OUR SONG",
-     "I'M ONLY ME WHEN I'M WITH YOU"
+     "TIM MCGRAW",
+     "THE OUTSIDE",
+     "SHOULD'VE SAID NO",
+     "INVISIBLE"
     ]
    },
    {
     "name": "Songs from Reputation",
     "color": 2,
     "words": [
-     "NEW YEAR'S DAY",
-     "I DID SOMETHING BAD",
      "DONT BLAME ME",
-     "DELICATE"
+     "DRESS",
+     "CALL IT WHAT YOU WANT",
+     "NEW YEAR'S DAY"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 3,
     "words": [
-     "HIGH INFIDELITY",
-     "WOULD'VE COULD'VE SHOULD'VE",
      "BIGGER THAN THE WHOLE SKY",
-     "MAROON"
+     "LABYRINTH",
+     "PARIS",
+     "MIDNIGHT RAIN"
     ]
    },
    {
     "name": "Songs from TTPD",
     "color": 4,
     "words": [
-     "FORTNIGHT",
-     "HOW DID IT END",
-     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
-     "I CAN DO IT WITH A BROKEN HEART"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless (TV) Vault",
-    "color": 1,
-    "words": [
-     "BYE BYE BABY",
-     "MR. PERFECTLY FINE",
-     "THAT'S WHEN",
-     "WE WERE HAPPY"
-    ]
-   },
-   {
-    "name": "Songs from Red (TV) Vault",
-    "color": 2,
-    "words": [
-     "NOTHING NEW",
-     "RONAN",
-     "MESSAGE IN A BOTTLE",
-     "RUN"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now (TV) Vault",
-    "color": 3,
-    "words": [
-     "TIMELESS",
-     "I CAN SEE YOU",
-     "WHEN EMMA FALLS IN LOVE",
-     "CASTLES CRUMBLING"
-    ]
-   },
-   {
-    "name": "Songs from 1989 (TV) Vault",
-    "color": 4,
-    "words": [
-     "IS IT OVER NOW",
-     "SUBURBAN LEGENDS",
-     "SAY DON'T GO",
-     "NOW THAT WE DON'T TALK"
+     "ROBIN",
+     "PETER",
+     "SO LONG LONDON",
+     "THE PROPHECY"
     ]
    }
   ]
@@ -3243,40 +2923,40 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
-     "COLD AS YOU",
+     "A PLACE IN THIS WORLD",
      "TIM MCGRAW",
-     "OUR SONG",
-     "PICTURE TO BURN"
+     "I'M ONLY ME WHEN I'M WITH YOU",
+     "SHOULD'VE SAID NO"
     ]
    },
    {
     "name": "Songs from Fearless",
     "color": 2,
     "words": [
-     "THE OTHER SIDE OF THE DOOR",
      "LOVE STORY",
-     "FEARLESS",
-     "BREATHE"
+     "UNTOUCHABLE",
+     "BREATHE",
+     "YOU'RE NOT SORRY"
     ]
    },
    {
     "name": "Songs from Speak Now",
     "color": 3,
     "words": [
+     "SUPERMAN",
      "MEAN",
-     "MINE",
-     "BACK TO DECEMBER",
-     "LONG LIVE"
+     "DEAR JOHN",
+     "LAST KISS"
     ]
    },
    {
     "name": "Songs from Red",
     "color": 4,
     "words": [
-     "22",
      "GIRL AT HOME",
+     "COME BACK BE HERE",
      "TREACHEROUS",
-     "COME BACK BE HERE"
+     "STATE OF GRACE"
     ]
    }
   ]
@@ -3287,10 +2967,10 @@ var GAMES=[
     "name": "Songs from 1989",
     "color": 1,
     "words": [
-     "CLEAN",
+     "NEW ROMANTICS",
      "WILDEST DREAMS",
-     "I WISH YOU WOULD",
-     "THIS LOVE"
+     "WELCOME TO NEW YORK",
+     "ALL YOU HAD TO DO WAS STAY"
     ]
    },
    {
@@ -3298,205 +2978,73 @@ var GAMES=[
     "color": 2,
     "words": [
      "END GAME",
-     "I DID SOMETHING BAD",
-     "THIS IS WHY WE CANT HAVE NICE THINGS",
-     "DELICATE"
+     "GETAWAY CAR",
+     "DELICATE",
+     "NEW YEAR'S DAY"
     ]
    },
    {
     "name": "Songs from Lover",
     "color": 3,
     "words": [
-     "THE ARCHER",
-     "CRUEL SUMMER",
-     "I FORGOT THAT YOU EXISTED",
-     "DEATH BY A THOUSAND CUTS"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "EXILE",
-     "ILLICIT AFFAIRS",
-     "AUGUST",
-     "THE 1"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Evermore",
-    "color": 1,
-    "words": [
-     "HAPPINESS",
-     "RIGHT WHERE YOU LEFT ME",
-     "COWBOY LIKE ME",
-     "ITS TIME TO GO"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 2,
-    "words": [
-     "WOULD'VE COULD'VE SHOULD'VE",
-     "BEJEWELED",
-     "ANTI-HERO",
-     "MAROON"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 3,
-    "words": [
-     "FLORIDA",
-     "FORTNIGHT",
-     "CLARA BOW",
-     "GUILTY AS SIN"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "MY TEARS RICOCHET",
-     "CARDIGAN",
-     "THE LAST GREAT AMERICAN DYNASTY",
-     "MAD WOMAN"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "THE OUTSIDE",
-     "TIM MCGRAW",
-     "MARY'S SONG",
-     "SHOULD'VE SAID NO"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "CLEAN",
-     "OUT OF THE WOODS",
-     "BLANK SPACE",
-     "I WISH YOU WOULD"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "THE LAKES",
-     "PEACE",
-     "INVISIBLE STRING",
-     "ILLICIT AFFAIRS"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "THE BLACK DOG",
-     "WHO'S AFRAID OF LITTLE OLD ME",
-     "IMGONNAGETYOUBACK",
-     "CLARA BOW"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "SUPERSTAR",
-     "BREATHE",
-     "THE WAY I LOVED YOU",
-     "THE OTHER SIDE OF THE DOOR"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "TREACHEROUS",
-     "WE ARE NEVER EVER GETTING BACK TOGETHER",
-     "STATE OF GRACE",
-     "BEGIN AGAIN"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "ANTI-HERO",
-     "SWEET NOTHING",
-     "BEJEWELED",
-     "KARMA"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 4,
-    "words": [
-     "TOLERATE IT",
-     "MARJORIE",
-     "TIS THE DAMN SEASON",
-     "CLOSURE"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "LONG LIVE",
-     "BACK TO DECEMBER",
-     "MINE",
-     "ENCHANTED"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 2,
-    "words": [
-     "KING OF MY HEART",
-     "GORGEOUS",
-     "SO IT GOES",
-     "I DID SOMETHING BAD"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "MISS AMERICANA AND THE HEARTBREAK PRINCE",
+     "SOON YOULL GET BETTER",
+     "YOU NEED TO CALM DOWN",
      "PAPER RINGS",
-     "LONDON BOY",
-     "LOVER"
+     "THE MAN"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "SEVEN",
+     "CARDIGAN",
+     "THE 1",
+     "THE LAST GREAT AMERICAN DYNASTY"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Evermore",
+    "color": 1,
+    "words": [
+     "ITS TIME TO GO",
+     "HAPPINESS",
+     "LONG STORY SHORT",
+     "CHAMPAGNE PROBLEMS"
     ]
    },
    {
     "name": "Songs from Midnights",
-    "color": 4,
+    "color": 2,
     "words": [
      "MAROON",
-     "HITS DIFFERENT",
-     "MIDNIGHT RAIN",
-     "VIGILANTE SHIT"
+     "MASTERMIND",
+     "LAVENDER HAZE",
+     "DEAR READER"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 3,
+    "words": [
+     "CLARA BOW",
+     "CASSANDRA",
+     "I HATE IT HERE",
+     "IMGONNAGETYOUBACK"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 4,
+    "words": [
+     "NEVER GROW UP",
+     "MEAN",
+     "SUPERMAN",
+     "THE STORY OF US"
     ]
    }
   ]
@@ -3508,39 +3056,39 @@ var GAMES=[
     "color": 1,
     "words": [
      "COLD AS YOU",
-     "PICTURE TO BURN",
      "A PERFECTLY GOOD HEART",
-     "I'M ONLY ME WHEN I'M WITH YOU"
+     "I'M ONLY ME WHEN I'M WITH YOU",
+     "INVISIBLE"
     ]
    },
    {
-    "name": "Songs from Lover",
+    "name": "Songs from 1989",
     "color": 2,
     "words": [
-     "DEATH BY A THOUSAND CUTS",
-     "YOU NEED TO CALM DOWN",
-     "ME",
-     "LONDON BOY"
+     "YOU ARE IN LOVE",
+     "BAD BLOOD",
+     "NEW ROMANTICS",
+     "ALL YOU HAD TO DO WAS STAY"
     ]
    },
    {
     "name": "Songs from Folklore",
     "color": 3,
     "words": [
-     "EXILE",
-     "THIS IS ME TRYING",
      "ILLICIT AFFAIRS",
-     "INVISIBLE STRING"
+     "THE 1",
+     "MIRRORBALL",
+     "THE LAKES"
     ]
    },
    {
-    "name": "Songs from Evermore",
+    "name": "Songs from TTPD",
     "color": 4,
     "words": [
-     "GOLD RUSH",
-     "DOROTHEA",
-     "COWBOY LIKE ME",
-     "HAPPINESS"
+     "THE PROPHECY",
+     "GUILTY AS SIN",
+     "BUT DADDY I LOVE HIM",
+     "THE TORTURED POETS DEPARTMENT"
     ]
    }
   ]
@@ -3552,39 +3100,39 @@ var GAMES=[
     "color": 1,
     "words": [
      "FOREVER AND ALWAYS",
-     "THE WAY I LOVED YOU",
      "FEARLESS",
-     "FIFTEEN"
+     "WHITE HORSE",
+     "YOU'RE NOT SORRY"
     ]
    },
    {
-    "name": "Songs from Speak Now",
+    "name": "Songs from Red",
     "color": 2,
     "words": [
-     "BETTER THAN REVENGE",
-     "MEAN",
-     "OURS",
-     "SPARKS FLY"
+     "22",
+     "TREACHEROUS",
+     "I KNEW YOU WERE TROUBLE",
+     "WE ARE NEVER EVER GETTING BACK TOGETHER"
     ]
    },
    {
-    "name": "Songs from Reputation",
+    "name": "Songs from Midnights",
     "color": 3,
     "words": [
-     "GETAWAY CAR",
-     "I DID SOMETHING BAD",
-     "DELICATE",
-     "END GAME"
+     "VIGILANTE SHIT",
+     "THE GREAT WAR",
+     "BEJEWELED",
+     "MAROON"
     ]
    },
    {
-    "name": "Songs from TTPD",
+    "name": "Songs from Evermore",
     "color": 4,
     "words": [
-     "CHLOE OR SAM OR SOPHIA OR MARCUS",
-     "HOW DID IT END",
-     "BUT DADDY I LOVE HIM",
-     "ROBIN"
+     "GOLD RUSH",
+     "COWBOY LIKE ME",
+     "CLOSURE",
+     "LONG STORY SHORT"
     ]
    }
   ]
@@ -3592,43 +3140,43 @@ var GAMES=[
  {
   "cats": [
    {
-    "name": "Songs from Red",
+    "name": "Songs from Speak Now",
     "color": 1,
     "words": [
-     "STATE OF GRACE",
-     "I KNEW YOU WERE TROUBLE",
-     "RED",
-     "THE MOMENT I KNEW"
+     "NEVER GROW UP",
+     "HAUNTED",
+     "MEAN",
+     "MINE"
     ]
    },
    {
-    "name": "Songs from 1989",
+    "name": "Songs from Reputation",
     "color": 2,
     "words": [
-     "I WISH YOU WOULD",
-     "BLANK SPACE",
-     "NEW ROMANTICS",
-     "YOU ARE IN LOVE"
+     "DONT BLAME ME",
+     "END GAME",
+     "KING OF MY HEART",
+     "LOOK WHAT YOU MADE ME DO"
     ]
    },
    {
-    "name": "Songs from Evermore",
+    "name": "Songs from Lover",
     "color": 3,
     "words": [
-     "CLOSURE",
-     "MARJORIE",
-     "TOLERATE IT",
-     "ITS TIME TO GO"
+     "THE MAN",
+     "LONDON BOY",
+     "AFTERGLOW",
+     "CRUEL SUMMER"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 4,
     "words": [
-     "MASTERMIND",
-     "WOULD'VE COULD'VE SHOULD'VE",
-     "MAROON",
-     "SNOW ON THE BEACH"
+     "PARIS",
+     "GLITCH",
+     "THE GREAT WAR",
+     "LABYRINTH"
     ]
    }
   ]
@@ -3639,40 +3187,1140 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
+     "THE OUTSIDE",
+     "I'M ONLY ME WHEN I'M WITH YOU",
      "COLD AS YOU",
-     "SHOULD'VE SAID NO",
-     "OUR SONG",
-     "PICTURE TO BURN"
+     "TIM MCGRAW"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "THE MAN",
+     "LOVER",
+     "ME",
+     "THE ARCHER"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "PEACE",
+     "CARDIGAN",
+     "INVISIBLE STRING",
+     "THE LAST GREAT AMERICAN DYNASTY"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "GOLD RUSH",
+     "TIS THE DAMN SEASON",
+     "HAPPINESS",
+     "CLOSURE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "THE WAY I LOVED YOU",
+     "SUPERSTAR",
+     "COME IN WITH THE RAIN",
+     "THE OTHER SIDE OF THE DOOR"
     ]
    },
    {
     "name": "Songs from Speak Now",
     "color": 2,
     "words": [
-     "LAST KISS",
-     "MINE",
-     "DEAR JOHN",
-     "SUPERMAN"
+     "LONG LIVE",
+     "NEVER GROW UP",
+     "MEAN",
+     "LAST KISS"
     ]
    },
    {
-    "name": "Songs from Lover",
+    "name": "Songs from Reputation",
     "color": 3,
     "words": [
-     "I THINK HE KNOWS",
-     "DEATH BY A THOUSAND CUTS",
-     "AFTERGLOW",
-     "CORNELIA STREET"
+     "LOOK WHAT YOU MADE ME DO",
+     "CALL IT WHAT YOU WANT",
+     "DONT BLAME ME",
+     "KING OF MY HEART"
     ]
    },
    {
     "name": "Songs from TTPD",
     "color": 4,
     "words": [
-     "DOWN BAD",
-     "THE SMALLEST MAN WHO EVER LIVED",
+     "BUT DADDY I LOVE HIM",
+     "CHLOE OR SAM OR SOPHIA OR MARCUS",
+     "THE BOLTER",
+     "ALL OF THE GIRLS YOU LOVED BEFORE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Red",
+    "color": 1,
+    "words": [
+     "HOLY GROUND",
+     "I KNEW YOU WERE TROUBLE",
+     "ALL TOO WELL",
+     "STARLIGHT"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "SHAKE IT OFF",
+     "BAD BLOOD",
+     "STYLE",
+     "NEW ROMANTICS"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "NO BODY NO CRIME",
+     "CHAMPAGNE PROBLEMS",
+     "RIGHT WHERE YOU LEFT ME",
+     "HAPPINESS"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "LABYRINTH",
+     "GLITCH",
+     "MASTERMIND",
+     "VIGILANTE SHIT"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "THE OUTSIDE",
+     "INVISIBLE",
+     "TIM MCGRAW",
+     "TEARDROPS ON MY GUITAR"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "BACK TO DECEMBER",
+     "OURS",
+     "INNOCENT",
+     "MEAN"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "I FORGOT THAT YOU EXISTED",
+     "PAPER RINGS",
+     "DEATH BY A THOUSAND CUTS",
+     "THE ARCHER"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "BUT DADDY I LOVE HIM",
+     "I HATE IT HERE",
+     "FORTNIGHT",
+     "ANDROMEDA"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "FEARLESS",
+     "HEY STEPHEN",
+     "YOU'RE NOT SORRY",
+     "SUPERSTAR"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "WE ARE NEVER EVER GETTING BACK TOGETHER",
+     "THE MOMENT I KNEW",
+     "THE LUCKY ONE",
+     "TREACHEROUS"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 3,
+    "words": [
+     "SHAKE IT OFF",
+     "WELCOME TO NEW YORK",
+     "CLEAN",
+     "HOW YOU GET THE GIRL"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "EPIPHANY",
+     "MY TEARS RICOCHET",
+     "INVISIBLE STRING",
+     "THIS IS ME TRYING"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Reputation",
+    "color": 1,
+    "words": [
+     "DRESS",
+     "DONT BLAME ME",
+     "THIS IS WHY WE CANT HAVE NICE THINGS",
+     "CALL IT WHAT YOU WANT"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 2,
+    "words": [
+     "TOLERATE IT",
+     "TIS THE DAMN SEASON",
+     "GOLD RUSH",
+     "EVERMORE"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "LAVENDER HAZE",
+     "SWEET NOTHING",
+     "LABYRINTH",
+     "WOULD'VE COULD'VE SHOULD'VE"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "I CAN DO IT WITH A BROKEN HEART",
+     "I HATE IT HERE",
      "THE ALCHEMY",
-     "PETER"
+     "THE BLACK DOG"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "I'M ONLY ME WHEN I'M WITH YOU",
+     "TIM MCGRAW",
+     "A PLACE IN THIS WORLD",
+     "COLD AS YOU"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "SPEAK NOW",
+     "SUPERMAN",
+     "ENCHANTED",
+     "MEAN"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 3,
+    "words": [
+     "GIRL AT HOME",
+     "STATE OF GRACE",
+     "STARLIGHT",
+     "STAY STAY STAY"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 4,
+    "words": [
+     "AFTERGLOW",
+     "DAYLIGHT",
+     "THE ARCHER",
+     "ME"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "UNTOUCHABLE",
+     "FIFTEEN",
+     "THE WAY I LOVED YOU",
+     "YOU BELONG WITH ME"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "THIS LOVE",
+     "ALL YOU HAD TO DO WAS STAY",
+     "STYLE",
+     "WELCOME TO NEW YORK"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "HOAX",
+     "MAD WOMAN",
+     "CARDIGAN",
+     "BETTY"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "ANTI-HERO",
+     "DEAR READER",
+     "BIGGER THAN THE WHOLE SKY",
+     "YOURE LOSING ME"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Reputation",
+    "color": 1,
+    "words": [
+     "GETAWAY CAR",
+     "THIS IS WHY WE CANT HAVE NICE THINGS",
+     "GORGEOUS",
+     "END GAME"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 2,
+    "words": [
+     "WILLOW",
+     "EVERMORE",
+     "TIS THE DAMN SEASON",
+     "CLOSURE"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 3,
+    "words": [
+     "DOWN BAD",
+     "LOML",
+     "HOW DID IT END",
+     "MY BOY ONLY BREAKS HIS FAVORITE TOYS"
+    ]
+   },
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 4,
+    "words": [
+     "TEARDROPS ON MY GUITAR",
+     "SHOULD'VE SAID NO",
+     "I'M ONLY ME WHEN I'M WITH YOU",
+     "A PERFECTLY GOOD HEART"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "SUPERMAN",
+     "MINE",
+     "LAST KISS",
+     "BACK TO DECEMBER"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "STARLIGHT",
+     "22",
+     "HOLY GROUND",
+     "WE ARE NEVER EVER GETTING BACK TOGETHER"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 3,
+    "words": [
+     "BAD BLOOD",
+     "I WISH YOU WOULD",
+     "ALL YOU HAD TO DO WAS STAY",
+     "SHAKE IT OFF"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "BIGGER THAN THE WHOLE SKY",
+     "PARIS",
+     "DEAR READER",
+     "LABYRINTH"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "THE WAY I LOVED YOU",
+     "YOU'RE NOT SORRY",
+     "JUMP THEN FALL",
+     "YOU BELONG WITH ME"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "I FORGOT THAT YOU EXISTED",
+     "I THINK HE KNOWS",
+     "SOON YOULL GET BETTER",
+     "ME"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "NO BODY NO CRIME",
+     "ITS TIME TO GO",
+     "TIS THE DAMN SEASON",
+     "CHAMPAGNE PROBLEMS"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "ALL OF THE GIRLS YOU LOVED BEFORE",
+     "I HATE IT HERE",
+     "PETER",
+     "WHO'S AFRAID OF LITTLE OLD ME"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "TIM MCGRAW",
+     "OUR SONG",
+     "INVISIBLE",
+     "A PLACE IN THIS WORLD"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 2,
+    "words": [
+     "GORGEOUS",
+     "I DID SOMETHING BAD",
+     "THIS IS WHY WE CANT HAVE NICE THINGS",
+     "DRESS"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "AUGUST",
+     "EXILE",
+     "MAD WOMAN",
+     "ILLICIT AFFAIRS"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "TIS THE DAMN SEASON",
+     "NO BODY NO CRIME",
+     "COWBOY LIKE ME",
+     "WILLOW"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Red",
+    "color": 1,
+    "words": [
+     "TREACHEROUS",
+     "THE LAST TIME",
+     "BEGIN AGAIN",
+     "HOLY GROUND"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "THE MAN",
+     "I FORGOT THAT YOU EXISTED",
+     "YOU NEED TO CALM DOWN",
+     "AFTERGLOW"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "THE GREAT WAR",
+     "BEJEWELED",
+     "MIDNIGHT RAIN",
+     "YOURE LOSING ME"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "I HATE IT HERE",
+     "IMGONNAGETYOUBACK",
+     "DOWN BAD",
+     "FORTNIGHT"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "THE STORY OF US",
+     "LONG LIVE",
+     "INNOCENT",
+     "MEAN"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "STYLE",
+     "OUT OF THE WOODS",
+     "ALL YOU HAD TO DO WAS STAY",
+     "I WISH YOU WOULD"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "EXILE",
+     "MY TEARS RICOCHET",
+     "THE LAKES",
+     "MIRRORBALL"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "HAPPINESS",
+     "DOROTHEA",
+     "CHAMPAGNE PROBLEMS",
+     "GOLD RUSH"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "JUMP THEN FALL",
+     "THE WAY I LOVED YOU",
+     "WHITE HORSE",
+     "TELL ME WHY"
+    ]
+   },
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 2,
+    "words": [
+     "COLD AS YOU",
+     "TIM MCGRAW",
+     "A PERFECTLY GOOD HEART",
+     "PICTURE TO BURN"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "ME",
+     "LONDON BOY",
+     "MISS AMERICANA AND THE HEARTBREAK PRINCE",
+     "LOVER"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "ALL OF THE GIRLS YOU LOVED BEFORE",
+     "THE PROPHECY",
+     "ROBIN",
+     "I HATE IT HERE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Red",
+    "color": 1,
+    "words": [
+     "EVERYTHING HAS CHANGED",
+     "COME BACK BE HERE",
+     "STAY STAY STAY",
+     "THE MOMENT I KNEW"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 2,
+    "words": [
+     "READY FOR IT",
+     "END GAME",
+     "DONT BLAME ME",
+     "DANCING WITH OUR HANDS TIED"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "ITS TIME TO GO",
+     "EVERMORE",
+     "HAPPINESS",
+     "GOLD RUSH"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "AUGUST",
+     "INVISIBLE STRING",
+     "MIRRORBALL",
+     "THIS IS ME TRYING"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "TEARDROPS ON MY GUITAR",
+     "OUR SONG",
+     "INVISIBLE",
+     "I'M ONLY ME WHEN I'M WITH YOU"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "SPARKS FLY",
+     "MEAN",
+     "HAUNTED",
+     "OURS"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 3,
+    "words": [
+     "I WISH YOU WOULD",
+     "BLANK SPACE",
+     "STYLE",
+     "SHAKE IT OFF"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 4,
+    "words": [
+     "DONT BLAME ME",
+     "DANCING WITH OUR HANDS TIED",
+     "GETAWAY CAR",
+     "SO IT GOES"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "LOVE STORY",
+     "YOU'RE NOT SORRY",
+     "YOU BELONG WITH ME",
+     "WHITE HORSE"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 2,
+    "words": [
+     "MY TEARS RICOCHET",
+     "PEACE",
+     "EXILE",
+     "BETTY"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "LABYRINTH",
+     "SWEET NOTHING",
+     "KARMA",
+     "ANTI-HERO"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "THE BLACK DOG",
+     "THE PROPHECY",
+     "WHO'S AFRAID OF LITTLE OLD ME",
+     "DOWN BAD"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Red",
+    "color": 1,
+    "words": [
+     "ALL TOO WELL",
+     "HOLY GROUND",
+     "THE LAST TIME",
+     "WE ARE NEVER EVER GETTING BACK TOGETHER"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "MISS AMERICANA AND THE HEARTBREAK PRINCE",
+     "ME",
+     "THE MAN",
+     "FALSE GOD"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "TIS THE DAMN SEASON",
+     "MARJORIE",
+     "TOLERATE IT",
+     "WILLOW"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "EPIPHANY",
+     "HOAX",
+     "PEACE",
+     "MIRRORBALL"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "I'M ONLY ME WHEN I'M WITH YOU",
+     "A PERFECTLY GOOD HEART",
+     "A PLACE IN THIS WORLD",
+     "THE OUTSIDE"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "YOU ARE IN LOVE",
+     "THIS LOVE",
+     "WILDEST DREAMS",
+     "WELCOME TO NEW YORK"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "DEAR READER",
+     "WOULD'VE COULD'VE SHOULD'VE",
+     "SWEET NOTHING",
+     "ANTI-HERO"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "THE PROPHECY",
+     "FLORIDA",
+     "SO LONG LONDON",
+     "ALL OF THE GIRLS YOU LOVED BEFORE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "COME IN WITH THE RAIN",
+     "WHITE HORSE",
+     "FIFTEEN",
+     "SUPERSTAR"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "HAUNTED",
+     "DEAR JOHN",
+     "NEVER GROW UP",
+     "MINE"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "IT'S NICE TO HAVE A FRIEND",
+     "THE MAN",
+     "FALSE GOD",
+     "CORNELIA STREET"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "COWBOY LIKE ME",
+     "EVERMORE",
+     "MARJORIE",
+     "CHAMPAGNE PROBLEMS"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Red",
+    "color": 1,
+    "words": [
+     "I ALMOST DO",
+     "THE LUCKY ONE",
+     "SAD BEAUTIFUL TRAGIC",
+     "STARLIGHT"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 2,
+    "words": [
+     "SO IT GOES",
+     "I DID SOMETHING BAD",
+     "DONT BLAME ME",
+     "DANCING WITH OUR HANDS TIED"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "CARDIGAN",
+     "THIS IS ME TRYING",
+     "SEVEN",
+     "EPIPHANY"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "ALL OF THE GIRLS YOU LOVED BEFORE",
+     "THE MANUSCRIPT",
+     "IMGONNAGETYOUBACK",
+     "CHLOE OR SAM OR SOPHIA OR MARCUS"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "SHOULD'VE SAID NO",
+     "PICTURE TO BURN",
+     "COLD AS YOU",
+     "A PLACE IN THIS WORLD"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
+    "color": 2,
+    "words": [
+     "BETTER THAN REVENGE",
+     "THE STORY OF US",
+     "OURS",
+     "DEAR JOHN"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "SEVEN",
+     "MIRRORBALL",
+     "AUGUST",
+     "THE LAST GREAT AMERICAN DYNASTY"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 4,
+    "words": [
+     "I THINK HE KNOWS",
+     "YOU NEED TO CALM DOWN",
+     "LOVER",
+     "CRUEL SUMMER"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Fearless",
+    "color": 1,
+    "words": [
+     "BREATHE",
+     "THE WAY I LOVED YOU",
+     "FIFTEEN",
+     "HEY STEPHEN"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "STYLE",
+     "I WISH YOU WOULD",
+     "YOU ARE IN LOVE",
+     "THIS LOVE"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 3,
+    "words": [
+     "GORGEOUS",
+     "DANCING WITH OUR HANDS TIED",
+     "CALL IT WHAT YOU WANT",
+     "DRESS"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "COWBOY LIKE ME",
+     "CLOSURE",
+     "DOROTHEA",
+     "LONG STORY SHORT"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "NEVER GROW UP",
+     "MINE",
+     "MEAN",
+     "LAST KISS"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 2,
+    "words": [
+     "THE MAN",
+     "SOON YOULL GET BETTER",
+     "DAYLIGHT",
+     "FALSE GOD"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 3,
+    "words": [
+     "YOURE LOSING ME",
+     "BEJEWELED",
+     "DEAR READER",
+     "GLITCH"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 4,
+    "words": [
+     "THE LAST GREAT AMERICAN DYNASTY",
+     "MY TEARS RICOCHET",
+     "PEACE",
+     "EXILE"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "PICTURE TO BURN",
+     "A PLACE IN THIS WORLD",
+     "THE OUTSIDE",
+     "TEARDROPS ON MY GUITAR"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "22",
+     "COME BACK BE HERE",
+     "WE ARE NEVER EVER GETTING BACK TOGETHER",
+     "I KNEW YOU WERE TROUBLE"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 3,
+    "words": [
+     "GOLD RUSH",
+     "LONG STORY SHORT",
+     "TIS THE DAMN SEASON",
+     "CLOSURE"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "THE MANUSCRIPT",
+     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
+     "LOML",
+     "CHLOE OR SAM OR SOPHIA OR MARCUS"
     ]
    }
   ]
@@ -3690,253 +4338,33 @@ var GAMES=[
     ]
    },
    {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "TREACHEROUS",
-     "BEGIN AGAIN",
-     "SAD BEAUTIFUL TRAGIC",
-     "I KNEW YOU WERE TROUBLE"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 3,
-    "words": [
-     "BAD BLOOD",
-     "STYLE",
-     "I WISH YOU WOULD",
-     "WELCOME TO NEW YORK"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "HOAX",
-     "THE 1",
-     "AUGUST",
-     "MY TEARS RICOCHET"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
     "name": "Songs from Reputation",
-    "color": 1,
-    "words": [
-     "DRESS",
-     "DONT BLAME ME",
-     "READY FOR IT",
-     "LOOK WHAT YOU MADE ME DO"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
     "color": 2,
     "words": [
-     "DOROTHEA",
-     "ITS TIME TO GO",
-     "TOLERATE IT",
-     "MARJORIE"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "VIGILANTE SHIT",
-     "KARMA",
-     "YOURE LOSING ME",
-     "ANTI-HERO"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "CASSANDRA",
-     "ROBIN",
-     "THE BLACK DOG",
-     "THE SMALLEST MAN WHO EVER LIVED"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "SHOULD'VE SAID NO",
-     "A PLACE IN THIS WORLD",
-     "THE OUTSIDE"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now",
-    "color": 2,
-    "words": [
-     "LONG LIVE",
-     "SUPERMAN",
-     "SPEAK NOW",
-     "OURS"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 3,
-    "words": [
-     "WE ARE NEVER EVER GETTING BACK TOGETHER",
-     "TREACHEROUS",
-     "SAD BEAUTIFUL TRAGIC",
-     "THE MOMENT I KNEW"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 4,
-    "words": [
-     "THE ARCHER",
-     "AFTERGLOW",
-     "PAPER RINGS",
-     "CRUEL SUMMER"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "FEARLESS",
-     "HEY STEPHEN",
-     "YOU BELONG WITH ME",
-     "LOVE STORY"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "BAD BLOOD",
-     "YOU ARE IN LOVE",
-     "ALL YOU HAD TO DO WAS STAY",
-     "WILDEST DREAMS"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "THE LAST GREAT AMERICAN DYNASTY",
-     "EXILE",
-     "MAD WOMAN",
-     "EPIPHANY"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "THE GREAT WAR",
-     "HITS DIFFERENT",
-     "KARMA",
-     "VIGILANTE SHIT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Reputation",
-    "color": 1,
-    "words": [
-     "THIS IS WHY WE CANT HAVE NICE THINGS",
-     "DELICATE",
+     "NEW YEAR'S DAY",
      "GORGEOUS",
+     "DANCING WITH OUR HANDS TIED",
      "KING OF MY HEART"
     ]
    },
    {
-    "name": "Songs from Evermore",
-    "color": 2,
-    "words": [
-     "ITS TIME TO GO",
-     "TOLERATE IT",
-     "WILLOW",
-     "COWBOY LIKE ME"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
+    "name": "Songs from Folklore",
     "color": 3,
     "words": [
-     "ANDROMEDA",
-     "LOML",
-     "THE BLACK DOG",
-     "FORTNIGHT"
-    ]
-   },
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 4,
-    "words": [
-     "SHOULD'VE SAID NO",
-     "TEARDROPS ON MY GUITAR",
-     "PICTURE TO BURN",
-     "MARY'S SONG"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "INNOCENT",
-     "SUPERMAN",
-     "MINE",
-     "OURS"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "BEGIN AGAIN",
-     "THE LUCKY ONE",
-     "GIRL AT HOME",
-     "I KNEW YOU WERE TROUBLE"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 3,
-    "words": [
-     "I WISH YOU WOULD",
-     "ALL YOU HAD TO DO WAS STAY",
-     "CLEAN",
-     "BLANK SPACE"
+     "ILLICIT AFFAIRS",
+     "MAD WOMAN",
+     "PEACE",
+     "THE LAKES"
     ]
    },
    {
     "name": "Songs from Midnights",
     "color": 4,
     "words": [
-     "HIGH INFIDELITY",
-     "WOULD'VE COULD'VE SHOULD'VE",
+     "SWEET NOTHING",
      "DEAR READER",
-     "HITS DIFFERENT"
+     "YOURE LOSING ME",
+     "LAVENDER HAZE"
     ]
    }
   ]
@@ -3944,13 +4372,13 @@ var GAMES=[
  {
   "cats": [
    {
-    "name": "Songs from Fearless",
+    "name": "Songs from 1989",
     "color": 1,
     "words": [
-     "FIFTEEN",
-     "UNTOUCHABLE",
-     "THE WAY I LOVED YOU",
-     "WHITE HORSE"
+     "BAD BLOOD",
+     "STYLE",
+     "YOU ARE IN LOVE",
+     "CLEAN"
     ]
    },
    {
@@ -3958,150 +4386,18 @@ var GAMES=[
     "color": 2,
     "words": [
      "YOU NEED TO CALM DOWN",
-     "CORNELIA STREET",
-     "THE MAN",
-     "MISS AMERICANA AND THE HEARTBREAK PRINCE"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "DOROTHEA",
-     "LONG STORY SHORT",
-     "CLOSURE",
-     "ITS TIME TO GO"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "THE BOLTER",
-     "CLARA BOW",
-     "PETER",
-     "CHLOE OR SAM OR SOPHIA OR MARCUS"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "OUR SONG",
-     "MARY'S SONG",
-     "SHOULD'VE SAID NO",
-     "TIM MCGRAW"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 2,
-    "words": [
-     "LOOK WHAT YOU MADE ME DO",
-     "DELICATE",
-     "SO IT GOES",
-     "THIS IS WHY WE CANT HAVE NICE THINGS"
+     "CRUEL SUMMER",
+     "SOON YOULL GET BETTER",
+     "LOVER"
     ]
    },
    {
     "name": "Songs from Folklore",
     "color": 3,
     "words": [
-     "HOAX",
      "MIRRORBALL",
-     "MAD WOMAN",
-     "EXILE"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 4,
-    "words": [
-     "HAPPINESS",
-     "NO BODY NO CRIME",
-     "COWBOY LIKE ME",
-     "LONG STORY SHORT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Red",
-    "color": 1,
-    "words": [
-     "BEGIN AGAIN",
-     "I ALMOST DO",
-     "TREACHEROUS",
-     "ALL TOO WELL"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 2,
-    "words": [
-     "LONDON BOY",
-     "PAPER RINGS",
-     "CORNELIA STREET",
-     "FALSE GOD"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "MIDNIGHT RAIN",
-     "MASTERMIND",
-     "KARMA",
-     "YOURE LOSING ME"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "ALL OF THE GIRLS YOU LOVED BEFORE",
-     "I CAN DO IT WITH A BROKEN HEART",
-     "DOWN BAD",
-     "HOW DID IT END"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "SPARKS FLY",
-     "ENCHANTED",
-     "THE STORY OF US",
-     "DEAR JOHN"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "ALL YOU HAD TO DO WAS STAY",
-     "I WISH YOU WOULD",
-     "WELCOME TO NEW YORK",
-     "OUT OF THE WOODS"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "INVISIBLE STRING",
-     "HOAX",
-     "PEACE",
+     "SEVEN",
+     "THE 1",
      "EPIPHANY"
     ]
    },
@@ -4109,99 +4405,11 @@ var GAMES=[
     "name": "Songs from Evermore",
     "color": 4,
     "words": [
-     "CLOSURE",
-     "NO BODY NO CRIME",
-     "TOLERATE IT",
-     "COWBOY LIKE ME"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "BREATHE",
-     "WHITE HORSE",
-     "FIFTEEN",
-     "UNTOUCHABLE"
-    ]
-   },
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 2,
-    "words": [
-     "TEARDROPS ON MY GUITAR",
-     "THE OUTSIDE",
-     "MARY'S SONG",
-     "SHOULD'VE SAID NO"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "CORNELIA STREET",
-     "SOON YOULL GET BETTER",
-     "DAYLIGHT",
-     "DEATH BY A THOUSAND CUTS"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "CHLOE OR SAM OR SOPHIA OR MARCUS",
-     "THE BOLTER",
-     "PETER",
-     "GUILTY AS SIN"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Red",
-    "color": 1,
-    "words": [
-     "TREACHEROUS",
-     "BEGIN AGAIN",
-     "THE LAST TIME",
-     "EVERYTHING HAS CHANGED"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 2,
-    "words": [
-     "GORGEOUS",
-     "CALL IT WHAT YOU WANT",
-     "NEW YEAR'S DAY",
-     "DONT BLAME ME"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "GOLD RUSH",
-     "EVERMORE",
-     "NO BODY NO CRIME",
+     "ITS TIME TO GO",
+     "CHAMPAGNE PROBLEMS",
+     "MARJORIE",
      "TIS THE DAMN SEASON"
     ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "THIS IS ME TRYING",
-     "THE LAKES",
-     "CARDIGAN",
-     "INVISIBLE STRING"
-    ]
    }
   ]
  },
@@ -4211,84 +4419,40 @@ var GAMES=[
     "name": "Songs from Taylor Swift (Debut)",
     "color": 1,
     "words": [
-     "A PLACE IN THIS WORLD",
+     "SHOULD'VE SAID NO",
      "INVISIBLE",
-     "THE OUTSIDE",
-     "TIM MCGRAW"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now",
-    "color": 2,
-    "words": [
-     "BETTER THAN REVENGE",
-     "DEAR JOHN",
-     "HAUNTED",
-     "SUPERMAN"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 3,
-    "words": [
-     "SHAKE IT OFF",
-     "OUT OF THE WOODS",
-     "NEW ROMANTICS",
-     "BLANK SPACE"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 4,
-    "words": [
-     "GETAWAY CAR",
-     "DANCING WITH OUR HANDS TIED",
-     "DELICATE",
-     "GORGEOUS"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "BREATHE",
-     "TELL ME WHY",
-     "JUMP THEN FALL",
-     "YOU BELONG WITH ME"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 2,
-    "words": [
-     "ILLICIT AFFAIRS",
-     "THE 1",
-     "THIS IS ME TRYING",
-     "EXILE"
+     "PICTURE TO BURN",
+     "OUR SONG"
     ]
    },
    {
     "name": "Songs from Midnights",
-    "color": 3,
+    "color": 2,
     "words": [
-     "ANTI-HERO",
-     "DEAR READER",
-     "SWEET NOTHING",
-     "MAROON"
+     "THE GREAT WAR",
+     "YOURE LOSING ME",
+     "PARIS",
+     "WOULD'VE COULD'VE SHOULD'VE"
     ]
    },
    {
     "name": "Songs from TTPD",
+    "color": 3,
+    "words": [
+     "THE BLACK DOG",
+     "LOML",
+     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
+     "CHLOE OR SAM OR SOPHIA OR MARCUS"
+    ]
+   },
+   {
+    "name": "Songs from Speak Now",
     "color": 4,
     "words": [
-     "ALL OF THE GIRLS YOU LOVED BEFORE",
-     "CASSANDRA",
-     "FLORIDA",
-     "PETER"
+     "BACK TO DECEMBER",
+     "SPEAK NOW",
+     "INNOCENT",
+     "NEVER GROW UP"
     ]
    }
   ]
@@ -4296,395 +4460,131 @@ var GAMES=[
  {
   "cats": [
    {
-    "name": "Songs from Red",
+    "name": "Songs from Fearless",
     "color": 1,
     "words": [
-     "ALL TOO WELL",
-     "GIRL AT HOME",
-     "EVERYTHING HAS CHANGED",
-     "STAY STAY STAY"
+     "YOU'RE NOT SORRY",
+     "WHITE HORSE",
+     "SUPERSTAR",
+     "THE OTHER SIDE OF THE DOOR"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "SAD BEAUTIFUL TRAGIC",
+     "THE LUCKY ONE",
+     "RED",
+     "BEGIN AGAIN"
     ]
    },
    {
     "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "YOU NEED TO CALM DOWN",
+     "THE MAN",
+     "ME",
+     "DAYLIGHT"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "ANTI-HERO",
+     "LAVENDER HAZE",
+     "HITS DIFFERENT",
+     "MASTERMIND"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "LAST KISS",
+     "LONG LIVE",
+     "DEAR JOHN",
+     "OURS"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
     "color": 2,
     "words": [
-     "IT'S NICE TO HAVE A FRIEND",
-     "CORNELIA STREET",
-     "ME",
-     "FALSE GOD"
+     "THIS IS ME TRYING",
+     "THE LAKES",
+     "ILLICIT AFFAIRS",
+     "INVISIBLE STRING"
     ]
    },
    {
     "name": "Songs from Evermore",
     "color": 3,
+    "words": [
+     "COWBOY LIKE ME",
+     "TOLERATE IT",
+     "CHAMPAGNE PROBLEMS",
+     "HAPPINESS"
+    ]
+   },
+   {
+    "name": "Songs from TTPD",
+    "color": 4,
+    "words": [
+     "FRESH OUT THE SLAMMER",
+     "THE TORTURED POETS DEPARTMENT",
+     "ALL OF THE GIRLS YOU LOVED BEFORE",
+     "THE PROPHECY"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "PICTURE TO BURN",
+     "A PERFECTLY GOOD HEART",
+     "TEARDROPS ON MY GUITAR",
+     "A PLACE IN THIS WORLD"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "THIS LOVE",
+     "HOW YOU GET THE GIRL",
+     "BLANK SPACE",
+     "OUT OF THE WOODS"
+    ]
+   },
+   {
+    "name": "Songs from Reputation",
+    "color": 3,
+    "words": [
+     "GORGEOUS",
+     "I DID SOMETHING BAD",
+     "DELICATE",
+     "CALL IT WHAT YOU WANT"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
     "words": [
      "ITS TIME TO GO",
      "DOROTHEA",
      "NO BODY NO CRIME",
-     "CHAMPAGNE PROBLEMS"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "THIS IS ME TRYING",
-     "INVISIBLE STRING",
-     "AUGUST",
-     "THE LAKES"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "TIM MCGRAW",
-     "THE OUTSIDE",
-     "A PERFECTLY GOOD HEART",
-     "INVISIBLE"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "HOW YOU GET THE GIRL",
-     "BAD BLOOD",
-     "ALL YOU HAD TO DO WAS STAY",
-     "BLANK SPACE"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "DEAR READER",
-     "GLITCH",
-     "MAROON",
-     "VIGILANTE SHIT"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "ANDROMEDA",
-     "WHO'S AFRAID OF LITTLE OLD ME",
-     "DOWN BAD",
-     "CLARA BOW"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "THE WAY I LOVED YOU",
-     "THE OTHER SIDE OF THE DOOR",
-     "HEY STEPHEN",
-     "YOU BELONG WITH ME"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now",
-    "color": 2,
-    "words": [
-     "ENCHANTED",
-     "SPEAK NOW",
-     "MEAN",
-     "NEVER GROW UP"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "IT'S NICE TO HAVE A FRIEND",
-     "FALSE GOD",
-     "ME",
-     "I THINK HE KNOWS"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 4,
-    "words": [
-     "LONG STORY SHORT",
-     "DOROTHEA",
-     "CLOSURE",
      "RIGHT WHERE YOU LEFT ME"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Red",
-    "color": 1,
-    "words": [
-     "I KNEW YOU WERE TROUBLE",
-     "22",
-     "RED",
-     "TREACHEROUS"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 2,
-    "words": [
-     "I DID SOMETHING BAD",
-     "READY FOR IT",
-     "DRESS",
-     "END GAME"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "CARDIGAN",
-     "AUGUST",
-     "MIRRORBALL",
-     "HOAX"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "PETER",
-     "I CAN DO IT WITH A BROKEN HEART",
-     "CASSANDRA",
-     "THE TORTURED POETS DEPARTMENT"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "COLD AS YOU",
-     "TEARDROPS ON MY GUITAR",
-     "I'M ONLY ME WHEN I'M WITH YOU",
-     "THE OUTSIDE"
-    ]
-   },
-   {
-    "name": "Songs from Speak Now",
-    "color": 2,
-    "words": [
-     "THE STORY OF US",
-     "SPARKS FLY",
-     "LONG LIVE",
-     "LAST KISS"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 3,
-    "words": [
-     "LOVER",
-     "LONDON BOY",
-     "DEATH BY A THOUSAND CUTS",
-     "CORNELIA STREET"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "EPIPHANY",
-     "THE LAST GREAT AMERICAN DYNASTY",
-     "EXILE",
-     "MY TEARS RICOCHET"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "FIFTEEN",
-     "JUMP THEN FALL",
-     "HEY STEPHEN",
-     "YOU BELONG WITH ME"
-    ]
-   },
-   {
-    "name": "Songs from 1989",
-    "color": 2,
-    "words": [
-     "HOW YOU GET THE GIRL",
-     "THIS LOVE",
-     "OUT OF THE WOODS",
-     "BAD BLOOD"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 3,
-    "words": [
-     "GETAWAY CAR",
-     "NEW YEAR'S DAY",
-     "DRESS",
-     "I DID SOMETHING BAD"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 4,
-    "words": [
-     "CLOSURE",
-     "LONG STORY SHORT",
-     "EVERMORE",
-     "ITS TIME TO GO"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Speak Now",
-    "color": 1,
-    "words": [
-     "SUPERMAN",
-     "HAUNTED",
-     "ENCHANTED",
-     "BETTER THAN REVENGE"
-    ]
-   },
-   {
-    "name": "Songs from Lover",
-    "color": 2,
-    "words": [
-     "ME",
-     "THE MAN",
-     "I THINK HE KNOWS",
-     "IT'S NICE TO HAVE A FRIEND"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 3,
-    "words": [
-     "MAROON",
-     "KARMA",
-     "HITS DIFFERENT",
-     "MIDNIGHT RAIN"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 4,
-    "words": [
-     "CARDIGAN",
-     "MIRRORBALL",
-     "EPIPHANY",
-     "INVISIBLE STRING"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Taylor Swift (Debut)",
-    "color": 1,
-    "words": [
-     "THE OUTSIDE",
-     "COLD AS YOU",
-     "SHOULD'VE SAID NO",
-     "MARY'S SONG"
-    ]
-   },
-   {
-    "name": "Songs from Red",
-    "color": 2,
-    "words": [
-     "THE MOMENT I KNEW",
-     "HOLY GROUND",
-     "TREACHEROUS",
-     "STAY STAY STAY"
-    ]
-   },
-   {
-    "name": "Songs from Evermore",
-    "color": 3,
-    "words": [
-     "GOLD RUSH",
-     "EVERMORE",
-     "DOROTHEA",
-     "WILLOW"
-    ]
-   },
-   {
-    "name": "Songs from TTPD",
-    "color": 4,
-    "words": [
-     "HOW DID IT END",
-     "MY BOY ONLY BREAKS HIS FAVORITE TOYS",
-     "THE MANUSCRIPT",
-     "ROBIN"
-    ]
-   }
-  ]
- },
- {
-  "cats": [
-   {
-    "name": "Songs from Fearless",
-    "color": 1,
-    "words": [
-     "JUMP THEN FALL",
-     "UNTOUCHABLE",
-     "COME IN WITH THE RAIN",
-     "LOVE STORY"
-    ]
-   },
-   {
-    "name": "Songs from Reputation",
-    "color": 2,
-    "words": [
-     "END GAME",
-     "THIS IS WHY WE CANT HAVE NICE THINGS",
-     "DELICATE",
-     "I DID SOMETHING BAD"
-    ]
-   },
-   {
-    "name": "Songs from Folklore",
-    "color": 3,
-    "words": [
-     "CARDIGAN",
-     "MAD WOMAN",
-     "ILLICIT AFFAIRS",
-     "THE LAST GREAT AMERICAN DYNASTY"
-    ]
-   },
-   {
-    "name": "Songs from Midnights",
-    "color": 4,
-    "words": [
-     "MAROON",
-     "BEJEWELED",
-     "HIGH INFIDELITY",
-     "LABYRINTH"
     ]
    }
   ]
@@ -4702,23 +4602,23 @@ var GAMES=[
     ]
    },
    {
-    "name": "Taylor's Re-Recorded Albums (Taylor's Version)",
+    "name": "Songs About Moving On",
     "color": 2,
     "words": [
-     "FEARLESS (TV)",
-     "SPEAK NOW (TV)",
-     "RED (TV)",
-     "1989 (TV)"
+     "CLEAN",
+     "BEGIN AGAIN",
+     "SHAKE IT OFF",
+     "DAYLIGHT"
     ]
    },
    {
-    "name": "Taylor's Albums from 2017–2024",
+    "name": "Songs About Heartbreak",
     "color": 3,
     "words": [
-     "REPUTATION",
-     "LOVER",
-     "EVERMORE",
-     "TTPD"
+     "ALL TOO WELL",
+     "LAST KISS",
+     "DEAR JOHN",
+     "WHITE HORSE"
     ]
    },
    {
@@ -4729,6 +4629,94 @@ var GAMES=[
      "FIFTEEN",
      "THE 1",
      "THE VERY FIRST NIGHT"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Speak Now",
+    "color": 1,
+    "words": [
+     "MINE",
+     "SPARKS FLY",
+     "BACK TO DECEMBER",
+     "MEAN"
+    ]
+   },
+   {
+    "name": "Songs from 1989",
+    "color": 2,
+    "words": [
+     "BLANK SPACE",
+     "STYLE",
+     "OUT OF THE WOODS",
+     "CLEAN"
+    ]
+   },
+   {
+    "name": "Songs from Lover",
+    "color": 3,
+    "words": [
+     "CRUEL SUMMER",
+     "LOVER",
+     "CORNELIA STREET",
+     "DAYLIGHT"
+    ]
+   },
+   {
+    "name": "Songs from Midnights",
+    "color": 4,
+    "words": [
+     "ANTI-HERO",
+     "LAVENDER HAZE",
+     "BEJEWELED",
+     "KARMA"
+    ]
+   }
+  ]
+ },
+ {
+  "cats": [
+   {
+    "name": "Songs from Taylor Swift (Debut)",
+    "color": 1,
+    "words": [
+     "TIM MCGRAW",
+     "OUR SONG",
+     "TEARDROPS ON MY GUITAR",
+     "SHOULD'VE SAID NO"
+    ]
+   },
+   {
+    "name": "Songs from Red",
+    "color": 2,
+    "words": [
+     "ALL TOO WELL",
+     "22",
+     "BEGIN AGAIN",
+     "STATE OF GRACE"
+    ]
+   },
+   {
+    "name": "Songs from Folklore",
+    "color": 3,
+    "words": [
+     "CARDIGAN",
+     "AUGUST",
+     "BETTY",
+     "PEACE"
+    ]
+   },
+   {
+    "name": "Songs from Evermore",
+    "color": 4,
+    "words": [
+     "WILLOW",
+     "CHAMPAGNE PROBLEMS",
+     "MARJORIE",
+     "COWBOY LIKE ME"
     ]
    }
   ]
