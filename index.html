@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taynections</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F9DF6D;
+    --green: #A0C35A;
+    --blue: #B0C4EF;
+    --purple: #BA81C5;
+    --bg: #FFFFFF;
+    --text: #1A1A1B;
+    --tile-bg: #EFEDE8;
+    --tile-hover: #E2DFD8;
+    --tile-selected: #5A594E;
+    --tile-selected-text: #FFFFFF;
+    --border: #D3D3D3;
+    --mistake-dot: #5A594E;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    background: #fff;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #1A1A1B;
+    text-shadow: none;
+  }
+
+  .logo .tay {
+    color: #1A1A1B;
+  }
+
+  .logo .nections {
+    color: #fff;
+    background: #9B59B6;
+    padding: 0 6px 2px 5px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .game-num {
+    position: absolute;
+    right: 16px;
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
+  }
+
+  .subtitle {
+    text-align: center;
+    padding: 10px 16px 4px;
+    font-size: 14px;
+    color: #555;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .instructions {
+    text-align: center;
+    font-size: 15px;
+    color: var(--text);
+    padding: 8px 16px 12px;
+    font-weight: 500;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .main {
+    width: 100%;
+    max-width: 600px;
+    padding: 0 16px 16px;
+    flex: 1;
+  }
+
+  /* Solved categories */
+  .solved-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .solved-cat {
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .solved-cat .cat-name {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .solved-cat .cat-words {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tile {
+    background: var(--tile-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 8px 4px;
+    min-height: 72px;
+    transition: background 0.1s, transform 0.1s;
+    user-select: none;
+    -webkit-user-select: none;
+    line-height: 1.2;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .tile:hover {
+    background: var(--tile-hover);
+  }
+
+  .tile.selected {
+    background: var(--tile-selected);
+    color: var(--tile-selected-text);
+  }
+
+  .tile.shake {
+    animation: shake 0.5s;
+  }
+
+  .tile.bounce {
+    animation: bounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .mistakes-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--mistake-dot);
+    display: inline-block;
+    transition: opacity 0.3s;
+  }
+
+  .dot.used {
+    opacity: 0.2;
+  }
+
+  .btn {
+    border: 1.5px solid var(--text);
+    background: transparent;
+    color: var(--text);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .btn:hover {
+    background: var(--text);
+    color: #fff;
+  }
+
+  .btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .btn.submit {
+    background: var(--text);
+    color: #fff;
+  }
+
+  .btn.submit:hover {
+    background: #333;
+  }
+
+  .btn.submit:disabled {
+    background: var(--text);
+    opacity: 0.35;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: var(--text);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 100;
+    white-space: nowrap;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .modal .emoji {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  .modal p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .modal .result-cats {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .result-cat {
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .result-cat .rcat-name {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-size: 12px;
+  }
+
+  .result-cat .rcat-words {
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .modal-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  /* Nav arrows */
+  .game-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    justify-content: center;
+    font-size: 14px;
+    color: #555;
+    max-width: 600px;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+
+  .nav-btn {
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    transition: background 0.1s;
+  }
+
+  .nav-btn:hover { background: var(--tile-bg); }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* Animations */
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(4px); }
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes bounceIn {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.12); }
+    60% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes rowReveal {
+    from { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+
+  .difficulty-bar {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding: 4px 0 10px;
+  }
+
+  .diff-pip {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 12px;
+    color: #aaa;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    max-width: 600px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span class="tay">Tay</span><span class="nections">nections</span></div>
+  <div class="game-num" id="gameNumLabel">Game 1/100</div>
+</header>
+
+<div class="game-nav">
+  <button class="nav-btn" id="prevBtn">&#8592;</button>
+  <span id="navLabel" style="font-weight:600;">Game 1</span>
+  <button class="nav-btn" id="nextBtn">&#8594;</button>
+</div>
+
+<div class="subtitle">A Taylor Swift Fan's Connections Game</div>
+<div class="instructions">Create four groups of four!</div>
+
+<div class="main">
+  <div class="solved-categories" id="solvedCats"></div>
+  <div class="grid" id="grid"></div>
+  <div class="mistakes-row">
+    <span>Mistakes remaining:</span>
+    <span id="dots"></span>
+  </div>
+  <div class="controls">
+    <button class="btn" id="shuffleBtn">Shuffle</button>
+    <button class="btn" id="deselectBtn">Deselect All</button>
+    <button class="btn submit" id="submitBtn" disabled>Submit</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="emoji" id="modalEmoji">🎉</div>
+    <h2 id="modalTitle">You Did It!</h2>
+    <p id="modalMsg"></p>
+    <div class="result-cats" id="modalCats"></div>
+    <div class="modal-btns">
+      <button class="btn" id="modalClose">Close</button>
+      <button class="btn submit" id="modalNext">Next Game →</button>
+    </div>
+  </div>
+</div>
+
+<footer>Taynections — 100 Games of Taylor Swift Trivia</footer>
+
+<script>
+// =====================================================================
+// GAME DATA — 100 games, each with 4 categories of 4 words/phrases
+// Categories use Taylor Swift song titles, album names, characters,
+// tour names, themes, collaborators, music video locations, instruments,
+// production names, awards, nicknames, etc. — NOT song lyrics.
+// Difficulty: 1=yellow(easiest), 2=green, 3=blue, 4=purple(hardest)
+// =====================================================================
+const GAMES = [
+  // Game 1
+  {
+    cats: [
+      { name: "Taylor Swift Albums", color: 1, words: ["FEARLESS","SPEAK NOW","RED","1989"] },
+      { name: "Songs Named After People", color: 2, words: ["AUGUST","BETTY","DOROTHEA","MARJORIE"] },
+      { name: "Taylor's Cats", color: 3, words: ["MEREDITH","OLIVIA","BENJAMIN","DIXI"] },
+      { name: "Eras Tour Cities (2023)", color: 4, words: ["GLENDALE","LAS VEGAS","ATLANTA","NASHVILLE"] }
+    ]
+  },
+  // Game 2
+  {
+    cats: [
+      { name: "Taylor Swift Era Names", color: 1, words: ["LOVER","FOLKLORE","EVERMORE","MIDNIGHTS"] },
+      { name: "Things Taylor Has Won", color: 2, words: ["GRAMMY","VMA","BRIT","AMA"] },
+      { name: "Taylor's BFFs (Reported)", color: 3, words: ["SELENA","BLAKE","GIGI","LENA"] },
+      { name: "\"___ Taylor's Version\"", color: 4, words: ["FEARLESS","RED","SPEAK NOW","1989"] }
+    ]
+  },
+  // Game 3
+  {
+    cats: [
+      { name: "Taylor Swift Song Colors", color: 1, words: ["RED","GOLD","BLUE","WHITE"] },
+      { name: "Instruments Taylor Plays", color: 2, words: ["GUITAR","PIANO","BANJO","UKULELE"] },
+      { name: "Songs About Heartbreak", color: 3, words: ["FOREVER","TEARDROPS","COLD","TREACHEROUS"] },
+      { name: "Songs with Numbers in Title", color: 4, words: ["22","15","7","1989"] }
+    ]
+  },
+  // Game 4
+  {
+    cats: [
+      { name: "Taylor Swift Producers", color: 1, words: ["AARON","JACK","MAX","RICK"] },
+      { name: "Taylor's Movie Appearances", color: 2, words: ["VALENTINE","AMSTERDAM","LORAX","CATS"] },
+      { name: "Taylor Swift Tour Names", color: 3, words: ["FEARLESS","SPEAK NOW","RED","1989"] },
+      { name: "Taylor Songs on Glee", color: 4, words: ["MINE","YOU BELONG","BACK","JOURNEY"] }
+    ]
+  },
+  // Game 5
+  {
+    cats: [
+      { name: "Words in 'Shake It Off'", color: 1, words: ["SHAKE","HATERS","PLAYERS","BREAKERS"] },
+      { name: "Taylor Swift Boyfriends (Rumored/Confirmed)", color: 2, words: ["JAKE","HARRY","TRAVIS","JOE"] },
+      { name: "Taylor Songs Featuring Other Artists", color: 3, words: ["HIGHWAY","BOTH","SNOWFALL","EXILE"] },
+      { name: "Midnights Song Titles", color: 4, words: ["LAVENDER","BEJEWELED","KARMA","ANTI-HERO"] }
+    ]
+  },
+  // Game 6
+  {
+    cats: [
+      { name: "Taylor Swift Hometown References", color: 1, words: ["READING","HENDERSONVILLE","NASHVILLE","PENNSYLVANIA"] },
+      { name: "Taylor's Red Album Themes", color: 2, words: ["AUTUMN","SCARVES","DRIVING","BREAKUP"] },
+      { name: "Folklore Characters", color: 3, words: ["JAMES","AUGUST","REBEKAH","BETTY"] },
+      { name: "Songs with Weather", color: 4, words: ["RAIN","SNOW","STORM","LIGHTNING"] }
+    ]
+  },
+  // Game 7
+  {
+    cats: [
+      { name: "Taylor Swift Album Colors (Official)", color: 1, words: ["GOLD","RED","PASTEL","PURPLE"] },
+      { name: "Songs with 'Love' in Title", color: 2, words: ["LOVER","LOVE STORY","FEARLESS","ENCHANTED"] },
+      { name: "Taylor's Songwriting Partners", color: 3, words: ["ANTONOFF","DESSNER","SHELLBACK","MARTIN"] },
+      { name: "Eras Tour Setlist 'Surprise Songs' (Piano)", color: 4, words: ["CHANGE","CRAZIER","UNTOUCHABLE","SUPERSTAR"] }
+    ]
+  },
+  // Game 8
+  {
+    cats: [
+      { name: "Taylor Swift Debut Album Songs", color: 1, words: ["TIM MCGRAW","TEARDROPS","PICTURE","OUR SONG"] },
+      { name: "Songs About New York", color: 2, words: ["WELCOME","CORNELIA","NEW ROMANTICS","CLEAN"] },
+      { name: "Taylor's Signature Items", color: 3, words: ["RED LIP","BANGS","SPARKLES","CATS-EYE"] },
+      { name: "Taylor Alter Egos", color: 4, words: ["NILS","WILLIAM","VICTORIA","AUDREY"] }
+    ]
+  },
+  // Game 9
+  {
+    cats: [
+      { name: "1989 Album Songs", color: 1, words: ["BLANK SPACE","STYLE","WILDEST","SHAKE"] },
+      { name: "Evermore Album Songs", color: 2, words: ["WILLOW","CHAMPAGNE","COWBOY","TOLERATE"] },
+      { name: "Songs with Places in Title", color: 3, words: ["CORNELIA","LONDON","TREACHEROUS","STARLIGHT"] },
+      { name: "Taylor Songs That Went #1", color: 4, words: ["ANTI-HERO","SHAKE IT OFF","BLANK SPACE","LOVE STORY"] }
+    ]
+  },
+  // Game 10
+  {
+    cats: [
+      { name: "Taylor Swift Easter Eggs (Colors)", color: 1, words: ["LAVENDER","TEAL","PURPLE","RED"] },
+      { name: "Speak Now Album Songs", color: 2, words: ["ENCHANTED","HAUNTED","LONG LIVE","MEAN"] },
+      { name: "Taylor's Famous Friendships", color: 3, words: ["HAIM","MEREDITH","GRACIE","ICE SPICE"] },
+      { name: "Surprise Song Moments", color: 4, words: ["DEBUT","MASHUP","VAULT","ACOUSTIC"] }
+    ]
+  },
+  // Game 11
+  {
+    cats: [
+      { name: "Taylor Swift Song Openers", color: 1, words: ["MISS AMERICANA","THE ARCHER","CRUEL SUMMER","DEATH BY"] },
+      { name: "Songs with Girl Names", color: 2, words: ["BETTY","DOROTHEA","CAROLINA","MARJORIE"] },
+      { name: "Taylor's Label Names", color: 3, words: ["BIG MACHINE","REPUBLIC","TAYLOR NATION","ATLAS"] },
+      { name: "\"All Too ___\"", color: 4, words: ["WELL","MUCH","FAST","SOON"] }
+    ]
+  },
+  // Game 12
+  {
+    cats: [
+      { name: "Things in Taylor's Music Videos", color: 1, words: ["MANSION","GARDEN","OCEAN","LIBRARY"] },
+      { name: "Taylor Song Lengths Over 10 min", color: 2, words: ["ALL TOO WELL","MIRRORBALL","AUGUST","TOLERATE"] },
+      { name: "Red TV Vault Songs", color: 3, words: ["BETTER MAN","THE VERY FIRST","MESSAGE","BABE"] },
+      { name: "Taylor Swift Grammy Categories Won", color: 4, words: ["ALBUM","SONG","RECORD","SPOKEN"] }
+    ]
+  },
+  // Game 13
+  {
+    cats: [
+      { name: "Lover Album Songs", color: 1, words: ["CRUEL SUMMER","LONDON BOY","CORNELIA","THE MAN"] },
+      { name: "Taylor's Favorite Numbers", color: 2, words: ["13","22","1989","89"] },
+      { name: "Songs with Nature", color: 3, words: ["WILLOW","IVY","CARDIGAN","SEVEN"] },
+      { name: "Taylor Collab Artists", color: 4, words: ["BON IVER","SHEERAN","LANA","HAYLEY"] }
+    ]
+  },
+  // Game 14
+  {
+    cats: [
+      { name: "Taylor Swift Music Video Directors", color: 1, words: ["JOSEPH","GRANT","KYLE","CLAIRE"] },
+      { name: "Words in 'Anti-Hero'", color: 2, words: ["NIGHTMARE","MIDNIGHT","MONSTER","CROWD"] },
+      { name: "Taylor's Charity Initiatives", color: 3, words: ["FOOD BANKS","EDUCATION","DISASTER","VOTING"] },
+      { name: "Cities with Taylor Named Things", color: 4, words: ["SWIFT CITY","TAYLOR ST","SWIFT PARK","SWIFTIE LANE"] }
+    ]
+  },
+  // Game 15
+  {
+    cats: [
+      { name: "Fearless Album Songs", color: 1, words: ["YOU BELONG","FIFTEEN","LOVE STORY","WHITE HORSE"] },
+      { name: "Taylor's Stage Outfits (Eras Tour)", color: 2, words: ["SEQUINED","CARDIGAN","CAPE","BODYSUIT"] },
+      { name: "Taylor x Brand Collabs", color: 3, words: ["KEDS","COVERGIRL","DIET COKE","CAPITAL ONE"] },
+      { name: "Debut Album Bonus Songs", color: 4, words: ["I HEART","A PERFECTLY","INVISIBLE","I'M ONLY"] }
+    ]
+  },
+  // Game 16
+  {
+    cats: [
+      { name: "Taylor Swift Song Bridges (Topic)", color: 1, words: ["REGRET","REVENGE","FORGIVENESS","LIBERATION"] },
+      { name: "Songs About Jake Gyllenhaal (Alleged)", color: 2, words: ["ALL TOO WELL","COLD AS YOU","LAST KISS","TREACHEROUS"] },
+      { name: "Taylor's Instruments in Videos", color: 3, words: ["ACOUSTIC","ELECTRIC","KEYS","HARP"] },
+      { name: "Midnight Rain ___", color: 4, words: ["POUR","FALL","DROPS","SOAKS"] }
+    ]
+  },
+  // Game 17
+  {
+    cats: [
+      { name: "Midnights 3am Bonus Songs", color: 1, words: ["HITS DIFFERENT","YOU'RE LOSING ME","KARMA FEAT","SWEET NOTHING"] },
+      { name: "Taylor Songs with 'Night'", color: 2, words: ["MIDNIGHTS","TREACHEROUS","STARLIGHT","MIDNIGHT"] },
+      { name: "Eras Tour Opening Acts", color: 3, words: ["GRACIE","HAIM","PHOEBE","BEABADOOBEE"] },
+      { name: "Taylor Swift Movie Soundtracks", color: 4, words: ["VALENTINES","TODAY WAS","BOTH","SAFE"] }
+    ]
+  },
+  // Game 18
+  {
+    cats: [
+      { name: "Songs with 'You' in Title", color: 1, words: ["YOU BELONG","LOVER","STYLE","KARMA"] },
+      { name: "Taylor's Childhood Memories Songs", color: 2, words: ["SEVEN","MARJORIE","THE BEST DAY","DOROTHEA"] },
+      { name: "Eras Tour Countries", color: 3, words: ["AUSTRALIA","JAPAN","SINGAPORE","ARGENTINA"] },
+      { name: "Taylor Swift Word Associations", color: 4, words: ["CATS","GLITTER","SEQUINS","EASTER EGGS"] }
+    ]
+  },
+  // Game 19
+  {
+    cats: [
+      { name: "Things 'Swifties' Call Themselves", color: 1, words: ["SWIFTIES","FEARLESS","ENCHANTED","LOVER"] },
+      { name: "Taylor's Tour Merchandise Items", color: 2, words: ["BRACELET","CARDIGAN","POSTER","SCARF"] },
+      { name: "Songs with Food References", color: 3, words: ["TACO BELL","COKE","CHEESECAKE","COFFEE"] },
+      { name: "Taylor's Re-Recording Titles (TV)", color: 4, words: ["FEARLESS TV","SPEAK NOW TV","RED TV","1989 TV"] }
+    ]
+  },
+  // Game 20
+  {
+    cats: [
+      { name: "Taylor Swift's Pseudonyms", color: 1, words: ["NILS","WILLIAM","VICTORIA","ALISON"] },
+      { name: "Songs About Being Misunderstood", color: 2, words: ["THE MAN","MEAN","INNOCENT","CHANGE"] },
+      { name: "Taylor Breakup Songs", color: 3, words: ["WE ARE NEVER","LAST KISS","COLD AS YOU","DEAR JOHN"] },
+      { name: "Folklore Instrument Features", color: 4, words: ["BANJO","CELLO","VIBRAPHONE","DOBRO"] }
+    ]
+  },
+  // Game 21
+  {
+    cats: [
+      { name: "Words in 'Love Story'", color: 1, words: ["ROMEO","JULIET","SCARLET","BALCONY"] },
+      { name: "Taylor's Award Show Speeches Topics", color: 2, words: ["FANS","FAMILY","TEAM","CATS"] },
+      { name: "Eras Tour Eras Order", color: 3, words: ["DEBUT","FEARLESS","RED","SPEAK NOW"] },
+      { name: "Taylor-Adjacent Podcast Names", color: 4, words: ["SWIFTLY","TORTURED","ENCHANTED","FEARLESS"] }
+    ]
+  },
+  // Game 22
+  {
+    cats: [
+      { name: "Taylor Swift Super Bowl Appearances", color: 1, words: ["LVIII","SUITE","KELCE","TRAVIS"] },
+      { name: "Taylor Songs for Running Playlists", color: 2, words: ["SHAKE","RUN","ENDGAME","READY"] },
+      { name: "Actress Friends of Taylor", color: 3, words: ["BLAKE","ZOEY","SARAH","EMMA"] },
+      { name: "Midnights Song Themes", color: 4, words: ["INSOMNIA","LAVENDER","ANTI-HERO","BEJEWELED"] }
+    ]
+  },
+  // Game 23
+  {
+    cats: [
+      { name: "Taylor's Siblings and Family", color: 1, words: ["AUSTIN","SCOTT","ANDREA","MARJORIE"] },
+      { name: "Speak Now Bonus Songs", color: 2, words: ["SUPERMAN","ELECTRIC TOUCH","TIMELESS","SAY DON'T"] },
+      { name: "Taylor's Signature Makeup Look", color: 3, words: ["RED LIP","WINGED","BLUSH","SHIMMER"] },
+      { name: "Taylor TV Show Cameos", color: 4, words: ["MEREDITH","CRIMINAL","L&O","NYC 22"] }
+    ]
+  },
+  // Game 24
+  {
+    cats: [
+      { name: "Songs with 'Heart'", color: 1, words: ["HEARTBREAK","HALF","TREACHEROUS","SPARKS"] },
+      { name: "Taylor's Publishing Company Names", color: 2, words: ["ATLAS","TAYLOR NATION","SUPER SONIC","TAS RIGHTS"] },
+      { name: "Folklore Track Listing (First 5)", color: 3, words: ["THE 1","CARDIGAN","THE LAST GREAT","EXILE","MY TEARS"] },
+      { name: "Songs Co-Written with Jack Antonoff", color: 4, words: ["GETAWAY CAR","CORNELIA","LOVER","DEATH BY"] }
+    ]
+  },
+  // Game 25
+  {
+    cats: [
+      { name: "Taylor's Old Country Songs", color: 1, words: ["TIM MCGRAW","OUR SONG","PICTURE TO BURN","TEARDROPS"] },
+      { name: "Songs with 'Star'", color: 2, words: ["STARLIGHT","STARGAZING","COLD STAR","STAR WARS"] },
+      { name: "TTPD Album Songs", color: 3, words: ["FORTNIGHT","SMALLEST MAN","FLORIDA","GUILTY AS SIN"] },
+      { name: "Taylor Swift Box Office Earnings", color: 4, words: ["261M","179M","100M","96M"] }
+    ]
+  },
+  // Game 26
+  {
+    cats: [
+      { name: "Taylor's Notable Music Video Locations", color: 1, words: ["PARIS","CORNELIA","LONDON","MALIBU"] },
+      { name: "Songs with Seasons", color: 2, words: ["SUMMER","FALL","AUTUMN","WINTER"] },
+      { name: "Taylor Song Structures", color: 3, words: ["VERSE","BRIDGE","CHORUS","OUTRO"] },
+      { name: "Eras Tour Setlist Eras (All)", color: 4, words: ["DEBUT","FEARLESS","SPEAK NOW","RED"] }
+    ]
+  },
+  // Game 27
+  {
+    cats: [
+      { name: "Taylor's Most-Streamed Songs", color: 1, words: ["ANTI-HERO","BLANK SPACE","SHAKE","STYLE"] },
+      { name: "Songs with 'Dream'", color: 2, words: ["DAYLIGHT","GIRL AT HOME","ENCHANTED","TREACHEROUS"] },
+      { name: "Taylor's Concert Film Titles", color: 3, words: ["ERAS TOUR","THE REPUTATION","CITY OF LOVER","FOLKLORE"] },
+      { name: "TTPD Bonus Songs", color: 4, words: ["THE MANUSCRIPT","CLARA BOW","THE PROPHECY","ROBIN"] }
+    ]
+  },
+  // Game 28
+  {
+    cats: [
+      { name: "Taylor's Reputation Album Songs", color: 1, words: ["LOOK WHAT","GORGEOUS","GETAWAY CAR","DELICATE"] },
+      { name: "Words in 'Blank Space'", color: 2, words: ["STARBUCKS","DARLING","MAGIC","NIGHTMARE"] },
+      { name: "Taylor's Signature Dance Moves", color: 3, words: ["SHAKE","HAIR FLIP","POINT","STOMP"] },
+      { name: "Taylor Swift Record Labels", color: 4, words: ["BIG MACHINE","REPUBLIC","UNIVERSAL","ATLAS"] }
+    ]
+  },
+  // Game 29
+  {
+    cats: [
+      { name: "Taylor's Childhood TV Shows", color: 1, words: ["LIZZIE","HANNAH","AMERICAN DREAMS","FAMILY GUY"] },
+      { name: "Songs About Moving On", color: 2, words: ["CLEAN","22","SHAKE","BEGIN AGAIN"] },
+      { name: "Taylor's Spoken Word Moments", color: 3, words: ["LONG STORY","I KNEW","BETTER MAN","MIDNIGHTS"] },
+      { name: "Evermore Track Listing", color: 4, words: ["WILLOW","CHAMPAGNE PROBLEMS","GOLD RUSH","'TIS THE"] }
+    ]
+  },
+  // Game 30
+  {
+    cats: [
+      { name: "Taylor Songs for Weddings", color: 1, words: ["MARRY ME","FEARLESS","LOVE STORY","ENCHANTED"] },
+      { name: "Taylor's Red Era Visual Symbols", color: 2, words: ["SCARF","AUTUMN","FIRE","POLAROID"] },
+      { name: "Taylor's Backup Dancers (Eras Tour)", color: 3, words: ["SAM","NICK","DARIUS","TRINITY"] },
+      { name: "Songs Inspired by Books", color: 4, words: ["SEVEN","DOROTHEA","AUGUST","BETTY"] }
+    ]
+  },
+  // Game 31
+  {
+    cats: [
+      { name: "1989 TV Vault Songs", color: 1, words: ["SLUT!","SAY DON'T GO","NOW THAT WE DON'T","SUBURBAN"] },
+      { name: "Songs with 'You and Me'", color: 2, words: ["TREACHEROUS","OURS","BREATHE","YOU ARE IN LOVE"] },
+      { name: "Taylor's Concert Traditions", color: 3, words: ["SURPRISE SONGS","MEREDITH CAM","FRIENDSHIP BRACELETS","SETLIST"] },
+      { name: "Things That Are 13", color: 4, words: ["TAYLOR'S FAVORITE","ALBUMS SOLD","AMA WINS","GRAMMY COUNT"] }
+    ]
+  },
+  // Game 32
+  {
+    cats: [
+      { name: "Taylor's Animals", color: 1, words: ["CAT","HORSE","RABBIT","SNAKE"] },
+      { name: "Speak Now Album Themes", color: 2, words: ["FAIRYTALE","WEDDING","CASTLE","PRINCE"] },
+      { name: "Taylor Songs with 'Time'", color: 3, words: ["LONG LIVE","TIMELESS","TREACHEROUS","THE VERY FIRST"] },
+      { name: "Songs Joe Alwyn Co-Wrote", color: 4, words: ["SWEET NOTHING","BETTY","PEACE","CORNELIA"] }
+    ]
+  },
+  // Game 33
+  {
+    cats: [
+      { name: "Taylor Swift Quotes About Songwriting", color: 1, words: ["DIARY","CONFESSIONAL","CATHARTIC","STORYTELLING"] },
+      { name: "Songs with 'Cry'", color: 2, words: ["CLEAN","ALL TOO WELL","COLD","FIFTEEN"] },
+      { name: "Folklore Collaborators", color: 3, words: ["BON IVER","AARON DESSNER","JACK ANTONOFF","JUSTIN VERNON"] },
+      { name: "Songs Named After Months", color: 4, words: ["AUGUST","DECEMBER","SEPTEMBER","OCTOBER"] }
+    ]
+  },
+  // Game 34
+  {
+    cats: [
+      { name: "Taylor's Apartment Numbers", color: 1, words: ["13","7","1989","22"] },
+      { name: "Things Taylor Has Said on Stage", color: 2, words: ["THIS NEXT SONG","I LOVE YOU GUYS","WHERE MY CATS","SURPRISE SONG"] },
+      { name: "Songs with Body Parts", color: 3, words: ["HANDS","EYES","HEART","LIPS"] },
+      { name: "Taylor Swift Discography Order", color: 4, words: ["DEBUT","FEARLESS","SPEAK NOW","RED"] }
+    ]
+  },
+  // Game 35
+  {
+    cats: [
+      { name: "Taylor's Nashville Haunts", color: 1, words: ["THE BLUEBIRD","DOUGLAS","GULCH","GERMANTOWN"] },
+      { name: "Songs with Thunder or Lightning", color: 2, words: ["LIGHTNING","HAUNTED","HOLY GROUND","THE LAST"] }  ,
+      { name: "Taylor's Grammy Album of the Year Wins", color: 3, words: ["FEARLESS","1989","FOLKLORE","MIDNIGHTS"] },
+      { name: "Surprise Duets on Eras Tour", color: 4, words: ["SABRINA","GRACIE","NIALL","MAREN"] }
+    ]
+  },
+  // Game 36
+  {
+    cats: [
+      { name: "Taylor Swift Charity Organizations", color: 1, words: ["SCHOLARS","FOOD BANK","TORNADO","LGBTQ"] },
+      { name: "Songs with 'Back'", color: 2, words: ["BACK DECEMBER","BACK TO ME","NEVER GOING","SETBACK"] },
+      { name: "Taylor Songs in Movies", color: 3, words: ["TODAY WAS","BOTH","OURS","SAFE"] },
+      { name: "Things in 'Bejeweled'", color: 4, words: ["DIAMOND","GLOW","SPARKLING","SHINE"] }
+    ]
+  },
+  // Game 37
+  {
+    cats: [
+      { name: "Taylor's Horse Names", color: 1, words: ["BUCKLES","GINGER","TAFFY","SUNDANCE"] },
+      { name: "Songs with Colors in Title", color: 2, words: ["RED","GOLD RUSH","LAVENDER","BLUE"] },
+      { name: "Midnights Album Track Order", color: 3, words: ["LAVENDER HAZE","MAROON","ANTI-HERO","SNOW"] },
+      { name: "Taylor's Famous Hairstyles", color: 4, words: ["BANGS","BRAIDS","BOB","CURLS"] }
+    ]
+  },
+  // Game 38
+  {
+    cats: [
+      { name: "Taylor Songs with 'Forever'", color: 1, words: ["TREACHEROUS","LONG LIVE","FOREVER WINTER","YOU ARE"] },
+      { name: "Taylor's Fan Meet Names", color: 2, words: ["SECRET SESSIONS","TAYLOR NATION","SWIFTIE","LOVER FEST"] },
+      { name: "Taylor Songs with Romeo & Juliet Refs", color: 3, words: ["LOVE STORY","LAST KISS","TREACHEROUS","ENCHANTED"] },
+      { name: "Things Taylor Collects", color: 4, words: ["VINTAGE","ANTIQUES","POLAROIDS","CATS"] }
+    ]
+  },
+  // Game 39
+  {
+    cats: [
+      { name: "Taylor's Studio Albums (ALL)", color: 1, words: ["TAYLOR SWIFT","FEARLESS","SPEAK NOW","RED"] },
+      { name: "More Albums", color: 2, words: ["1989","REPUTATION","LOVER","FOLKLORE"] },
+      { name: "Even More Albums", color: 3, words: ["EVERMORE","MIDNIGHTS","TTPD","DEBUT"] },
+      { name: "Taylor Albums by Release Year", color: 4, words: ["2006","2008","2010","2012"] }
+    ]
+  },
+  // Game 40
+  {
+    cats: [
+      { name: "Taylor Songs with Water", color: 1, words: ["CLEAN","RAIN","FLOOD","DROWNING"] },
+      { name: "Taylor's Famous Speeches", color: 2, words: ["SQUAD","HATERS","SEXISM","KANYE"] },
+      { name: "Songs from TTPD", color: 3, words: ["FORTNIGHT","THE TORTURED","FLORIDA!!!","LOML"] },
+      { name: "Taylor's Setlist Closer Songs", color: 4, words: ["KARMA","LONG LIVE","SHAKE IT OFF","ENCHANTED"] }
+    ]
+  },
+  // Game 41
+  {
+    cats: [
+      { name: "Taylor's Pen Names", color: 1, words: ["NILS SJOBERG","WILLIAM BOWERY","VICTORIA SWIFT","ALISON SWIFT"] },
+      { name: "Songs About Fame", color: 2, words: ["THE MAN","STARLIGHT","LONG LIVE","CHANGE"] },
+      { name: "Taylor x Katy Perry Era", color: 3, words: ["DRAMA","PEACE","CATS","HISTORY"] },
+      { name: "Reputation Era Symbols", color: 4, words: ["SNAKE","BLACK","SQUAD","STADIUM"] }
+    ]
+  },
+  // Game 42
+  {
+    cats: [
+      { name: "Songs Taylor Performed at the Grammys", color: 1, words: ["ALL TOO WELL","FEARLESS","FOLKLORE","CARDIGAN"] },
+      { name: "Taylor's Eras Tour Film Stats", color: 2, words: ["$260M","IMAX","6 HOURS","CONCERT FILM"] },
+      { name: "Songs with 'Old'", color: 3, words: ["OLD TAYLOR","THE OLD ME","DEATH BY","LONG STORY"] },
+      { name: "Taylor's Best-Reviewed Albums", color: 4, words: ["FOLKLORE","1989","EVERMORE","MIDNIGHTS"] }
+    ]
+  },
+  // Game 43
+  {
+    cats: [
+      { name: "Songs That Sample Other Songs", color: 1, words: ["SHAKE","KARMA","GETAWAY","BLANK"] },
+      { name: "Taylor's Rumored Inspirations", color: 2, words: ["JAKE","HARRY","JOHN","JOE"] },
+      { name: "Songs with 'Fall'", color: 3, words: ["TREACHEROUS","HAUNTED","SAFE","CARDIGAN"] },
+      { name: "TTPD Themes", color: 4, words: ["GRIEF","POETRY","PROSE","TRAGEDY"] }
+    ]
+  },
+  // Game 44
+  {
+    cats: [
+      { name: "Taylor's Favorite Books", color: 1, words: ["ANNE","LITTLE WOMEN","RING","NARNIA"] },
+      { name: "Taylor Songs with Mythology", color: 2, words: ["ENCHANTED","SEVEN","WILLOW","DOROTHEA"] },
+      { name: "Evermore Song Types", color: 3, words: ["ACOUSTIC","DUET","FOLK","CHRISTMAS"] },
+      { name: "Songs Taylor Played at Age 14", color: 4, words: ["TIM MCGRAW","COLD AS YOU","STAY","OUR SONG"] }
+    ]
+  },
+  // Game 45
+  {
+    cats: [
+      { name: "Taylor Swift Net Worth Era", color: 1, words: ["MILLION","BILLION","TOUR","STREAMS"] },
+      { name: "Songs with 'Miss'", color: 2, words: ["MISS AMERICANA","MISS PERFECT","MISS","MISSING"] },
+      { name: "Taylor's Tour Production Elements", color: 3, words: ["PYRO","HYDRAULIC","CONFETTI","SCREEN"] },
+      { name: "Things Named After Taylor Swift", color: 4, words: ["SPIDER","PLANET","STREET","STADIUM"] }
+    ]
+  },
+  // Game 46
+  {
+    cats: [
+      { name: "Taylor Songs with 'Picture'", color: 1, words: ["PICTURE TO BURN","POLAROID","PICTURE BOOK","PHOTO"] },
+      { name: "Taylor's BFF Circle Members", color: 2, words: ["SELENA","BLAKE","GIGI","CARA"] },
+      { name: "Songs from Lover Album", color: 3, words: ["CRUEL SUMMER","THE MAN","LOVER","CORNELIA"] },
+      { name: "Taylor's Eras Tour Special Guests", color: 4, words: ["SABRINA","EDEN","GRACIE","ICE SPICE"] }
+    ]
+  },
+  // Game 47
+  {
+    cats: [
+      { name: "Taylor's Favorite Foods", color: 1, words: ["CHAI","CHEESECAKE","CINNAMON","COOKIES"] },
+      { name: "Songs with 'Midnight'", color: 2, words: ["MIDNIGHTS","MIDNIGHT RAIN","LONG STORY SHORT","WONDERLAND"] },
+      { name: "Taylor's Debut Album Features", color: 3, words: ["TIM MCGRAW","TEARDROPS","OUR SONG","SHOULD'VE"] },
+      { name: "Songs About Growing Up", color: 4, words: ["FIFTEEN","SEVEN","THE BEST DAY","NEVER GROW UP"] }
+    ]
+  },
+  // Game 48
+  {
+    cats: [
+      { name: "Midnights Maroon Things", color: 1, words: ["WINE","LIPSTICK","DRESS","STAIN"] },
+      { name: "Taylor's Most Viral Moments", color: 2, words: ["VMA 2009","SNAKE GATE","ERAS FILM","TRAVIS"] },
+      { name: "Songs with 'Long'", color: 3, words: ["LONG LIVE","LONG STORY","LONG WAY","LONG GONE"] },
+      { name: "Taylor's Music Video Wardrobes (Eras)", color: 4, words: ["SEQUIN","VINTAGE","SPARKLE","GOWN"] }
+    ]
+  },
+  // Game 49
+  {
+    cats: [
+      { name: "Taylor's Concert Ticket Prices (General)", color: 1, words: ["$49","$99","$449","$5000"] },
+      { name: "Songs with 'Run'", color: 2, words: ["RUN","RAN","RUNNING","OUTRUN"] },
+      { name: "Evermore Bonus Songs", color: 3, words: ["RIGHT WHERE YOU LEFT","IT'S TIME TO GO","HAPPINESS","COWBOY LIKE ME"] },
+      { name: "Taylor Words: Fearless Era", color: 4, words: ["PRINCE","FAIRYTALE","BUTTERFLIES","SPARKLES"] }
+    ]
+  },
+  // Game 50
+  {
+    cats: [
+      { name: "Taylor's Record-Breaking Achievements", color: 1, words: ["FIRST FEMALE","MOST GRAMMYS","BILLION STREAMS","LARGEST TOUR"] },
+      { name: "Songs with 'Good'", color: 2, words: ["GOLD RUSH","GOOD GIRL","SO GOOD","CLEAN"] },
+      { name: "Taylor's Famous Cats (Full Names)", color: 3, words: ["MEREDITH GREY","OLIVIA BENSON","BENJAMIN BUTTON","DIXIE"] },
+      { name: "TTPD Double Album Tracks (Second Half)", color: 4, words: ["THE MANUSCRIPT","ROBIN","IMGONNAGETYOUBACK","ANDROMEDA"] }
+    ]
+  },
+  // Game 51
+  {
+    cats: [
+      { name: "Taylor Swift Songs with 'Gold'", color: 1, words: ["GOLD RUSH","GOLDEN","FOOL'S GOLD","SOLID GOLD"] },
+      { name: "Taylor's Opening Night Eras Tour Songs", color: 2, words: ["MISS AMERICANA","CRUEL SUMMER","THE ARCHER","FEARLESS"] },
+      { name: "Things in Lavender Haze", color: 3, words: ["LAVENDER","HAZE","DREAM","COLOR"] },
+      { name: "Taylor Songs About Small Towns", color: 4, words: ["TIM MCGRAW","OUR SONG","DOROTHEA","SEVEN"] }
+    ]
+  },
+  // Game 52
+  {
+    cats: [
+      { name: "Taylor's Signature Perfumes", color: 1, words: ["WONDERSTRUCK","INCREDIBLE THINGS","ENCHANTED","LOVER"] },
+      { name: "Songs with 'Dance'", color: 2, words: ["DANCING WITH","THE DANCE","DANCE TO","SLOW DANCE"] },
+      { name: "Taylor's Folklore Cottagecore Items", color: 3, words: ["CARDIGAN","COTTAGE","GARDEN","WILDFLOWER"] },
+      { name: "Taylor Songs Covered Most", color: 4, words: ["LOVE STORY","BLANK SPACE","SHAKE","ALL TOO WELL"] }
+    ]
+  },
+  // Game 53
+  {
+    cats: [
+      { name: "Taylor's Eras in Order (Second Half)", color: 1, words: ["1989","REPUTATION","LOVER","FOLKLORE"] },
+      { name: "Songs with 'Free'", color: 2, words: ["FREE","FREEDOM","FREE OF","FOREVER FREE"] },
+      { name: "Taylor and Joe Alwyn Songs", color: 3, words: ["EXILE","PEACE","SWEET NOTHING","INVISIBLE STRING"] },
+      { name: "Taylor's Number 1 Albums in UK", color: 4, words: ["RED","1989","REPUTATION","LOVER"] }
+    ]
+  },
+  // Game 54
+  {
+    cats: [
+      { name: "Taylor Songs with 'We'", color: 1, words: ["WE ARE NEVER","WE WERE HAPPY","WELCOME TO","WE FOUND"] },
+      { name: "Taylor's Stadium Tours", color: 2, words: ["1989","REPUTATION","LOVER FEST","ERAS"] },
+      { name: "Songs with Fairy Tale References", color: 3, words: ["LOVE STORY","WHITE HORSE","ENCHANTED","SPEAK NOW"] },
+      { name: "TTPD Track Titles (Shorter)", color: 4, words: ["FORTNIGHT","LOML","CASSANDRA","ROBIN"] }
+    ]
+  },
+  // Game 55
+  {
+    cats: [
+      { name: "Songs with Architecture", color: 1, words: ["CASTLE","PALACE","MANOR","COTTAGE"] },
+      { name: "Taylor x Aaron Dessner Songs", color: 2, words: ["CARDIGAN","AUGUST","EXILE","SEVEN"] },
+      { name: "Taylor's Most Played Live Songs", color: 3, words: ["LOVE STORY","SHAKE","LONG LIVE","ALL TOO WELL"] },
+      { name: "Things Taylor Does Backstage", color: 4, words: ["STRETCHING","VOCAL WARMUP","CAT TIME","FRIENDSHIP BRACELET"] }
+    ]
+  },
+  // Game 56
+  {
+    cats: [
+      { name: "Taylor Songs with Celestial Themes", color: 1, words: ["STARLIGHT","MOON","MIDNIGHT","CONSTELLATION"] },
+      { name: "Things on Friendship Bracelets", color: 2, words: ["ERAS","SWIFTIE","13","LOVER"] },
+      { name: "Speak Now TV Vault Songs", color: 3, words: ["ELECTRIC TOUCH","SUPERMAN","TIMELESS","SAY DON'T GO"] },
+      { name: "Taylor's Most Emotional Live Moments", color: 4, words: ["LONG LIVE","ALL TOO WELL","MARJORIE","THE BEST DAY"] }
+    ]
+  },
+  // Game 57
+  {
+    cats: [
+      { name: "Songs with 'Home'", color: 1, words: ["DOROTHEA","SAFE","BACK","COMING"] },
+      { name: "Taylor's Instagram Milestone Posts", color: 2, words: ["REPUTATION SNAKE","ERAS ANNOUNCEMENT","MIDNIGHTS CLOCK","TTPD POEM"] },
+      { name: "Taylor's Fans Called By Album", color: 3, words: ["FEARLESS FANS","LOVERS","FOLKLORIANS","MIDNIGHTERS"] },
+      { name: "Songs with Architecture (Specific)", color: 4, words: ["CORNELIA ST","LONDON BOY","KING OF MY HEART","GETAWAY CAR"] }
+    ]
+  },
+  // Game 58
+  {
+    cats: [
+      { name: "Taylor Songs with Regret", color: 1, words: ["BACK TO DECEMBER","DEAR JOHN","ALL TOO WELL","LAST KISS"] },
+      { name: "Things in 'Cardigan'", color: 2, words: ["VINTAGE","DRAWER","OCEAN","MOTH"] },
+      { name: "Taylor's Famous Feuds", color: 3, words: ["KANYE","KATY","SCOOTER","JAKE"] },
+      { name: "Songs About Empowerment", color: 4, words: ["THE MAN","CHANGE","MEAN","LONG LIVE"] }
+    ]
+  },
+  // Game 59
+  {
+    cats: [
+      { name: "Taylor Songs with 'Last'", color: 1, words: ["LAST KISS","LAST GREAT","LONG STORY SHORT","LAST TIME"] },
+      { name: "Eras Tour Act Names", color: 2, words: ["LOVER","RED","FOLKLORE","REPUTATION"] },
+      { name: "Taylor's Vintage Collection", color: 3, words: ["FURNITURE","DRESSES","TYPEWRITERS","BOOKS"] },
+      { name: "Taylor Words: Reputation Era", color: 4, words: ["SNAKE","DARKNESS","STADIUM","EMPIRE"] }
+    ]
+  },
+  // Game 60
+  {
+    cats: [
+      { name: "Midnights Track 5 Tradition", color: 1, words: ["TOLERATE IT","ALL TOO WELL","COLD AS YOU","YOU'RE ON YOUR OWN"] },
+      { name: "Taylor's Secret Sessions Locations", color: 2, words: ["NYC","LONDON","NASHVILLE","RHODE ISLAND"] },
+      { name: "Songs About New Beginnings", color: 3, words: ["BEGIN AGAIN","CLEAN","DAYLIGHT","22"] },
+      { name: "Eras Tour Longest Set Acts", color: 4, words: ["RED","FOLKLORE","MIDNIGHTS","1989"] }
+    ]
+  },
+  // Game 61
+  {
+    cats: [
+      { name: "Taylor's Vocal Range Signature Notes", color: 1, words: ["CHEST VOICE","FALSETTO","BELT","WHISTLE"] },
+      { name: "Songs with 'Glass'", color: 2, words: ["GLASS","MIRROR","REFLECT","SHATTER"] },
+      { name: "Taylor's Debut Music Video Locations", color: 3, words: ["SCHOOL","FOOTBALL FIELD","HALLWAY","FARM"] },
+      { name: "Things in 'You Belong With Me'", color: 4, words: ["BLEACHERS","JERSEY","WINDOW","PROM"] }
+    ]
+  },
+  // Game 62
+  {
+    cats: [
+      { name: "Taylor's Famous Number", color: 1, words: ["13","THIRTEEN","XIII","LUCKY"] },
+      { name: "Songs About Nostalgia", color: 2, words: ["SEVEN","DOROTHEA","THE BEST DAY","MARJORIE"] },
+      { name: "Taylor's Production Credits", color: 3, words: ["TAYLOR SWIFT","JACK ANTONOFF","AARON DESSNER","RICK RUBIN"] },
+      { name: "TTPD Longest Songs", color: 4, words: ["THE MANUSCRIPT","GUILTY AS SIN","THE ALBATROSS","LOML"] }
+    ]
+  },
+  // Game 63
+  {
+    cats: [
+      { name: "Things in 'Anti-Hero'", color: 1, words: ["NIGHTMARE","MONSTER","CROWD","MIRROR"] },
+      { name: "Taylor Songs with Water Imagery", color: 2, words: ["CLEAN","SEVEN","CARDIGAN","THE LAKES"] },
+      { name: "Taylor's Ivy Park Moment? (No - Beyoncé)", color: 3, words: ["HOMECOMING","COACHELLA","FORMATION","RENAISSANCE"] },
+      { name: "Songs Inspired by Literature", color: 4, words: ["DOROTHEA","BETTY","SEVEN","AUGUST"] }
+    ]
+  },
+  // Game 64
+  {
+    cats: [
+      { name: "Taylor's Grammy Wins (All Time)", color: 1, words: ["14","13","11","12"] },
+      { name: "Songs with 'Ring'", color: 2, words: ["RING","DIAMOND","FINGER","PROPOSAL"] },
+      { name: "Taylor's Holiday Traditions Songs", color: 3, words: ["CHRISTMAS TREE","SANTA","LAST CHRISTMAS","HOLIDAY"] },
+      { name: "Things Taylor Wears on Stage", color: 4, words: ["SEQUIN","BODYSUIT","CAPE","BOOTS"] }
+    ]
+  },
+  // Game 65
+  {
+    cats: [
+      { name: "Songs with 'Midnight' or 'Night'", color: 1, words: ["MIDNIGHT","TREACHEROUS","STARLIGHT","HAUNTED"] },
+      { name: "Taylor's Eras Tour Stage Design Elements", color: 2, words: ["TREE","SNAKE","FOREST","CLOCK"] },
+      { name: "Things Named After Taylor's Songs", color: 3, words: ["SPIDER CARDIGAN","PLANET SWIFT","BLANK SPACE","22 DRESS"] },
+      { name: "Taylor's Most Heartfelt Dedications", color: 4, words: ["MARJORIE","ANDREA","AUSTIN","SCOTT"] }
+    ]
+  },
+  // Game 66
+  {
+    cats: [
+      { name: "Songs About a Specific State", color: 1, words: ["FLORIDA!!!","LONDON BOY","CORNELIA STREET","KENTUCKY"] },
+      { name: "Taylor's Charity Donation Causes", color: 2, words: ["FLOOD","TORNADO","HUNGER","LGBTQ"] },
+      { name: "Words in 'Cruel Summer'", color: 3, words: ["KNIFE","DEVIL","SUMMER","FEVER"] },
+      { name: "Taylor's Award Acceptance Quotes", color: 4, words: ["REPUTATION","HATERS","FANS","CATS"] }
+    ]
+  },
+  // Game 67
+  {
+    cats: [
+      { name: "Taylor's Most Emotional Songs (Fan-Voted)", color: 1, words: ["ALL TOO WELL","MARJORIE","THE BEST DAY","CLEAN"] },
+      { name: "Songs Produced by Max Martin", color: 2, words: ["SHAKE IT OFF","BLANK SPACE","STYLE","BAD BLOOD"] },
+      { name: "Songs with 'Story'", color: 3, words: ["LOVE STORY","OUR SONG","LONG STORY","TIM MCGRAW"] },
+      { name: "Taylor Songs Released as Singles Only", color: 4, words: ["ONLY THE YOUNG","YOU ALL OVER ME","BACK TO DECEMBER","BREATHE"] }
+    ]
+  },
+  // Game 68
+  {
+    cats: [
+      { name: "Taylor's Folklore Visual Palette", color: 1, words: ["GREY","CREAM","FOREST","MUTED"] },
+      { name: "Songs with Driving", color: 2, words: ["DRIVE","GETAWAY CAR","ALL TOO WELL","TREACHEROUS"] },
+      { name: "Taylor's Famous Surprise Song Mashes", color: 3, words: ["FEARLESS/22","ALL TOO WELL/15","CLEAN/WILDEST","OUR SONG/MINE"] },
+      { name: "Things in 'August'", color: 4, words: ["BACK POCKET","MAILBOX","SALT","AUGUST SIPPED"] }
+    ]
+  },
+  // Game 69
+  {
+    cats: [
+      { name: "Taylor's Most Streams in One Day", color: 1, words: ["ANTI-HERO","MIDNIGHTS","TTPD","ERAS TOUR"] },
+      { name: "Songs About City Life", color: 2, words: ["WELCOME TO NY","CORNELIA ST","LONDON BOY","NEW ROMANTICS"] },
+      { name: "Things in 'Enchanted'", color: 3, words: ["CURLS","VELVET","CHAMPAGNE","WONDERING"] },
+      { name: "Taylor's Production Techniques", color: 4, words: ["LAYERING","AMBIENT","REVERB","DRUM MACHINE"] }
+    ]
+  },
+  // Game 70
+  {
+    cats: [
+      { name: "Taylor's Debut Album Track List (First 4)", color: 1, words: ["TIM MCGRAW","PICTURE TO BURN","TEARDROPS","OUR SONG"] },
+      { name: "Songs with 'Lost'", color: 2, words: ["LOST","LOSING","LOST IT","LOSS"] },
+      { name: "Reputation Stadium Tour Facts", color: 3, words: ["SNAKE STAGE","GIANT SNAKE","BLACK WARDROBE","KARYN"] },
+      { name: "Songs Taylor Wrote at Age 12-15", color: 4, words: ["TIM MCGRAW","COLD AS YOU","THE OUTSIDE","INVISIBLE"] }
+    ]
+  },
+  // Game 71
+  {
+    cats: [
+      { name: "Taylor's Eras Tour Revenue (Approximate)", color: 1, words: ["$1 BILLION","$2 BILLION","RECORD","HISTORY"] },
+      { name: "Songs with 'Window'", color: 2, words: ["YOU BELONG","WINDOW","WATCHING","THROUGH"] },
+      { name: "Things in 'All Too Well (10 Min)'", color: 3, words: ["FRIDGE","SCARF","AUTUMN","TWENTY"] },
+      { name: "Taylor's BFF Blake's Movies", color: 4, words: ["GOSSIP GIRL","DEADPOOL","SHALLOWS","HUSBAND"] }
+    ]
+  },
+  // Game 72
+  {
+    cats: [
+      { name: "Songs About Second Chances", color: 1, words: ["BEGIN AGAIN","BACK TO DECEMBER","TREACHEROUS","KING OF MY HEART"] },
+      { name: "Taylor's Favorite New York Restaurants", color: 2, words: ["NOBU","WESTVILLE","FRENCHETTE","SANT AMBROEUS"] },
+      { name: "TTPD Songs with Specific Names", color: 3, words: ["CASSANDRA","ROBIN","CLARA BOW","LOML"] },
+      { name: "Songs Taylor Cried Performing", color: 4, words: ["MARJORIE","ALL TOO WELL","THE BEST DAY","LONG LIVE"] }
+    ]
+  },
+  // Game 73
+  {
+    cats: [
+      { name: "Taylor's Most Re-Recorded Songs", color: 1, words: ["LOVE STORY","YOU BELONG","SHAKE IT OFF","WE ARE NEVER"] },
+      { name: "Songs with 'Paper'", color: 2, words: ["PAPER RINGS","PAPER","PIECES OF PAPER","LOVE LETTER"] },
+      { name: "Taylor's Lover Album Colors", color: 3, words: ["PINK","PURPLE","BLUE","RAINBOW"] },
+      { name: "Things in 'The 1'", color: 4, words: ["WHISKEY","DOOR","TWENTY","POLAROID"] }
+    ]
+  },
+  // Game 74
+  {
+    cats: [
+      { name: "Taylor's Touring Band Members", color: 1, words: ["AMOS","LUCA","CAITLIN","PAUL"] },
+      { name: "Songs with 'Beautiful'", color: 2, words: ["BEAUTIFUL","WONDERSTRUCK","BREATHTAKING","GORGEOUS"] },
+      { name: "Things in 'Love Story'", color: 3, words: ["BALCONY","ROMEO","JULIET","STAIRCASE"] },
+      { name: "TTPD Critics' Favorite Tracks", color: 4, words: ["THE MANUSCRIPT","FORTNIGHT","FLORIDA!!!","GUILTY AS SIN"] }
+    ]
+  },
+  // Game 75
+  {
+    cats: [
+      { name: "Taylor's Famous Guest Appearances", color: 1, words: ["BOTH OF US","HIGHWAY DON'T CARE","HIGHWAY SNOW","END GAME"] },
+      { name: "Songs with 'High'", color: 2, words: ["HIGH INFIDELITY","HIGHER","HIGH ON","FLYING HIGH"] },
+      { name: "Taylor's Movie References in Songs", color: 3, words: ["JAMES DEAN","MARILYN","AUDREY","GATSBY"] },
+      { name: "Eras Tour Act 1 Songs", color: 4, words: ["MISS AMERICANA","CRUEL SUMMER","THE ARCHER","FEARLESS"] }
+    ]
+  },
+  // Game 76
+  {
+    cats: [
+      { name: "Songs About Enemies-to-Lovers", color: 1, words: ["I KNEW YOU WERE","GETAWAY CAR","DELICATE","TREACHEROUS"] },
+      { name: "Taylor's Childhood Hobbies", color: 2, words: ["ACTING","MUSICAL THEATER","CHEERLEADING","GUITAR"] },
+      { name: "Things in 'Shake It Off'", color: 3, words: ["HATERS","PLAYERS","HEARTBREAKERS","FAKERS"] },
+      { name: "Taylor's Spoken Intro Songs", color: 4, words: ["ALL TOO WELL","LAST KISS","LONG LIVE","CLEAN"] }
+    ]
+  },
+  // Game 77
+  {
+    cats: [
+      { name: "Songs with 'Fire'", color: 1, words: ["PICTURE TO BURN","FIRE","SET FIRE","ARSON"] },
+      { name: "Taylor's Aesthetic Eras (Described)", color: 2, words: ["COTTAGECORE","PASTEL","DARK ACADEMIA","GLAM"] },
+      { name: "Things in 'Delicate'", color: 3, words: ["DIVE BAR","REPUTATION","STUMBLING","THIRD FLOOR"] },
+      { name: "Taylor's Most Downloaded Albums on Release Day", color: 4, words: ["MIDNIGHTS","TTPD","1989 TV","FOLKLORE"] }
+    ]
+  },
+  // Game 78
+  {
+    cats: [
+      { name: "Taylor's Most Surprising Collaborations", color: 1, words: ["BON IVER","LANA DEL REY","ICE SPICE","TIM MCGRAW"] },
+      { name: "Songs About Letting Go", color: 2, words: ["CLEAN","BEGIN AGAIN","THE 1","22"] },
+      { name: "Taylor's Eras Tour Wardrobe Designers", color: 3, words: ["VERSACE","ROBERTO CAVALLI","OSCAR DE LA","ZUHAIR"] },
+      { name: "Songs with 'Beautiful' Imagery", color: 4, words: ["SEVEN","CARDIGAN","WILLOW","GOLDEN HOUR"] }
+    ]
+  },
+  // Game 79
+  {
+    cats: [
+      { name: "Songs with 'Moon'", color: 1, words: ["MOON","MOONLIGHT","FULL MOON","CRESCENT"] },
+      { name: "Taylor's Most-Used Bridge Topics", color: 2, words: ["REVENGE","EPIPHANY","FORGIVENESS","REALIZATION"] },
+      { name: "Taylor's Super Bowl Week 2024 Activities", color: 3, words: ["JAPAN CONCERT","FLYING","TRAVIS KELCE","VIP SUITE"] },
+      { name: "Songs Written for Other Artists", color: 4, words: ["BETTER MAN","SUPERMAN","THIS IS WHAT YOU","BETTE DAVIS"] }
+    ]
+  },
+  // Game 80
+  {
+    cats: [
+      { name: "Taylor's Iconic Red Carpet Looks", color: 1, words: ["MET GALA 2016","GRAMMYS 2016","VMA 2019","BRIT 2015"] },
+      { name: "Songs with 'Blood'", color: 2, words: ["BAD BLOOD","BLOOD","BLEEDING","CRIMSON"] },
+      { name: "Things in 'Willow'", color: 3, words: ["THREAD","DOOR","GOLDEN","COMPASS"] },
+      { name: "Taylor's Eras Tour Set Design Themes", color: 4, words: ["SERPENTINE","FOREST","NEON","LAVENDER"] }
+    ]
+  },
+  // Game 81
+  {
+    cats: [
+      { name: "Songs with 'Magic'", color: 1, words: ["ENCHANTED","MAGIC","WONDERSTRUCK","CHARMED"] },
+      { name: "Taylor's 1989 TV Easter Eggs", color: 2, words: ["TURTLE","SEAGULL","SURFBOARD","POLAROID"] },
+      { name: "TTPD Unique Track Names", color: 3, words: ["THE BOLTER","IMGONNAGETYOUBACK","PETER","ANDROMEDA"] },
+      { name: "Taylor's Backup Singer Names", color: 4, words: ["MELANIE","KRISTIAN","CAITLIN","LOREN"] }
+    ]
+  },
+  // Game 82
+  {
+    cats: [
+      { name: "Songs with 'Voice'", color: 1, words: ["VOICE","CALL","ECHO","RING"] },
+      { name: "Taylor's First Week Album Sales Records", color: 2, words: ["MIDNIGHTS","TTPD","1989","REPUTATION"] },
+      { name: "Things in 'Karma'", color: 3, words: ["PURRING","BREEZE","GLOWING","COMING"] },
+      { name: "Taylor's Most Literary Songs", color: 4, words: ["SEVEN","THE LAKES","AUGUST","DOROTHEA"] }
+    ]
+  },
+  // Game 83
+  {
+    cats: [
+      { name: "Songs with 'Dead'", color: 1, words: ["DEAD","DEATH BY","KILLING","TOMBSTONE"] },
+      { name: "Taylor's Grammy Record Wins Count", color: 2, words: ["4 AOTY","14 TOTAL","MOST FEMALE","FIRST REPEAT"] },
+      { name: "Things in 'Holy Ground'", color: 3, words: ["TEN STEPS","EYES","GROUND","REMEMBERING"] },
+      { name: "Folklore Bonus/Deluxe Tracks", color: 4, words: ["THE LAKES","BETTY (PIANO)","SEVEN (PIANO)","PEACE (DEMO)"] }
+    ]
+  },
+  // Game 84
+  {
+    cats: [
+      { name: "Songs with 'King'", color: 1, words: ["KING OF MY HEART","KING","ROYALTY","CROWN"] },
+      { name: "Taylor's Eras Tour Friendship Bracelet Phrases", color: 2, words: ["SWIFTIE","13","ERAS","LOVER"] },
+      { name: "Songs About Female Empowerment", color: 3, words: ["THE MAN","LONG LIVE","CHANGE","MEAN"] },
+      { name: "Taylor's Childhood Musical Influences", color: 4, words: ["SHANIA","DIXIE CHICKS","FAITH HILL","DOLLY"] }
+    ]
+  },
+  // Game 85
+  {
+    cats: [
+      { name: "Taylor's Songwriting Statistics", color: 1, words: ["SOLE WRITER","CO-WRITER","PRODUCER","PUBLISHER"] },
+      { name: "Songs with 'Ring' or 'Rings'", color: 2, words: ["PAPER RINGS","RING RING","CALL","DIAMOND RING"] },
+      { name: "Things in 'Getaway Car'", color: 3, words: ["CHERRY LIPS","CHARADE","STOLEN","LEAVING"] },
+      { name: "Taylor's Double Album Concept", color: 4, words: ["TTPD POETS","ANTHOLOGY","DISK 1","DISK 2"] }
+    ]
+  },
+  // Game 86
+  {
+    cats: [
+      { name: "Songs with 'Summer'", color: 1, words: ["CRUEL SUMMER","SUMMER","SUMMERTIME","END OF SUMMER"] },
+      { name: "Taylor's Eras Tour Ticket Lottery Details", color: 2, words: ["VERIFIED FAN","PRESALE","CAPTCHA","LINE"] },
+      { name: "Things in 'Begin Again'", color: 3, words: ["COFFEE","PARIS","SMILE","TUESDAY"] },
+      { name: "Taylor Songs About Being 22", color: 4, words: ["22","NEW ROMANTICS","WELCOME TO NY","CLEAN"] }
+    ]
+  },
+  // Game 87
+  {
+    cats: [
+      { name: "Words From Taylor's Reputation Snake MV", color: 1, words: ["SNAKE","SQUAD","DEATH","REINVENTION"] },
+      { name: "Songs With 'Clock'", color: 2, words: ["MIDNIGHT","CLOCK","TICKING","STRIKES"] },
+      { name: "Taylor's Most Covered Songs at Karaoke", color: 3, words: ["LOVE STORY","SHAKE","YOU BELONG","BLANK SPACE"] },
+      { name: "TTPD Songs About Writing", color: 4, words: ["THE MANUSCRIPT","CLARA BOW","TORTURED POETS","ROBIN"] }
+    ]
+  },
+  // Game 88
+  {
+    cats: [
+      { name: "Songs with 'Again'", color: 1, words: ["BEGIN AGAIN","NEVER AGAIN","BACK AGAIN","AGAIN"] },
+      { name: "Taylor's Pre-Show Rituals (Reported)", color: 2, words: ["VOCAL WARMUP","STRETCHING","PRAYER CIRCLE","CATS"] },
+      { name: "Things in 'Cornelia Street'", color: 3, words: ["WINDOW SEAT","BLUE","STAIRCASE","DOOR"] },
+      { name: "Taylor Songs That Made History", color: 4, words: ["ALL TOO WELL","ANTI-HERO","SHAKE","BLANK SPACE"] }
+    ]
+  },
+  // Game 89
+  {
+    cats: [
+      { name: "Taylor's Most Listened Spotify Month", color: 1, words: ["NOVEMBER 2023","OCTOBER 2023","APRIL 2024","MARCH 2024"] },
+      { name: "Songs with 'Gold' Imagery", color: 2, words: ["GOLD RUSH","DAYLIGHT","STARLIGHT","FEARLESS"] },
+      { name: "Things in 'Style'", color: 3, words: ["RED LIP","WHITE T-SHIRT","DAYDREAM","JAMES DEAN"] },
+      { name: "Taylor's Setlist Surprise Song Instruments", color: 4, words: ["PIANO","ACOUSTIC GUITAR","BANJO","ELECTRIC"] }
+    ]
+  },
+  // Game 90
+  {
+    cats: [
+      { name: "Taylor Songs with 'Honey'", color: 1, words: ["HONEY","GOLDEN","SWEET","NECTAR"] },
+      { name: "Taylor's Folklore Forest Set Props", color: 2, words: ["LOG CABIN","TREE","MOSS","LANTERN"] },
+      { name: "Things in 'Daylight'", color: 3, words: ["TWENTY","SHADE","DRUNK","GOLDEN"] },
+      { name: "Songs Taylor Performed at Super Bowl Halftime", color: 4, words: ["NEVER","SHE HAS NOT","NOT YET","TRAVIS"] }
+    ]
+  },
+  // Game 91
+  {
+    cats: [
+      { name: "Taylor's Grammy Records (Historic)", color: 1, words: ["4X AOTY","MOST WINS","YOUNGEST","SOLO FEMALE"] },
+      { name: "Songs with 'Paper'", color: 2, words: ["PAPER RINGS","ENVELOPE","LETTER","NOTE"] },
+      { name: "Things in 'Seven'", color: 3, words: ["CURTAIN","WINDOW","TREE","BACKPACK"] },
+      { name: "Taylor's Songs Inspired by Other Artists", color: 4, words: ["JONI","CAROLE KING","DOLLY","NICKS"] }
+    ]
+  },
+  // Game 92
+  {
+    cats: [
+      { name: "Taylor's Famous Haul Songs (Style Refs)", color: 1, words: ["THRIFT STORE","VINTAGE","OVERSIZED","CARDIGAN"] },
+      { name: "Songs with 'Town'", color: 2, words: ["SMALL TOWN","TOWN","LEAVING TOWN","HENDERSONVILLE"] },
+      { name: "Things in 'New Romantics'", color: 3, words: ["HEARTBREAK","DANCING","CRYING","MASQUERADE"] },
+      { name: "Taylor's Surprise Songs (Debut Era)", color: 4, words: ["CHANGE","CRAZIER","SUPERSTAR","SPEAK NOW"] }
+    ]
+  },
+  // Game 93
+  {
+    cats: [
+      { name: "Taylor's Most Streamed Song Types", color: 1, words: ["POP","COUNTRY","ALTERNATIVE","FOLK"] },
+      { name: "Songs with 'Letter'", color: 2, words: ["DEAR JOHN","LOVE LETTER","WRITE","LETTER"] },
+      { name: "Things in 'Blank Space'", color: 3, words: ["STARBUCKS","JETSET","DARLING","NIGHTMARE"] },
+      { name: "Eras Tour Songs Dropped in 2024", color: 4, words: ["ROBIN","FORTNIGHT","FLORIDA","IMGONNA"] }
+    ]
+  },
+  // Game 94
+  {
+    cats: [
+      { name: "Songs With Multiple Perspectives", color: 1, words: ["AUGUST","BETTY","EXILE","THE LAKES"] },
+      { name: "Taylor's Most Hated On Songs (By Media)", color: 2, words: ["BAD BLOOD","SHAKE","LOOK WHAT","GORGEOUS"] },
+      { name: "Things in 'Long Live'", color: 3, words: ["KINGDOM","BANNER","CASTLE","WALLS"] },
+      { name: "Taylor's Songwriting Secret Process", color: 4, words: ["MELODY FIRST","LYRICS FIRST","TITLE FIRST","BRIDGE FIRST"] }
+    ]
+  },
+  // Game 95
+  {
+    cats: [
+      { name: "Songs With 'Sweet'", color: 1, words: ["SWEET NOTHING","SWEETLY","SWEET","BITTERSWEET"] },
+      { name: "Taylor's Childhood Instruments Learned", color: 2, words: ["GUITAR","PIANO","DRUMS","BANJO"] },
+      { name: "Things in 'Champagne Problems'", color: 3, words: ["DORM","RING","PROPOSAL","DRIVER"] },
+      { name: "Taylor Songs That Hit #1 on Hot 100", color: 4, words: ["ANTI-HERO","SHAKE IT OFF","BLANK SPACE","WE ARE NEVER"] }
+    ]
+  },
+  // Game 96
+  {
+    cats: [
+      { name: "Taylor's Signature Red Album Scarf", color: 1, words: ["SCARF","BORROWED","DRAWER","REMEMBER"] },
+      { name: "Songs With 'Cold'", color: 2, words: ["COLD AS YOU","COLD","COLD SHOULDER","FROZEN"] },
+      { name: "Things in 'Haunted'", color: 3, words: ["STAIRS","CASTLE","GHOST","SHADOWS"] },
+      { name: "Taylor Songs About Travis Kelce (Alleged)", color: 4, words: ["KARMA","SO HIGH SCHOOL","THE ALCHEMY","SWIFT"] }
+    ]
+  },
+  // Game 97
+  {
+    cats: [
+      { name: "Words from 'The Man'", color: 1, words: ["BRAZEN","MOVE","POWER","DIRTY"] },
+      { name: "Taylor's Debut Chart Positions", color: 2, words: ["#5 BILLBOARD","#40 HOT 100","#1 COUNTRY","#19 WORLDWIDE"] },
+      { name: "Songs with 'Castle'", color: 3, words: ["CASTLE","FORTRESS","PALACE","TOWER"] },
+      { name: "Taylor's Publicist Era Key Events", color: 4, words: ["VMA 2009","1989 SQUAD","SNAKE 2016","ERAS 2023"] }
+    ]
+  },
+  // Game 98
+  {
+    cats: [
+      { name: "Taylor's Songs that Went Viral on TikTok", color: 1, words: ["ANTI-HERO","ALL TOO WELL","AUGUST","CARDIGAN"] },
+      { name: "Songs with 'Church'", color: 2, words: ["CHURCH","CONGREGATION","CONFESSION","ALTAR"] },
+      { name: "Things in 'Speak Now'", color: 3, words: ["WEDDING","VEIL","AISLE","CRASH"] },
+      { name: "TTPD References to Classic Literature", color: 4, words: ["CASSANDRA","ALBATROSS","ALCHEMY","MANUSCRIPT"] }
+    ]
+  },
+  // Game 99
+  {
+    cats: [
+      { name: "Taylor's Words for Ex-Lovers", color: 1, words: ["ROMEO","TREACHEROUS","DARLING","DEAR"] },
+      { name: "Songs With 'Invisible'", color: 2, words: ["INVISIBLE STRING","INVISIBLE","UNSEEN","HIDDEN"] },
+      { name: "Things in 'End Game' ft. Future & Ed Sheeran", color: 3, words: ["FUTURE","SHEERAN","END GAME","COLLABORATION"] },
+      { name: "Taylor Songs Named After Objects", color: 4, words: ["CARDIGAN","PAPER RINGS","THE BOLTER","GLITTER GEL"] }
+    ]
+  },
+  // Game 100
+  {
+    cats: [
+      { name: "Taylor's Final Eras Tour Songs", color: 1, words: ["KARMA","LONG LIVE","SHAKE IT OFF","ENCHANTED"] },
+      { name: "Songs About Legacy", color: 2, words: ["LONG LIVE","CHANGE","THE BEST DAY","MARJORIE"] },
+      { name: "Things Fans Do at Eras Tour", color: 3, words: ["TRADE BRACELETS","SING EVERY WORD","DRESS UP","CRY"] },
+      { name: "Taylor's Final Thoughts (Song Themes)", color: 4, words: ["REFLECTION","GRATITUDE","LEGACY","ACCEPTANCE"] }
+    ]
+  }
+];
+
+// Color config
+const COLOR_CONFIG = {
+  1: { bg: '#F9DF6D', label: '🟨' },
+  2: { bg: '#A0C35A', label: '🟩' },
+  3: { bg: '#B0C4EF', label: '🟦' },
+  4: { bg: '#BA81C5', label: '🟪' }
+};
+
+// =====================================================================
+// GAME STATE
+// =====================================================================
+let currentGameIdx = 0;
+let selectedWords = [];
+let mistakes = 4;
+let solvedColors = [];
+let tiles = []; // shuffled word list for current game
+let gameOver = false;
+
+function loadGame(idx) {
+  currentGameIdx = idx;
+  selectedWords = [];
+  mistakes = 4;
+  solvedColors = [];
+  gameOver = false;
+
+  const game = GAMES[idx];
+  // Build flat word list
+  let words = [];
+  game.cats.forEach(cat => {
+    cat.words.forEach(w => words.push(w));
+  });
+  tiles = shuffle(words);
+
+  document.getElementById('gameNumLabel').textContent = `Game ${idx+1}/100`;
+  document.getElementById('navLabel').textContent = `Game ${idx+1}`;
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === GAMES.length - 1;
+
+  renderSolved();
+  renderGrid();
+  renderDots();
+  updateButtons();
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  // Only show unsolved tiles
+  const solvedWords = getSolvedWords();
+  const currentTiles = tiles.filter(w => !solvedWords.includes(w));
+
+  currentTiles.forEach(word => {
+    const tile = document.createElement('div');
+    tile.className = 'tile' + (selectedWords.includes(word) ? ' selected' : '');
+    tile.textContent = word;
+    tile.addEventListener('click', () => toggleWord(word, tile));
+    grid.appendChild(tile);
+  });
+}
+
+function getSolvedWords() {
+  let words = [];
+  solvedColors.forEach(color => {
+    const cat = GAMES[currentGameIdx].cats.find(c => c.color === color);
+    if (cat) cat.words.forEach(w => words.push(w));
+  });
+  return words;
+}
+
+function renderSolved() {
+  const container = document.getElementById('solvedCats');
+  container.innerHTML = '';
+  solvedColors.forEach(color => {
+    const cat = GAMES[currentGameIdx].cats.find(c => c.color === color);
+    const div = document.createElement('div');
+    div.className = 'solved-cat';
+    div.style.background = COLOR_CONFIG[color].bg;
+    div.innerHTML = `<div class="cat-name">${cat.name}</div><div class="cat-words">${cat.words.join(', ')}</div>`;
+    container.appendChild(div);
+  });
+}
+
+function renderDots() {
+  const dotsEl = document.getElementById('dots');
+  dotsEl.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'dot' + (i >= mistakes ? ' used' : '');
+    dotsEl.appendChild(dot);
+  }
+}
+
+function updateButtons() {
+  document.getElementById('submitBtn').disabled = selectedWords.length !== 4 || gameOver;
+  document.getElementById('deselectBtn').disabled = selectedWords.length === 0;
+  document.getElementById('shuffleBtn').disabled = gameOver;
+}
+
+function toggleWord(word, tileEl) {
+  if (gameOver) return;
+  if (selectedWords.includes(word)) {
+    selectedWords = selectedWords.filter(w => w !== word);
+  } else {
+    if (selectedWords.length >= 4) return;
+    selectedWords.push(word);
+  }
+  renderGrid();
+  updateButtons();
+}
+
+function submit() {
+  if (selectedWords.length !== 4) return;
+
+  const game = GAMES[currentGameIdx];
+  // Check each category
+  let matched = null;
+  game.cats.forEach(cat => {
+    if (solvedColors.includes(cat.color)) return;
+    const allMatch = selectedWords.every(w => cat.words.includes(w));
+    if (allMatch) matched = cat;
+  });
+
+  if (matched) {
+    // Correct!
+    solvedColors.push(matched.color);
+    tiles = tiles.filter(w => !matched.words.includes(w));
+    selectedWords = [];
+
+    renderSolved();
+    renderGrid();
+    renderDots();
+    updateButtons();
+
+    if (solvedColors.length === 4) {
+      setTimeout(() => showModal(true), 400);
+    } else {
+      // Check if one away
+    }
+    showToast('Correct! ✨');
+  } else {
+    // Check "one away"
+    let bestMatch = 0;
+    game.cats.forEach(cat => {
+      if (solvedColors.includes(cat.color)) return;
+      const count = selectedWords.filter(w => cat.words.includes(w)).length;
+      if (count > bestMatch) bestMatch = count;
+    });
+
+    mistakes--;
+    renderDots();
+
+    if (bestMatch === 3) {
+      showToast('One away... 👀');
+    } else {
+      showToast('Not quite! Try again');
+    }
+
+    // Shake tiles
+    shakeSelected();
+    selectedWords = [];
+    setTimeout(() => { renderGrid(); updateButtons(); }, 600);
+
+    if (mistakes <= 0) {
+      setTimeout(() => showModal(false), 700);
+      gameOver = true;
+    }
+  }
+}
+
+function shakeSelected() {
+  const gridEl = document.getElementById('grid');
+  const tileEls = gridEl.querySelectorAll('.tile.selected');
+  tileEls.forEach(t => {
+    t.classList.add('shake');
+    setTimeout(() => t.classList.remove('shake'), 500);
+  });
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function showModal(won) {
+  const overlay = document.getElementById('modalOverlay');
+  const emoji = document.getElementById('modalEmoji');
+  const title = document.getElementById('modalTitle');
+  const msg = document.getElementById('modalMsg');
+  const catsEl = document.getElementById('modalCats');
+
+  emoji.textContent = won ? '🎉' : '😢';
+  title.textContent = won ? 'Amazing, Swiftie!' : 'Better Luck Next Time!';
+  msg.textContent = won
+    ? `You completed Game ${currentGameIdx+1} with ${4 - mistakes} mistake${4-mistakes===1?'':'s'}!`
+    : `The categories were:`;
+
+  catsEl.innerHTML = '';
+  GAMES[currentGameIdx].cats.forEach(cat => {
+    const div = document.createElement('div');
+    div.className = 'result-cat';
+    div.style.background = COLOR_CONFIG[cat.color].bg;
+    div.innerHTML = `<div class="rcat-name">${cat.name}</div><div class="rcat-words">${cat.words.join(', ')}</div>`;
+    catsEl.appendChild(div);
+  });
+
+  const nextBtn = document.getElementById('modalNext');
+  nextBtn.style.display = currentGameIdx < GAMES.length - 1 ? '' : 'none';
+
+  overlay.classList.add('open');
+}
+
+// Events
+document.getElementById('submitBtn').addEventListener('click', submit);
+
+document.getElementById('shuffleBtn').addEventListener('click', () => {
+  const solvedWords = getSolvedWords();
+  const remaining = tiles.filter(w => !solvedWords.includes(w));
+  const shuffled = shuffle(remaining);
+  tiles = [...tiles.filter(w => solvedWords.includes(w)), ...shuffled];
+  selectedWords = [];
+  renderGrid();
+  updateButtons();
+});
+
+document.getElementById('deselectBtn').addEventListener('click', () => {
+  selectedWords = [];
+  renderGrid();
+  updateButtons();
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+  if (currentGameIdx > 0) loadGame(currentGameIdx - 1);
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if (currentGameIdx < GAMES.length - 1) loadGame(currentGameIdx + 1);
+});
+
+document.getElementById('modalClose').addEventListener('click', () => {
+  document.getElementById('modalOverlay').classList.remove('open');
+});
+
+document.getElementById('modalNext').addEventListener('click', () => {
+  document.getElementById('modalOverlay').classList.remove('open');
+  if (currentGameIdx < GAMES.length - 1) loadGame(currentGameIdx + 1);
+});
+
+// Start
+loadGame(0);
+</script>
+</body>
+</html>
